@@ -1,0 +1,177 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "experience": "Experience",
+    "contact": "Contact"
+  },
+  "hero": {
+    "greeting": "Hello,",
+    "name": "I'm Mani Shekofteh",
+    "tagline": "Backend Engineer who turns complex problems into elegant, scalable systems — one API at a time.",
+    "cta_activity": "View Activity",
+    "cta_resume": "Resume"
+  },
+  "about": {
+    "title": "Who I Am",
+    "subtitle": "A brief story about the person behind the code",
+    "p1": "I'm Mani, a 20-year-old backend developer based in Mashhad, Iran. My journey into software started two years ago with frontend development — but I quickly discovered where my real passion lives: behind the scenes, where data flows, requests find their paths, and APIs quietly power everything.",
+    "p2": "Today, I build with Node.js and Express daily. NestJS shaped how I think about architecture — modular, clean, and scalable. PostgreSQL and MongoDB are the tools I reach for instinctively. When I encounter something I don't know, I don't pretend — I sit with the problem until it's solved.",
+    "p3": "I'm not looking for just a job. I'm looking for a team where I can invest my energy and get energy back. Where code reviews are conversations, not corrections. Where shipping matters, but so does how you ship.",
+    "philosophy_title": "Engineering Philosophy",
+    "philosophy": "Code should be written for the next person who reads it — and that person might be you, six months from now. I believe in clean architecture not because it's trendy, but because it makes systems survivable. Every abstraction should earn its existence.",
+    "approach_title": "How I Approach Problems",
+    "approach": "I break complex systems into small, testable pieces. I read documentation before searching Stack Overflow. I write tests for the critical paths. And I never ship something I can't explain to a junior developer.",
+    "aspirations_title": "Where I'm Heading",
+    "aspirations": "System design, distributed architecture, and building platforms that serve millions — that's the trajectory. I'm deepening my knowledge in domain-driven design and microservices, with the long-term goal of becoming a senior backend architect."
+  },
+  "soft_skills": {
+    "communication": { "name": "Communication", "desc": "Clear documentation, articulate code reviews, and effective cross-team coordination." },
+    "ownership": { "name": "Ownership", "desc": "Taking full responsibility for features from design through deployment and beyond." },
+    "leadership": { "name": "Leadership", "desc": "Guiding team decisions, mentoring peers, and driving projects to completion." },
+    "critical_thinking": { "name": "Critical Thinking", "desc": "Evaluating trade-offs, questioning assumptions, and choosing the right tool for the job." },
+    "problem_solving": { "name": "Problem Solving", "desc": "Breaking down complex systems into manageable, testable components." },
+    "adaptability": { "name": "Adaptability", "desc": "Quickly learning new technologies and adapting to changing project requirements." },
+    "collaboration": { "name": "Collaboration", "desc": "Working effectively with frontend teams, designers, and product managers." },
+    "learning": { "name": "Learning Ability", "desc": "Continuously deepening knowledge through documentation, open source, and hands-on practice." }
+  },
+  "skills": {
+    "title": "Technology Ecosystem",
+    "subtitle": "The tools and technologies I work with daily",
+    "categories": {
+      "backend": { "name": "Backend", "icon": "Server" },
+      "frontend": { "name": "Frontend", "icon": "Monitor" },
+      "databases": { "name": "Databases", "icon": "Database" },
+      "architecture": { "name": "Architecture", "icon": "Layers" },
+      "cloud_devops": { "name": "Cloud & DevOps", "icon": "Cloud" },
+      "ai_tools": { "name": "AI & Tools", "icon": "Brain" },
+      "developer_tools": { "name": "Developer Tools", "icon": "Wrench" }
+    }
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "Engineering work that reflects how I think and build",
+    "filters": {
+      "all": "All",
+      "backend": "Backend",
+      "frontend": "Frontend",
+      "experimental": "Experimental"
+    },
+    "items": {
+      "ridex": {
+        "name": "RideX",
+        "description": "A full-stack ride-hailing platform with AI at its core — serving passengers, drivers, businesses, and admins through dedicated panels. Features intelligent route optimization, dynamic pricing, and real-time tracking.",
+        "architecture": "Next.js frontend with modular panel architecture, Node.js/Express API layer, MongoDB for data persistence, Redis for caching and real-time state, integrated AI services for route optimization and matching.",
+        "features": ["Multi-panel architecture (Passenger, Driver, Admin, Business)", "AI-powered route optimization and driver matching", "Real-time tracking with WebSocket integration", "Dynamic pricing engine based on demand and traffic", "Integrated wallet and payment system", "Live statistics dashboard"],
+        "view_demo": "Live Demo",
+        "view_code": "View Code"
+      },
+      "onlineShop": {
+        "name": "OnlineShop",
+        "description": "A production-ready multi-vendor e-commerce backend built with NestJS. Designed for platforms requiring vendor support, complex product attributes, and flexible payment flows — inspired by systems like Digikala.",
+        "architecture": "NestJS with modular architecture, TypeORM for database operations, PostgreSQL for relational data, Redis for caching and session management, JWT-based authentication with RBAC.",
+        "features": ["Multi-vendor product management", "Complex product attribute system", "Flexible payment flow architecture", "Role-based access control (RBAC)", "Redis caching layer for performance", "Clean, modular NestJS structure"],
+        "view_code": "View Code"
+      },
+      "vendora": {
+        "name": "Vendora",
+        "description": "A marketplace platform built to explore modern e-commerce patterns with Node.js and MongoDB, focusing on scalable vendor management and product catalog systems.",
+        "architecture": "Node.js with Express, MongoDB for flexible schema design, RESTful API design with proper validation and error handling.",
+        "features": ["Vendor management system", "Product catalog with search", "RESTful API with validation", "MongoDB schema design"],
+        "view_code": "View Code"
+      },
+      "marketplace": {
+        "name": "MarketPlace Shop",
+        "description": "An online marketplace backend implementing core e-commerce functionality including product listings, user management, and order processing with a focus on clean API design.",
+        "architecture": "Node.js with Express, MongoDB for data persistence, JWT authentication, RESTful API design patterns.",
+        "features": ["Product listing and management", "User authentication system", "Order processing pipeline", "Clean API documentation"],
+        "view_code": "View Code"
+      }
+    }
+  },
+  "experience": {
+    "title": "Experience",
+    "subtitle": "A timeline of growth, from first lines of code to production systems",
+    "items": [
+      {
+        "company": "MoaserHome",
+        "role": "Full Stack Developer",
+        "period": "Aug 2025 — Mar 2026",
+        "location": "Mashhad, Iran",
+        "description": "Developed a comprehensive platform with NestJS backend and React-based WordPress plugin frontend. Focused on performance optimization and caching strategies.",
+        "achievements": [
+          "Reduced product page load time by 35% through query optimization and lazy loading",
+          "Implemented Redis caching system, reducing API response time from 600ms to 120ms",
+          "Built user and product management APIs with NestJS, TypeORM, and PostgreSQL"
+        ]
+      },
+      {
+        "company": "RojanSoft",
+        "role": "Backend Developer",
+        "period": "Jun 2024 — Feb 2025",
+        "location": "Mashhad, Iran",
+        "description": "Designed and implemented RESTful APIs using Node.js, Express, and MongoDB for a software company. Focused on authentication, API documentation, and performance.",
+        "achievements": [
+          "Built JWT authentication API handling 500 concurrent requests per second",
+          "Fully documented API with Swagger, reducing cross-team coordination time",
+          "Designed scalable RESTful API architecture"
+        ]
+      },
+      {
+        "company": "CarnCar",
+        "role": "Frontend Developer",
+        "period": "Jun 2023 — Sep 2023",
+        "location": "Mashhad, Iran",
+        "description": "Developed reusable React components and an internal admin panel for a car rental platform.",
+        "achievements": [
+          "Built reusable React components without additional state management libraries",
+          "Created admin panel enabling support team to update content independently"
+        ]
+      },
+      {
+        "company": "Razavi Architectural Arrays",
+        "role": "Frontend Developer & IT Expert",
+        "period": "Jun 2022 — Oct 2022",
+        "location": "Mashhad, Iran",
+        "description": "Supported internal systems using HTML, CSS, and vanilla JavaScript. First professional development role.",
+        "achievements": [
+          "Designed 3 data entry forms, reducing employee registration time by 40%",
+          "Fixed 20+ system bugs across hardware and software sections"
+        ]
+      }
+    ]
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "subtitle": "Let's build something remarkable together",
+    "email": "manishekofteh@gmail.com",
+    "telegram": "@manishekofteh",
+    "copy_email": "Copy email",
+    "open_link": "Open link",
+    "copied": "Copied!"
+  },
+  "resume": {
+    "title": "Resume",
+    "view_resume": "View Resume",
+    "download_resume": "Download Resume",
+    "close": "Close"
+  },
+  "ai_assistant": {
+    "title": "Ask AI About Me",
+    "placeholder": "Ask me anything about Mani...",
+    "suggestions": [
+      "Who is Mani?",
+      "What technologies does Mani specialize in?",
+      "Why should I hire Mani?",
+      "What is Mani's engineering philosophy?"
+    ],
+    "thinking": "Thinking...",
+    "error": "Something went wrong. Please try again."
+  },
+  "back_to_top": "Back to top",
+  "loading": {
+    "welcome": "Welcome"
+  }
+}

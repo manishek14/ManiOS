@@ -1,0 +1,92 @@
+[
+  {
+    "url": "https://docs.github.com/en/repositories/creating-and-managing-repositories/about-repositories",
+    "name": "About repositories - GitHub Docs",
+    "snippet": "A repository is the most basic element of GitHub. It's a place where you can store your code, your files, and each file's revision history.",
+    "host_name": "docs.github.com",
+    "rank": 0,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://github.com/orgs/github/repositories",
+    "name": "GitHub repositories",
+    "snippet": "How people build software. GitHub has 553 repositories available. Follow their code on GitHub.",
+    "host_name": "github.com",
+    "rank": 1,
+    "date": "Jul 10, 2026",
+    "favicon": ""
+  },
+  {
+    "url": "https://en.wikipedia.org/wiki/Repository_(version_control)",
+    "name": "Repository (version control) - Wikipedia",
+    "snippet": "In version control systems, a repository is a data structure that stores metadata for a set of files or directory structure.",
+    "host_name": "en.wikipedia.org",
+    "rank": 2,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://gitprotect.io/blog/github-repository-vs-project",
+    "name": "GitHub Repository vs. Project - Blog - GitProtect.io",
+    "snippet": "A comprehensive approach and the entire platform for planning, managing, testing, and automating a given project.",
+    "host_name": "gitprotect.io",
+    "rank": 3,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://orca.security/glossary/repository",
+    "name": "Repository - Orca Security",
+    "snippet": "A repository is a centralized location used to store, organize, and manage digital assets such as source code, configuration files, software packages, ...",
+    "host_name": "orca.security",
+    "rank": 4,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://dictionary.cambridge.org/dictionary/english/repository",
+    "name": "REPOSITORY | English meaning - Cambridge Dictionary",
+    "snippet": "a place where things are stored and can be found. [ C usually singular ] a person who has, or a book that contains, a lot of information or detailed knowledge.",
+    "host_name": "dictionary.cambridge.org",
+    "rank": 5,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.reddit.com/r/linuxquestions/comments/phhhp7/what_are_repositories",
+    "name": "What are repositories? : r/linuxquestions - Reddit",
+    "snippet": "A repository in Linux is generally a webserver(or many), that holds software to download. Some repositories have different software packages ... repositories가 뭔데? : r/linuxquestions repositories vs projects. : r/github More results from www.reddit.com",
+    "host_name": "www.reddit.com",
+    "rank": 6,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.geeksforgeeks.org/git/what-is-a-git-repository",
+    "name": "Repositories and Commands in Git - GeeksforGeeks",
+    "snippet": "A Git repository (or repo) is a storage space where your project's files and their complete history of changes are kept.",
+    "host_name": "www.geeksforgeeks.org",
+    "rank": 7,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://github.com/manishek14/ridex",
+    "name": "GitHub - manishek14/ridex",
+    "snippet": "RideX is a cutting-edge, full-stack ride-hailing platform that leverages Artificial Intelligence at its core to deliver smarter, faster, and safer transportation experiences. Built with modern web technologies and designed with a modular architecture, it serves passengers, drivers, businesses, and administrators through dedicated, feature-rich panels.",
+    "host_name": "github.com",
+    "rank": 8,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://github.com/manishek14/onlineShop",
+    "name": "GitHub - manishek14/onlineShop",
+    "snippet": "🛍️ NestJS OnlineShop A production-ready multi-vendor OnlineShop backend built with NestJS, PostgreSQL, TypeORM, and Redis. Designed for platforms like Digikala, Amazon, or any e-commerce ecosystem requiring vendor support, complex product attributes, and flexible payment flows.",
+    "host_name": "github.com",
+    "rank": 9,
+    "date": "",
+    "favicon": ""
+  }
+]

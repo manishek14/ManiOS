@@ -1,0 +1,92 @@
+[
+  {
+    "url": "https://github.com/nestjs/nest",
+    "name": "nestjs/nest: A progressive Node.js framework for building efficient",
+    "snippet": "Nest is a framework for building efficient, scalable Node.js server-side applications. It uses modern JavaScript, is built with TypeScript.",
+    "host_name": "github.com",
+    "rank": 0,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://github.com/lujakob/nestjs-realworld-example-app",
+    "name": "GitHub - lujakob/nestjs-realworld-example-app",
+    "snippet": "NestJS codebase containing real world examples (CRUD, auth, advanced patterns, etc) that adheres to the RealWorld API spec.",
+    "host_name": "github.com",
+    "rank": 1,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=jirRfS6JEmM",
+    "name": "Building and Publishing NestJS Package to Github Part-1 #04",
+    "snippet": "... GitHub How to Publish Private NPM Packages With Github Package Registry We'll begin by first making our modules repository private ...",
+    "host_name": "www.youtube.com",
+    "rank": 2,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://github.com/topics/nestjs-backend",
+    "name": "nestjs-backend · GitHub Topics",
+    "snippet": "NestJS boilerplate with JWT, OAuth (Google & Apple), OTP, TOTP/2FA, and RBAC. Powered by Prisma, works with any database. Repository Design Pattern and Modular.",
+    "host_name": "github.com",
+    "rank": 3,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.facebook.com/groups/836006733652325/posts/1342597576326569",
+    "name": "i need greate repo github project in nest js to learn from it , any one",
+    "snippet": "Hello guys. I tried Nest JS(With Typescript) for two days and I was impressed. It uses express under the hood(can also be used with Fastify) ...",
+    "host_name": "www.facebook.com",
+    "rank": 4,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://github.com/nestjs/awesome-nestjs",
+    "name": "A curated list of awesome things related to NestJS - GitHub",
+    "snippet": "Nestier - A production-ready NestJS boilerplate with Hexagonal Architecture, Domain-Driven Design, Generic Repository Pattern, CRUD operations, TypeORM, MongoDB ...",
+    "host_name": "github.com",
+    "rank": 5,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://github.com/nestjs",
+    "name": "nestjs - GitHub",
+    "snippet": "A progressive Node.js framework for building efficient, scalable, and enterprise-grade server-side applications with TypeScript/JavaScript.",
+    "host_name": "github.com",
+    "rank": 6,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.reddit.com/r/nestjs/comments/1bjrq0z/is_there_a_maintained_list_of_popular_starter",
+    "name": "Is there a maintained list of popular starter repo's for nestjs? - Reddit",
+    "snippet": "Hi all, I'm starting a new project using nest and I figured I'd look for a repo that has the functions that I need so I don't have to create ...",
+    "host_name": "www.reddit.com",
+    "rank": 7,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://github.com/vittorioexp/coffevo-nestjs-project",
+    "name": "vittorioexp/coffevo-nestjs-project - GitHub",
+    "snippet": "This repository is an example application for the NestJS framework in Typescript that exposes a REST API and interacts with both PostgreSQL and MongoDB.",
+    "host_name": "github.com",
+    "rank": 8,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://github.com/nestjs/nest/blob/master/packages/platform-express/package.json",
+    "name": "nest/packages/platform-express/package.json at master · nestjs/nest",
+    "snippet": "A progressive Node.js framework for building efficient, scalable, and enterprise-grade server-side applications with TypeScript/JavaScript ...",
+    "host_name": "github.com",
+    "rank": 9,
+    "date": "",
+    "favicon": ""
+  }
+]
