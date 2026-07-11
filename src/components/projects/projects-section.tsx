@@ -65,16 +65,11 @@ function FilterBar({
             onClick={() => onFilter(key)}
             className={cn(
               'relative z-10 px-4 py-2 text-sm font-medium rounded-full transition-colors duration-300 cursor-pointer',
-              isActive ? 'text-primary' : 'text-muted-foreground hover:text-foreground'
+              isActive
+                ? 'text-primary glass-strong border border-primary/30'
+                : 'text-muted-foreground hover:text-foreground'
             )}
           >
-            {isActive && (
-              <motion.span
-                layoutId="project-filter-indicator"
-                className="absolute inset-0 rounded-full glass-strong border border-primary/30"
-                transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-              />
-            )}
             <span className="relative z-10">
               {label}
             </span>
@@ -149,33 +144,29 @@ function TiltProjectCard({
       }}
       className="group"
     >
-      <motion.div
-        animate={{
-          rotateX: tilt.rotateX,
-          rotateY: tilt.rotateY,
-          y: isHovered ? -8 : 0,
+      <div
+        style={{
+          transformStyle: 'preserve-3d',
+          transform: `rotateX(${tilt.rotateX}deg) rotateY(${tilt.rotateY}deg) translateY(${isHovered ? -8 : 0}px)`,
+          transition: 'transform 0.15s ease-out',
         }}
-        transition={{ type: 'spring', stiffness: 300, damping: 20, mass: 0.5 }}
-        style={{ transformStyle: 'preserve-3d' }}
         className="relative rounded-2xl overflow-hidden glass cursor-default"
       >
         {/* Glass shine overlay on hover */}
-        <motion.div
-          className="absolute inset-0 z-20 pointer-events-none"
-          animate={{
+        <div
+          className="absolute inset-0 z-20 pointer-events-none transition-opacity duration-200"
+          style={{
             opacity: isHovered ? 1 : 0,
             background: isHovered
               ? `radial-gradient(circle at ${shinePos.x}% ${shinePos.y}%, rgba(255,255,255,0.12) 0%, transparent 60%)`
               : 'transparent',
           }}
-          transition={{ duration: 0.2 }}
         />
 
         {/* Diagonal shine sweep on hover */}
-        <motion.div
-          className="absolute inset-0 z-20 pointer-events-none overflow-hidden rounded-2xl"
-          animate={{ opacity: isHovered ? 1 : 0 }}
-          transition={{ duration: 0.3 }}
+        <div
+          className="absolute inset-0 z-20 pointer-events-none overflow-hidden rounded-2xl transition-opacity duration-300"
+          style={{ opacity: isHovered ? 1 : 0 }}
         >
           <div
             className="absolute inset-0 opacity-[0.06]"
@@ -188,7 +179,7 @@ function TiltProjectCard({
               top: '-50%',
             }}
           />
-        </motion.div>
+        </div>
 
         {/* Cover gradient area */}
         <div
@@ -312,7 +303,7 @@ function TiltProjectCard({
             )}
           </div>
         </div>
-      </motion.div>
+      </div>
     </motion.div>
   );
 }

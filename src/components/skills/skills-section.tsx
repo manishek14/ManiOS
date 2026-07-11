@@ -16,6 +16,7 @@ import { useApp } from '@/components/providers/app-provider';
 import { SKILL_CATEGORIES } from '@/lib/constants';
 import { SectionWrapper } from '@/components/shared/section-wrapper';
 import { GlassPanel } from '@/components/shared/glass-panel';
+import { getTechIcon, TECH_COLORS } from '@/lib/tech-icons';
 
 // ─── Icon Elements (pre-rendered, no component creation during render) ───
 const ICON_CLASS = 'w-[18px] h-[18px]';
@@ -58,47 +59,8 @@ function SkillBadge({ skill, index }: { skill: { name: string; level: number }; 
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: '-20px' });
 
-  // Brand colors for well-known technologies
-  const brandColors: Record<string, string> = {
-    'Node.js': '#339933',
-    'NestJS': '#E0234E',
-    'Express': '#ffffff',
-    'TypeScript': '#3178C6',
-    'REST API': '#6366f1',
-    'JWT / Auth': '#6366f1',
-    'Redis': '#DC382D',
-    'WebSockets': '#6366f1',
-    'React': '#61DAFB',
-    'Next.js': '#ffffff',
-    'HTML & CSS': '#E34F26',
-    'JavaScript': '#F7DF1E',
-    'Tailwind CSS': '#06B6D4',
-    'PostgreSQL': '#4169E1',
-    'MongoDB': '#47A248',
-    'MySQL': '#4479A1',
-    'Clean Architecture': '#a78bfa',
-    'REST API Design': '#6366f1',
-    'System Design': '#a78bfa',
-    'RBAC': '#f472b6',
-    'Caching Strategies': '#6366f1',
-    'API Documentation': '#22d3ee',
-    'Docker': '#2496ED',
-    'Linux': '#FCC624',
-    'Git': '#F05032',
-    'GitHub': '#ffffff',
-    'CI/CD': '#6366f1',
-    'Deployment': '#22d3ee',
-    'ChatGPT': '#10a37f',
-    'Claude': '#D97757',
-    'Cursor': '#ffffff',
-    'GitHub Copilot': '#6366f1',
-    'VS Code': '#007ACC',
-    'Postman': '#FF6C37',
-    'Swagger': '#85EA2D',
-    'Unit Testing': '#22d3ee',
-  };
-
-  const color = brandColors[skill.name] || '#6366f1';
+  const color = TECH_COLORS[skill.name] || '#6366f1';
+  const icon = getTechIcon(skill.name, 14);
 
   return (
     <motion.div
@@ -112,10 +74,9 @@ function SkillBadge({ skill, index }: { skill: { name: string; level: number }; 
         ease: [0.16, 1, 0.3, 1],
       }}
     >
-      <span
-        className="h-2 w-2 rounded-full shrink-0"
-        style={{ backgroundColor: color, boxShadow: `0 0 6px ${color}66` }}
-      />
+      <span className="shrink-0" style={{ filter: `drop-shadow(0 0 4px ${color}66)` }}>
+        {icon}
+      </span>
       <span className="text-sm text-foreground/80">{skill.name}</span>
     </motion.div>
   );

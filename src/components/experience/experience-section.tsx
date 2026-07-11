@@ -58,7 +58,7 @@ function TimelineDot({
       className="relative z-10"
       initial={{ scale: 0, opacity: 0 }}
       animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
-      transition={{ duration: 0.4, ease: tokens.motion.ease.spring }}
+      transition={{ type: 'spring', stiffness: 300, damping: 30, duration: 0.4 }}
     >
       {/* Core dot */}
       <div className="relative flex items-center justify-center">

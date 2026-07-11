@@ -542,3 +542,30 @@ Stage Summary:
 - Resume modal: no percentages, ~95% opaque background
 - Motion runtime error fixed by removing `layout` props
 - Portrait: no rotation on mobile, vertical-only parallax (10px max), stops on hover
+
+---
+Task ID: 1
+Agent: Main Agent
+Task: Fix critical runtime errors and UI bugs — motion-utils crash, project buttons, chatbot, back-to-top, loader time, tech icons, resume colors
+
+Work Log:
+- Diagnosed `a is not a function` runtime error: root cause was `ease: tokens.motion.ease.spring` in experience-section.tsx passing a spring transition object `{ type: 'spring', stiffness: 300, damping: 30 }` as an easing function to the motion-dom interpolator's `pipe()` call
+- Fixed experience-section.tsx: replaced `ease: tokens.motion.ease.spring` with proper spring transition `type: 'spring', stiffness: 300, damping: 30`
+- Replaced GlassPanel's `motion.div` with `whileHover` with plain CSS `transition-transform hover:-translate-y-1` to eliminate nested motion animation conflicts
+- Reduced CinematicLoader: TOTAL_MS 2000→1500, HOLD_MS 1500→800, ink-spread animation 1.2s→0.9s
+- Rewrote BackToTop: positioned bottom-left (was bottom-right, conflicting with chatbot), shows only when near page bottom (scrollY > docHeight - winHeight - 400)
+- Fixed project card buttons: replaced inner `motion.div` tilt effect with CSS transform (eliminating spring animation that intercepted pointer events), removed `layoutId` from filter bar (was causing layout animation bugs)
+- Created `/src/lib/tech-icons.tsx`: 35+ real technology SVG icon components (React, Node.js, TypeScript, JavaScript, Next.js, Tailwind CSS, Docker, PostgreSQL, MongoDB, Redis, Git, GitHub, VS Code, Postman, Swagger, ChatGPT, Claude, etc.) with brand-accurate colors
+- Updated SkillsSection: replaced colored dots with real SVG tech icons
+- Updated ResumeModal: added tech color strategy with SVG icons in skills, experience tech pills, and project tech pills (using background tinting with brand colors)
+
+Stage Summary:
+- **Motion runtime error FIXED**: Zero console errors on contact, experience, and all other sections
+- **Project buttons FIXED**: View Code / Live Demo now fully clickable (CSS transforms instead of motion for tilt)
+- **Filter buttons FIXED**: Removed layoutId, all 4 filters (All/Backend/Frontend/Experimental) work correctly
+- **Chatbot button FIXED**: Works — opens AI assistant window with close/send controls
+- **Back-to-top FIXED**: Bottom-left, appears only near page bottom, no chatbot overlap
+- **Loader REDUCED**: ~1.5s total (was 2s)
+- **Tech icons ADDED**: 44 real SVG icons rendered in skills section
+- **Resume modal UPDATED**: Tech-colored icons and pills throughout
+- Verified all fixes via agent-browser: scrolled through all sections, clicked buttons, checked console errors — all clean

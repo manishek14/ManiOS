@@ -21,18 +21,24 @@ import {
 import { Button } from '@/components/ui/button';
 import { useApp } from '@/components/providers/app-provider';
 import { cn } from '@/lib/utils';
+import { getTechIcon, TECH_COLORS } from '@/lib/tech-icons';
 
 interface ResumeModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-/* ── Skill item (no percentage) ─────────────────────────────────── */
+/* ── Skill item with tech color ──────────────────────────────── */
 
 function SkillItem({ name }: { name: string }) {
+  const color = TECH_COLORS[name] || '#6366f1';
+  const icon = getTechIcon(name, 12);
+
   return (
     <div className="flex items-center gap-2">
-      <span className="h-1.5 w-1.5 rounded-full bg-primary/60" />
+      <span className="shrink-0" style={{ filter: `drop-shadow(0 0 3px ${color}55)` }}>
+        {icon}
+      </span>
       <span className="text-[11px] text-foreground/70">{name}</span>
     </div>
   );
@@ -128,7 +134,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
       category: 'Tools',
       skills: [
         { name: 'Docker' },
-        { name: 'Git / GitHub' },
+        { name: 'Git' },
         { name: 'Postman' },
         { name: 'Swagger' },
         { name: 'CI/CD' },
@@ -157,7 +163,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
         'Documented entire API with Swagger, cutting cross-team coordination time',
         'Designed scalable RESTful API architecture from scratch',
       ],
-      tech: ['Node.js', 'Express', 'MongoDB', 'JWT', 'Swagger'],
+      tech: ['Node.js', 'Express', 'MongoDB', 'JWT / Auth', 'Swagger'],
     },
     {
       role: 'Frontend Developer',
@@ -167,17 +173,18 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
         'Built reusable React components without additional state libraries',
         'Created admin panel enabling support team to work independently',
       ],
-      tech: ['React', 'JavaScript', 'HTML', 'CSS'],
+      tech: ['React', 'JavaScript', 'HTML & CSS'],
     },
     {
-      role: 'Frontend Developer & IT Expert',
-      company: 'Razavi Architectural Arrays',
+      role: 'IT Skills & DevOps',
+      company: 'Sanat Chob Astan Ghods Razavi',
       period: 'Jun 2022 — Oct 2022',
       achievements: [
         'Designed 3 data entry forms, reducing registration time by 40%',
         'Fixed 20+ system bugs across hardware and software sections',
+        'Managed IT infrastructure and provided cross-department support',
       ],
-      tech: ['HTML', 'CSS', 'JavaScript'],
+      tech: ['HTML & CSS', 'JavaScript', 'Docker', 'Linux', 'Git'],
     },
   ];
 
@@ -185,19 +192,20 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
     {
       name: 'RideX',
       description: 'Full-stack ride-hailing platform with AI-powered route optimization, dynamic pricing, and real-time tracking across passenger, driver, and admin panels.',
-      tech: ['Next.js', 'Node.js', 'MongoDB', 'Redis', 'WebSocket', 'AI/ML'],
+      tech: ['Next.js', 'Node.js', 'MongoDB', 'Redis', 'TypeScript'],
       github: 'https://github.com/manishek14/ridex',
+      liveUrl: 'https://ridex-n09e74hz8-ridex1.vercel.app',
     },
     {
       name: 'Vendora',
       description: 'Production-ready multi-vendor e-commerce backend with NestJS, featuring complex product attributes, RBAC, and flexible payment flows.',
-      tech: ['NestJS', 'TypeORM', 'PostgreSQL', 'Redis', 'JWT', 'Docker'],
+      tech: ['NestJS', 'TypeORM', 'PostgreSQL', 'Redis', 'JWT / Auth', 'Docker'],
       github: 'https://github.com/manishek14/Vendora',
     },
     {
       name: 'AxisHR',
       description: 'Comprehensive HR management system handling employee lifecycle, leave requests, attendance tracking, payroll calculations, and organizational structure.',
-      tech: ['Node.js', 'Express', 'TypeScript', 'MongoDB', 'JWT', 'Swagger'],
+      tech: ['Node.js', 'Express', 'TypeScript', 'MongoDB', 'JWT / Auth', 'Swagger'],
       github: 'https://github.com/manishek14/AxisHR',
     },
   ];
@@ -399,14 +407,20 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                           ))}
                         </ul>
                         <div className="mt-2 flex flex-wrap gap-1">
-                          {exp.tech.map((tech) => (
-                            <span
-                              key={tech}
-                              className="rounded-md bg-white/[0.04] px-1.5 py-0.5 text-[9px] text-muted-foreground"
-                            >
-                              {tech}
-                            </span>
-                          ))}
+                          {exp.tech.map((tech) => {
+                            const color = TECH_COLORS[tech] || '#6366f1';
+                            const icon = getTechIcon(tech, 10);
+                            return (
+                              <span
+                                key={tech}
+                                className="inline-flex items-center gap-1 rounded-md px-1.5 py-0.5 text-[9px] text-muted-foreground"
+                                style={{ backgroundColor: `${color}12` }}
+                              >
+                                {icon}
+                                {tech}
+                              </span>
+                            );
+                          })}
                         </div>
                       </div>
                     </div>
@@ -436,19 +450,35 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                             <ExternalLink size={11} />
                           </a>
                         )}
+                        {project.liveUrl && (
+                          <a
+                            href={project.liveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-muted-foreground/40 transition-colors hover:text-primary ml-0.5"
+                          >
+                            <ExternalLink size={11} />
+                          </a>
+                        )}
                       </div>
                       <p className="mt-1 text-[11px] leading-relaxed text-foreground/60">
                         {project.description}
                       </p>
                       <div className="mt-2 flex flex-wrap gap-1">
-                        {project.tech.map((tech) => (
-                          <span
-                            key={tech}
-                            className="rounded-md bg-white/[0.04] px-1.5 py-0.5 text-[9px] text-muted-foreground"
-                          >
-                            {tech}
-                          </span>
-                        ))}
+                        {project.tech.map((tech) => {
+                          const color = TECH_COLORS[tech] || '#6366f1';
+                          const icon = getTechIcon(tech, 10);
+                          return (
+                            <span
+                              key={tech}
+                              className="inline-flex items-center gap-1 rounded-md px-1.5 py-0.5 text-[9px] text-muted-foreground"
+                              style={{ backgroundColor: `${color}12` }}
+                            >
+                              {icon}
+                              {tech}
+                            </span>
+                          );
+                        })}
                       </div>
                     </div>
                   ))}

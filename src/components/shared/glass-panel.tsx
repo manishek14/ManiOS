@@ -1,7 +1,6 @@
 'use client';
 
 import type { ReactNode } from 'react';
-import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
 type GlassVariant = 'default' | 'strong' | 'subtle';
@@ -30,11 +29,10 @@ export function GlassPanel({
   variant = 'default',
 }: GlassPanelProps) {
   return (
-    <motion.div
-      className={cn(variantClass[variant], 'rounded-2xl', className)}
-      whileHover={{ y: -4, transition: { duration: 0.3 } }}
+    <div
+      className={cn(variantClass[variant], 'rounded-2xl transition-transform duration-300 ease-out hover:-translate-y-1', className)}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }

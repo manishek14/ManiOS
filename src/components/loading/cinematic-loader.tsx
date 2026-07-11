@@ -17,8 +17,8 @@ import { tokens } from '@/config/design-tokens';
  *   1 500 ms → fade-out begins (0.5 s)
  *   2 000 ms → loadingComplete = true, component unmounts
  */
-const HOLD_MS = 1500;
-const TOTAL_MS = 2000;
+const HOLD_MS = 800;
+const TOTAL_MS = 1500;
 
 export function CinematicLoader() {
   const { loadingComplete, setLoadingComplete } = useApp();
@@ -67,7 +67,7 @@ export function CinematicLoader() {
           <span
             className="font-display text-glow relative block text-center text-4xl text-white md:text-6xl"
             style={{
-              animation: 'ink-spread 1.2s cubic-bezier(0.25, 0.1, 0.25, 1) forwards',
+              animation: 'ink-spread 0.9s cubic-bezier(0.25, 0.1, 0.25, 1) forwards',
             }}
           >
             Mani Shekofteh
