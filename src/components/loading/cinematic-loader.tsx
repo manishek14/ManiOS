@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useCallback } from 'react';
-import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useApp } from '@/components/providers/app-provider';
 import { tokens } from '@/config/design-tokens';
 
@@ -9,61 +9,71 @@ import { tokens } from '@/config/design-tokens';
  * CinematicLoader
  *
  * A full-screen loading overlay that plays once on initial page load.
- * Sequence:
- *   1. "Mani Shekofteh" text reveals left-to-right with ink-spread clip-path (~1.5 s)
- *   2. Brief 300 ms hold so the user reads the name
- *   3. The entire overlay fades out over 0.5 s
- *   4. On completion, `loadingComplete` is set to `true` via the AppProvider
+ * Uses a simple, robust timeout-based approach — no fragile animation event listeners.
+ *
+ * Timeline (total ≈ 2 s, hard-capped):
+ *   0 ms     → overlay visible, ink-spread text animation begins
+ *   1 200 ms → text fully revealed, brief hold
+ *   1 500 ms → fade-out begins (0.5 s)
+ *   2 000 ms → loadingComplete = true, component unmounts
  */
+const HOLD_MS = 1500;
+const TOTAL_MS = 2000;
+
 export function CinematicLoader() {
   const { loadingComplete, setLoadingComplete } = useApp();
-  const [phase, setPhase] = useState<'ink' | 'fade' | 'done'>('ink');
+  const [visible, setVisible] = useState(true);
 
-  const handleInkComplete = useCallback(() => {
-    // Brief pause so the user sees the full text before it fades
-    setTimeout(() => setPhase('fade'), 300);
-  }, []);
+  useEffect(() => {
+    if (loadingComplete) return;
 
-  const handleOuterAnimateComplete = useCallback(() => {
-    if (phase === 'fade') {
-      setPhase('done');
+    // Safety: hard-cap at TOTAL_MS so the loader can NEVER get stuck
+    const forceComplete = setTimeout(() => {
       setLoadingComplete(true);
-    }
-  }, [phase, setLoadingComplete]);
+      setVisible(false);
+    }, TOTAL_MS);
 
-  // If loading was already marked complete (e.g. hot-reload), skip entirely
-  if (loadingComplete || phase === 'done') return null;
+    return () => clearTimeout(forceComplete);
+  }, [loadingComplete, setLoadingComplete]);
+
+  if (!visible && loadingComplete) return null;
 
   return (
-    <motion.div
-      className="fixed inset-0 flex items-center justify-center"
-      style={{ zIndex: tokens.zIndex.loading, backgroundColor: tokens.color.surface.dark }}
-      initial={{ opacity: 1 }}
-      animate={{ opacity: phase === 'fade' ? 0 : 1 }}
-      transition={{ duration: 0.5, ease: 'easeInOut' }}
-      onAnimationComplete={handleOuterAnimateComplete}
-      aria-live="polite"
-      role="alert"
-      aria-label="Loading"
-    >
-      {/* Subtle glow behind the text */}
-      <div
-        className="absolute h-48 w-96 rounded-full opacity-60 blur-3xl"
-        style={{
-          background: `radial-gradient(circle, ${tokens.color.aurora.indigo}88 0%, transparent 70%)`,
-        }}
-      />
+    <AnimatePresence onExitComplete={() => setVisible(false)}>
+      {!loadingComplete && (
+        <motion.div
+          key="loader"
+          className="fixed inset-0 flex items-center justify-center"
+          style={{
+            zIndex: tokens.zIndex.loading,
+            backgroundColor: tokens.color.surface.dark,
+          }}
+          initial={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5, ease: 'easeInOut', delay: (HOLD_MS - 1200) / 1000 }}
+          aria-live="polite"
+          role="alert"
+          aria-label="Loading"
+        >
+          {/* Subtle glow behind the text */}
+          <div
+            className="absolute h-48 w-96 rounded-full opacity-60 blur-3xl"
+            style={{
+              background: `radial-gradient(circle, ${tokens.color.aurora.indigo}88 0%, transparent 70%)`,
+            }}
+          />
 
-      {/* Text with ink-spread CSS animation */}
-      <span
-        className="font-display text-glow relative block text-center text-4xl text-white md:text-6xl"
-        style={{
-          animation: 'ink-spread 1.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards',
-        }}
-        onAnimationEnd={handleInkComplete}
-      >
-        Mani Shekofteh
-      </span>
-    </motion.div>
+          {/* Text with ink-spread CSS animation */}
+          <span
+            className="font-display text-glow relative block text-center text-4xl text-white md:text-6xl"
+            style={{
+              animation: 'ink-spread 1.2s cubic-bezier(0.25, 0.1, 0.25, 1) forwards',
+            }}
+          >
+            Mani Shekofteh
+          </span>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }

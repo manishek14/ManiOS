@@ -459,3 +459,20 @@ Stage Summary:
   - ✅ Mobile responsive (375px): hamburger menu, stacked layout
   - ✅ Zero console errors
   - ✅ Back-to-top button visible
+---
+Task ID: 1
+Agent: main
+Task: Fix CinematicLoader getting stuck on page load
+
+Work Log:
+- Analyzed the screenshot showing the loader stuck on "Mani Shekofteh" text
+- Identified the root cause: fragile state machine relying on CSS onAnimationEnd + framer-motion onAnimationComplete callbacks that could fail silently
+- Rewrote CinematicLoader with a robust setTimeout-based approach (hard-capped at 2 seconds)
+- Used AnimatePresence for clean exit animation
+- Verified via Agent Browser: loader shows at 500ms, disappears by 2s, no console errors
+
+Stage Summary:
+- Replaced phase-based state machine (ink → fade → done) with single useEffect + setTimeout
+- Total loader duration: ~2 seconds (1.2s ink-spread + 0.3s hold + 0.5s fade)
+- Hard cap ensures the loader can NEVER get stuck regardless of animation event failures
+- Zero console errors, clean compilation
