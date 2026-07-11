@@ -68,18 +68,11 @@
         "view_demo": "Live Demo",
         "view_code": "View Code"
       },
-      "onlineShop": {
-        "name": "OnlineShop",
+      "vendora": {
+        "name": "Vendora",
         "description": "A production-ready multi-vendor e-commerce backend built with NestJS. Designed for platforms requiring vendor support, complex product attributes, and flexible payment flows — inspired by systems like Digikala.",
         "architecture": "NestJS with modular architecture, TypeORM for database operations, PostgreSQL for relational data, Redis for caching and session management, JWT-based authentication with RBAC.",
         "features": ["Multi-vendor product management", "Complex product attribute system", "Flexible payment flow architecture", "Role-based access control (RBAC)", "Redis caching layer for performance", "Clean, modular NestJS structure"],
-        "view_code": "View Code"
-      },
-      "vendora": {
-        "name": "Vendora",
-        "description": "A marketplace platform built to explore modern e-commerce patterns with Node.js and MongoDB, focusing on scalable vendor management and product catalog systems.",
-        "architecture": "Node.js with Express, MongoDB for flexible schema design, RESTful API design with proper validation and error handling.",
-        "features": ["Vendor management system", "Product catalog with search", "RESTful API with validation", "MongoDB schema design"],
         "view_code": "View Code"
       },
       "marketplace": {
@@ -87,6 +80,13 @@
         "description": "An online marketplace backend implementing core e-commerce functionality including product listings, user management, and order processing with a focus on clean API design.",
         "architecture": "Node.js with Express, MongoDB for data persistence, JWT authentication, RESTful API design patterns.",
         "features": ["Product listing and management", "User authentication system", "Order processing pipeline", "Clean API documentation"],
+        "view_code": "View Code"
+      },
+      "axishr": {
+        "name": "AxisHR",
+        "description": "A comprehensive Human Resources management system built as a backend-only service. Handles employee lifecycle management, leave requests, attendance tracking, payroll calculations, and organizational structure.",
+        "architecture": "Node.js with Express and TypeScript, MongoDB for flexible document-based data models, JWT authentication with role-based permissions, RESTful API following clean architecture principles.",
+        "features": ["Employee lifecycle management", "Leave request workflow", "Attendance tracking system", "Payroll calculation engine", "Organizational structure management", "Role-based access control"],
         "view_code": "View Code"
       }
     }
@@ -147,7 +147,7 @@
     "title": "Get In Touch",
     "subtitle": "Let's build something remarkable together",
     "email": "manishekofteh@gmail.com",
-    "telegram": "@manishekofteh",
+    "telegram": "@dufdoat",
     "copy_email": "Copy email",
     "open_link": "Open link",
     "copied": "Copied!"
@@ -162,10 +162,9 @@
     "title": "Ask AI About Me",
     "placeholder": "Ask me anything about Mani...",
     "suggestions": [
-      "Who is Mani?",
-      "What technologies does Mani specialize in?",
-      "Why should I hire Mani?",
-      "What is Mani's engineering philosophy?"
+      "What is Mani's tech stack?",
+      "How much experience does Mani have with NestJS?",
+      "What projects has Mani built?"
     ],
     "thinking": "Thinking...",
     "error": "Something went wrong. Please try again."

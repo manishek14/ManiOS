@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useCallback, useMemo, type MouseEvent } from 'react';
+import { useRef, useCallback, useMemo, useState, type MouseEvent } from 'react';
 import Image from 'next/image';
 import {
   motion,
@@ -16,7 +16,7 @@ import { SocialLinks } from '@/components/home/social-links';
 import { cn } from '@/lib/utils';
 import { tokens } from '@/config/design-tokens';
 
-const PARALLAX_MAX = 15;
+const PARALLAX_MAX = 10;
 
 /* ── Fade-up variant factory with custom delay ── */
 const fadeUp = {
@@ -41,6 +41,7 @@ interface HeroSectionProps {
 export function HeroSection({ onOpenResume }: HeroSectionProps) {
   const { t, loadingComplete } = useApp();
   const containerRef = useRef<HTMLElement>(null);
+  const [isPortraitHovered, setIsPortraitHovered] = useState(false);
 
   /* ── Parallax motion values ── */
   // Normalised 0→1 across the container; 0.5 = centre = zero displacement
@@ -96,7 +97,9 @@ export function HeroSection({ onOpenResume }: HeroSectionProps) {
                 duration: tokens.motion.duration.cinematic,
                 ease: tokens.motion.ease.out as unknown as number[],
               }}
-              style={{ x: smoothX, y: smoothY }}
+              style={{ y: isPortraitHovered ? 0 : smoothY }}
+              onMouseEnter={() => setIsPortraitHovered(true)}
+              onMouseLeave={() => setIsPortraitHovered(false)}
             >
               {/* Radial glow behind portrait (indigo / purple) */}
               <div

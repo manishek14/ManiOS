@@ -15,6 +15,7 @@ export interface Project {
   category: 'backend' | 'frontend' | 'experimental';
   github?: string;
   liveUrl?: string;
+  image?: string;
   coverGradient: string;
 }
 

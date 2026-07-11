@@ -476,3 +476,69 @@ Stage Summary:
 - Total loader duration: ~2 seconds (1.2s ink-spread + 0.3s hold + 0.5s fade)
 - Hard cap ensures the loader can NEVER get stuck regardless of animation event failures
 - Zero console errors, clean compilation
+
+---
+Task ID: 2
+Agent: component-fixes
+Task: Fix dot navigation, hero portrait, chat components, about section, motion error
+
+Work Log:
+- **Dot Navigation (dot-navigation.tsx)**: Changed nav to always use `right-5` (removed RTL ternary). Replaced `scrollIntoView` with `window.scrollTo` using `getBoundingClientRect().top + window.scrollY` to fix the Projects click bug. Changed tooltip to always appear on the LEFT of dots (`right-6`), with animation direction matching (x: -6). Removed `layout` prop from motion.div to fix `motion-utils/dist/es/pipe.mjs` runtime TypeError.
+- **Hero Section (hero-section.tsx)**: Changed `PARALLAX_MAX` from 15 to 10. Replaced `style={{ x: smoothX, y: smoothY }}` with `style={{ y: isPortraitHovered ? 0 : smoothY }}` (Y-only parallax). Added `isPortraitHovered` state with `onMouseEnter`/`onMouseLeave` handlers to stop parallax on hover.
+- **Globals CSS**: Added `@media (max-width: 600px) { .portrait-border-wrap::before { animation: none; } }` to disable rotating border animation on mobile.
+- **Chat Button (ai-chat-button.tsx)**: Changed position to always `right-6` (removed RTL ternary). Removed unused `useApp` import and `rtl` destructuring.
+- **Chat Window (ai-chat-window.tsx)**: Replaced `glass-strong` class with inline `style={{ backgroundColor: 'rgba(15, 23, 42, 0.92)', backdropFilter: 'blur(24px)' }}` for higher opacity. Changed width from `w-[calc(100%-3rem)]` to `w-[calc(100vw-3rem)] sm:w-[380px] max-w-[calc(100vw-3rem)]`. Changed height from `h-[600px]` to `h-[min(600px,70vh)]`. Changed position to always `right-6`.
+- **About Section (about-section.tsx)**: Added `User`, `Code`, `Heart` icons from lucide-react to the 3 paragraph items. Converted `paragraphItems` from string array to object array with `key`, `icon`, and `color` properties. Wrapped each paragraph in a flex layout with an icon on the left (matching insight card style).
+- **Projects Section (projects-section.tsx)**: Removed `layout` prop from TiltProjectCard's outer motion.div to fix the `a is not a function` pipe error.
+
+Stage Summary:
+- Fixed 6 component files across 7 tasks with zero lint errors
+- Dot nav now always on right side with robust scroll-to-section
+- Portrait parallax reduced to Y-only (10px max) and stops on hover
+- Mobile border rotation disabled via CSS media query
+- Chat button and window both positioned on right side
+- Chat window uses more opaque background and responsive dimensions
+- About section paragraphs now have icon + text layout matching insight cards
+- Removed `layout` props from dot-navigation and projects-section to eliminate motion-utils pipe runtime error
+
+---
+Task ID: 3
+Agent: component-fixes-2
+Task: Fix skills, projects, contact, resume components
+
+Work Log:
+- Skills section: Replaced SkillBar (progress bar + percentage) with SkillBadge (colored dot + name). Removed all percentage-related code including progress bar track and animated width.
+- Projects section: Removed AnimatePresence wrapper (was causing layoutId break on empty list). Added "No projects in this category" empty state with FolderX icon. Added Image component support for projects with `image` field (e.g. vendora.webp). Removed unused AnimatePresence import.
+- Project type: Added optional `image?: string` field to the Project interface in types/index.ts.
+- Contact section: Wrapped toast() call in try/catch to handle case where Toaster component is not mounted in layout. Added cursor-pointer to copy button.
+- Resume modal: Replaced SkillBar (animated percentage bar) with SkillItem (small colored dot + text). Removed all `level` fields from skillGroups data. Changed DialogContent from `glass-strong` to nearly opaque `rgba(10, 15, 30, 0.95)` with blur(20px). Renamed "OnlineShop" to "Vendora" with updated GitHub URL. Added AxisHR project entry. Removed unused `motion` import.
+
+Stage Summary:
+- All four component files updated: skills-section.tsx, projects-section.tsx, contact-section.tsx, resume-modal.tsx
+- Types updated: Project interface now supports optional image field
+- ESLint passes with zero warnings
+- No percentage bars remain anywhere in the UI
+---
+Task ID: main
+Agent: main-coordinator
+Task: Apply all user-requested fixes and improvements
+
+Work Log:
+- Read all project files to understand current state
+- Updated constants.ts: telegram link to @dufdoat, merged OnlineShop into Vendora, added AxisHR project, updated experience entry for IT Skills & DevOps
+- Updated all 3 i18n files (en, fa, ar): project translations, FAQ suggestions, telegram handle
+- Copied vendora.webp to public folder
+- Dispatched 2 parallel subagents for component fixes
+- Verified all changes via Agent Browser (desktop + mobile)
+- Confirmed: no runtime errors, all links work, all filters work, dot nav navigates correctly, chat responsive
+
+Stage Summary:
+- 14 tasks completed, 0 remaining
+- All percentage bars replaced with brand-colored dot badges
+- Dot navigation permanently on right side with robust scroll
+- Chat button + window on right side, opaque background, responsive
+- Project links verified (RideX demo+code, Vendora code, MarketPlace code, AxisHR code)
+- Experimental filter works with AxisHR as the experimental project
+- Resume modal: no percentages, ~95% opaque background
+- Motion runtime error fixed by removing `layout` props
+- Portrait: no rotation on mobile, vertical-only parallax (10px max), stops on hover

@@ -68,25 +68,18 @@
         "view_demo": "عرض حي",
         "view_code": "عرض الكود"
       },
-      "onlineShop": {
-        "name": "OnlineShop",
+      "vendora": {
+        "name": "Vendora",
         "description": "خلفية متعددة البائعين جاهزة للإنتاج مع NestJS.",
         "architecture": "NestJS مع TypeORM، PostgreSQL، Redis، مصادقة JWT مع RBAC.",
         "features": ["إدارة منتجات متعددة البائعين", "نظام سمات منتج معقد", "هيكلية دفع مرنة", "تحكم بالوصول حسب الدور", "طبقة تخزين مؤقت Redis", "هيكلية NestJS نظيفة"],
         "view_code": "عرض الكود"
       },
-      "vendora": {
-        "name": "Vendora",
-        "description": "منصة سوق إلكتروني مع Node.js و MongoDB.",
-        "architecture": "Node.js مع Express، MongoDB، تصميم API RESTful.",
-        "features": ["نظام إدارة البائعين", "كتالوج منتج مع بحث", "API مع التحقق", "تصميم مخطط MongoDB"],
-        "view_code": "عرض الكود"
-      },
-      "marketplace": {
-        "name": "MarketPlace Shop",
-        "description": "خلفية سوق إلكتروني مع وظائف التجارة الأساسية.",
-        "architecture": "Node.js مع Express، MongoDB، مصادقة JWT، تصميم API RESTful.",
-        "features": ["قائمة وإدارة المنتجات", "نظام مصادقة المستخدمين", "خط معالجة الطلبات", "توثيق API"],
+      "axishr": {
+        "name": "AxisHR",
+        "description": "نظام شامل لإدارة الموارد البشرية. إدارة دورة حياة الموظفين وطلبات الإجازات وتتبع الحضور وحساب الرواتب.",
+        "architecture": "Node.js مع Express و TypeScript، MongoDB، مصادقة JWT، RESTful API.",
+        "features": ["إدارة دورة حياة الموظفين", "سير عمل طلبات الإجازات", "نظام تتبع الحضور", "محرك حساب الرواتب", "إدارة الهيكل التنظيمي", "تحكم بالوصول حسب الدور"],
         "view_code": "عرض الكود"
       }
     }
@@ -146,7 +139,7 @@
     "title": "تواصل معي",
     "subtitle": "لنبني شيئًا مذهلًا معًا",
     "email": "manishekofteh@gmail.com",
-    "telegram": "@manishekofteh",
+    "telegram": "@dufdoat",
     "copy_email": "نسخ البريد",
     "open_link": "فتح الرابط",
     "copied": "تم النسخ!"
@@ -161,10 +154,9 @@
     "title": "اسأل الذكاء الاصطناعي عني",
     "placeholder": "اسأل أي سؤال عن ماني...",
     "suggestions": [
-      "من هو ماني؟",
       "ما هي تخصصات ماني التقنية؟",
-      "لماذا يجب أن أتوظف ماني؟",
-      "ما هي فلسفة ماني الهندسية؟"
+      "كم خبرة لدي ماني مع NestJS؟",
+      "ما هي مشاريع ماني؟"
     ],
     "thinking": "يفكر...",
     "error": "حدث خطأ. يرجى المحاولة مرة أخرى."

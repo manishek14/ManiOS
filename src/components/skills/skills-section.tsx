@@ -53,15 +53,57 @@ const cardVariants = {
   },
 };
 
-// ─── Skill Bar ────────────────────────────────────────────────
-function SkillBar({ skill, index }: { skill: { name: string; level: number }; index: number }) {
+// ─── Skill Badge ───────────────────────────────────────────────
+function SkillBadge({ skill, index }: { skill: { name: string; level: number }; index: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: '-20px' });
+
+  // Brand colors for well-known technologies
+  const brandColors: Record<string, string> = {
+    'Node.js': '#339933',
+    'NestJS': '#E0234E',
+    'Express': '#ffffff',
+    'TypeScript': '#3178C6',
+    'REST API': '#6366f1',
+    'JWT / Auth': '#6366f1',
+    'Redis': '#DC382D',
+    'WebSockets': '#6366f1',
+    'React': '#61DAFB',
+    'Next.js': '#ffffff',
+    'HTML & CSS': '#E34F26',
+    'JavaScript': '#F7DF1E',
+    'Tailwind CSS': '#06B6D4',
+    'PostgreSQL': '#4169E1',
+    'MongoDB': '#47A248',
+    'MySQL': '#4479A1',
+    'Clean Architecture': '#a78bfa',
+    'REST API Design': '#6366f1',
+    'System Design': '#a78bfa',
+    'RBAC': '#f472b6',
+    'Caching Strategies': '#6366f1',
+    'API Documentation': '#22d3ee',
+    'Docker': '#2496ED',
+    'Linux': '#FCC624',
+    'Git': '#F05032',
+    'GitHub': '#ffffff',
+    'CI/CD': '#6366f1',
+    'Deployment': '#22d3ee',
+    'ChatGPT': '#10a37f',
+    'Claude': '#D97757',
+    'Cursor': '#ffffff',
+    'GitHub Copilot': '#6366f1',
+    'VS Code': '#007ACC',
+    'Postman': '#FF6C37',
+    'Swagger': '#85EA2D',
+    'Unit Testing': '#22d3ee',
+  };
+
+  const color = brandColors[skill.name] || '#6366f1';
 
   return (
     <motion.div
       ref={ref}
-      className="flex items-center gap-3 min-w-0"
+      className="flex items-center gap-2.5"
       initial={{ opacity: 0, x: -12 }}
       animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -12 }}
       transition={{
@@ -70,34 +112,11 @@ function SkillBar({ skill, index }: { skill: { name: string; level: number }; in
         ease: [0.16, 1, 0.3, 1],
       }}
     >
-      {/* Skill name */}
-      <span className="text-sm text-muted-foreground shrink-0 min-w-0 truncate">
-        {skill.name}
-      </span>
-
-      {/* Progress bar track */}
-      <div className="flex-1 h-1 rounded-full bg-white/[0.06] overflow-hidden">
-        <motion.div
-          className="h-full rounded-full bg-gradient-to-r from-indigo-500 via-violet-500 to-cyan-400"
-          initial={{ width: 0 }}
-          animate={isInView ? { width: `${skill.level}%` } : { width: 0 }}
-          transition={{
-            duration: 0.8,
-            delay: index * 0.05 + 0.2,
-            ease: [0.16, 1, 0.3, 1],
-          }}
-        />
-      </div>
-
-      {/* Percentage */}
-      <motion.span
-        className="text-xs text-muted-foreground/60 tabular-nums w-8 text-end shrink-0"
-        initial={{ opacity: 0 }}
-        animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: 0.3, delay: index * 0.05 + 0.5 }}
-      >
-        {skill.level}%
-      </motion.span>
+      <span
+        className="h-2 w-2 rounded-full shrink-0"
+        style={{ backgroundColor: color, boxShadow: `0 0 6px ${color}66` }}
+      />
+      <span className="text-sm text-foreground/80">{skill.name}</span>
     </motion.div>
   );
 }
@@ -135,7 +154,7 @@ function CategoryCard({
       {/* Skills list */}
       <div className="flex flex-col gap-2.5">
         {category.skills.map((skill, i) => (
-          <SkillBar key={skill.name} skill={skill} index={i} />
+          <SkillBadge key={skill.name} skill={skill} index={i} />
         ))}
       </div>
     </GlassPanel>

@@ -1,8 +1,9 @@
 'use client';
 
 import { useState, useCallback, useRef, type MouseEvent } from 'react';
-import { motion, AnimatePresence, useInView } from 'framer-motion';
-import { ExternalLink, Github, CheckCircle2 } from 'lucide-react';
+import { motion, useInView } from 'framer-motion';
+import { ExternalLink, Github, CheckCircle2, FolderX } from 'lucide-react';
+import Image from 'next/image';
 import { useApp } from '@/components/providers/app-provider';
 import { PROJECTS } from '@/lib/constants';
 import { SectionWrapper } from '@/components/shared/section-wrapper';
@@ -139,7 +140,6 @@ function TiltProjectCard({
       ref={cardRef}
       variants={cardVariants}
       custom={index}
-      layout
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -197,11 +197,21 @@ function TiltProjectCard({
             project.coverGradient
           )}
         >
-          {/* Subtle pattern overlay */}
-          <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.3),transparent_60%)]" />
+          {/* Project image or pattern overlay */}
+          {project.image ? (
+            <Image
+              src={project.image}
+              alt={projectName}
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+          ) : (
+            <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.3),transparent_60%)]" />
+          )}
 
           {/* Bottom dark gradient overlay */}
-          <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/70 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/70 to-transparent z-[1]" />
 
           {/* Project name on cover */}
           <div className="relative z-10 p-5 pb-4">
@@ -360,15 +370,27 @@ export function ProjectsSection() {
           viewport={{ once: true, margin: '-40px' }}
           key={activeFilter}
         >
-          <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project, index) => (
+          {filteredProjects.length > 0 ? (
+            filteredProjects.map((project, index) => (
               <TiltProjectCard
                 key={project.id}
                 project={project}
                 index={index}
               />
-            ))}
-          </AnimatePresence>
+            ))
+          ) : (
+            <motion.div
+              className="col-span-full flex flex-col items-center justify-center py-20 gap-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <FolderX className="w-12 h-12 text-muted-foreground/30" />
+              <p className="text-sm text-muted-foreground/60">
+                {t.projects.filters.no_results ?? 'No projects in this category'}
+              </p>
+            </motion.div>
+          )}
         </motion.div>
       </div>
     </SectionWrapper>

@@ -2,14 +2,18 @@
 
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Sparkles, Target, Rocket } from 'lucide-react';
+import { Sparkles, Target, Rocket, User, Code, Heart } from 'lucide-react';
 import { useApp } from '@/components/providers/app-provider';
 import { SectionWrapper } from '@/components/shared/section-wrapper';
 import { GlassPanel } from '@/components/shared/glass-panel';
 import { tokens } from '@/config/design-tokens';
 import { SoftSkillsPanel } from './soft-skills-panel';
 
-const paragraphItems = ['p1', 'p2', 'p3'] as const;
+const paragraphItems = [
+  { key: 'p1' as const, icon: User, color: 'text-blue-400' },
+  { key: 'p2' as const, icon: Code, color: 'text-emerald-400' },
+  { key: 'p3' as const, icon: Heart, color: 'text-rose-400' },
+] as const;
 
 const insightCards = [
   { key: 'philosophy', icon: Sparkles, color: 'text-amber-400' },
@@ -58,24 +62,30 @@ export function AboutSection() {
         <div ref={gridRef} className="grid grid-cols-1 gap-5 lg:grid-cols-5 lg:gap-6">
           {/* Left Column — Three narrative paragraphs (3/5 width) */}
           <div className="flex flex-col gap-5 lg:col-span-3 lg:gap-6">
-            {paragraphItems.map((key, i) => (
-              <motion.div
-                key={key}
-                custom={i}
-                variants={fadeUp}
-                initial="hidden"
-                animate={gridInView ? 'visible' : 'hidden'}
-              >
-                <GlassPanel variant="strong" className="p-5 md:p-6">
-                  <p
-                    className="leading-relaxed text-sm text-foreground/85 md:text-base md:leading-relaxed"
-                    style={{ lineHeight: tokens.lineHeight.relaxed }}
-                  >
-                    {t.about[key]}
-                  </p>
-                </GlassPanel>
-              </motion.div>
-            ))}
+            {paragraphItems.map((item, i) => {
+              const Icon = item.icon;
+              return (
+                <motion.div
+                  key={item.key}
+                  custom={i}
+                  variants={fadeUp}
+                  initial="hidden"
+                  animate={gridInView ? 'visible' : 'hidden'}
+                >
+                  <GlassPanel variant="strong" className="flex gap-4 p-5 md:p-6">
+                    <div className={`mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl glass-subtle ${item.color}`}>
+                      <Icon className="h-4.5 w-4.5" strokeWidth={1.8} />
+                    </div>
+                    <p
+                      className="min-w-0 flex-1 leading-relaxed text-sm text-foreground/85 md:text-base md:leading-relaxed"
+                      style={{ lineHeight: tokens.lineHeight.relaxed }}
+                    >
+                      {t.about[item.key]}
+                    </p>
+                  </GlassPanel>
+                </motion.div>
+              );
+            })}
           </div>
 
           {/* Right Column — Insight cards (2/5 width) */}

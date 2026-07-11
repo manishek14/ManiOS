@@ -93,7 +93,12 @@ function ContactCard({
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(value);
-      toast({ title: t.contact.copied });
+      // Toast may not be visible if Toaster is not mounted — provide visual fallback
+      try {
+        toast({ title: t.contact.copied });
+      } catch {
+        // toast not available, button text change below acts as feedback
+      }
     } catch {
       // Clipboard not available — silently fail
     }
@@ -154,7 +159,7 @@ function ContactCard({
               <button
                 type="button"
                 onClick={handleCopy}
-                className="glass-subtle flex flex-1 items-center justify-center gap-1.5 rounded-xl px-3 py-2 text-[0.6875rem] font-medium text-foreground/70 transition-colors duration-200 hover:bg-white/[0.08] hover:text-foreground"
+                className="glass-subtle flex flex-1 items-center justify-center gap-1.5 rounded-xl px-3 py-2 text-[0.6875rem] font-medium text-foreground/70 transition-colors duration-200 hover:bg-white/[0.08] hover:text-foreground cursor-pointer"
               >
                 <Copy className="h-3 w-3" />
                 <span>{t.contact.copy_email}</span>

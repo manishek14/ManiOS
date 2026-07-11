@@ -251,12 +251,12 @@ export function AiChatWindow({ isOpen, onClose }: AiChatWindowProps) {
       {isOpen && (
         <motion.div
           className={cn(
-            'fixed bottom-24 z-40 flex flex-col overflow-hidden rounded-2xl glass-strong',
-            'w-[calc(100%-3rem)] sm:w-[380px]',
-            'h-[600px]',
-            rtl ? 'right-6' : 'left-6',
+            'fixed bottom-24 z-40 flex flex-col overflow-hidden rounded-2xl',
+            'w-[calc(100vw-3rem)] sm:w-[380px] max-w-[calc(100vw-3rem)]',
+            'h-[min(600px,70vh)]',
+            'right-6',
           )}
-          style={{ zIndex: tokens.zIndex.dotNav }}
+          style={{ zIndex: tokens.zIndex.dotNav, backgroundColor: 'rgba(15, 23, 42, 0.92)', backdropFilter: 'blur(24px)' }}
           initial={{ opacity: 0, y: 24, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 24, scale: 0.95 }}

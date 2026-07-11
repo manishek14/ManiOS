@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { motion } from 'framer-motion';
 import {
   Download,
   Eye,
@@ -28,22 +27,13 @@ interface ResumeModalProps {
   onClose: () => void;
 }
 
-/* ── Skill bar ────────────────────────────────────────────────── */
+/* ── Skill item (no percentage) ─────────────────────────────────── */
 
-function SkillBar({ name, level }: { name: string; level: number }) {
+function SkillItem({ name }: { name: string }) {
   return (
-    <div className="group flex items-center gap-2.5">
-      <span className="w-24 shrink-0 truncate text-[11px] text-foreground/70 transition-colors group-hover:text-foreground/90">
-        {name}
-      </span>
-      <div className="h-1 flex-1 rounded-full bg-white/[0.06]">
-        <motion.div
-          className="h-full rounded-full bg-gradient-to-r from-primary/80 to-primary/50"
-          initial={{ width: 0 }}
-          animate={{ width: `${level}%` }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-        />
-      </div>
+    <div className="flex items-center gap-2">
+      <span className="h-1.5 w-1.5 rounded-full bg-primary/60" />
+      <span className="text-[11px] text-foreground/70">{name}</span>
     </div>
   );
 }
@@ -105,43 +95,43 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
     {
       category: 'Backend',
       skills: [
-        { name: 'Node.js', level: 90 },
-        { name: 'NestJS', level: 82 },
-        { name: 'Express', level: 90 },
-        { name: 'TypeScript', level: 85 },
-        { name: 'REST API', level: 92 },
-        { name: 'JWT / Auth', level: 85 },
-        { name: 'Redis', level: 78 },
-        { name: 'WebSockets', level: 72 },
+        { name: 'Node.js' },
+        { name: 'NestJS' },
+        { name: 'Express' },
+        { name: 'TypeScript' },
+        { name: 'REST API' },
+        { name: 'JWT / Auth' },
+        { name: 'Redis' },
+        { name: 'WebSockets' },
       ],
     },
     {
       category: 'Frontend',
       skills: [
-        { name: 'React', level: 75 },
-        { name: 'Next.js', level: 70 },
-        { name: 'HTML & CSS', level: 92 },
-        { name: 'JavaScript', level: 90 },
-        { name: 'Tailwind CSS', level: 72 },
+        { name: 'React' },
+        { name: 'Next.js' },
+        { name: 'HTML & CSS' },
+        { name: 'JavaScript' },
+        { name: 'Tailwind CSS' },
       ],
     },
     {
       category: 'Databases',
       skills: [
-        { name: 'PostgreSQL', level: 85 },
-        { name: 'MongoDB', level: 88 },
-        { name: 'MySQL', level: 80 },
-        { name: 'Redis', level: 78 },
+        { name: 'PostgreSQL' },
+        { name: 'MongoDB' },
+        { name: 'MySQL' },
+        { name: 'Redis' },
       ],
     },
     {
       category: 'Tools',
       skills: [
-        { name: 'Docker', level: 72 },
-        { name: 'Git / GitHub', level: 90 },
-        { name: 'Postman', level: 88 },
-        { name: 'Swagger', level: 85 },
-        { name: 'CI/CD', level: 68 },
+        { name: 'Docker' },
+        { name: 'Git / GitHub' },
+        { name: 'Postman' },
+        { name: 'Swagger' },
+        { name: 'CI/CD' },
       ],
     },
   ];
@@ -199,10 +189,16 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
       github: 'https://github.com/manishek14/ridex',
     },
     {
-      name: 'OnlineShop',
+      name: 'Vendora',
       description: 'Production-ready multi-vendor e-commerce backend with NestJS, featuring complex product attributes, RBAC, and flexible payment flows.',
       tech: ['NestJS', 'TypeORM', 'PostgreSQL', 'Redis', 'JWT', 'Docker'],
-      github: 'https://github.com/manishek14/onlineShop',
+      github: 'https://github.com/manishek14/Vendora',
+    },
+    {
+      name: 'AxisHR',
+      description: 'Comprehensive HR management system handling employee lifecycle, leave requests, attendance tracking, payroll calculations, and organizational structure.',
+      tech: ['Node.js', 'Express', 'TypeScript', 'MongoDB', 'JWT', 'Swagger'],
+      github: 'https://github.com/manishek14/AxisHR',
     },
   ];
 
@@ -210,7 +206,8 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
       <DialogContent
         showCloseButton={false}
-        className="glass-strong max-w-4xl h-[90vh] overflow-hidden border-white/[0.08] p-0 gap-0"
+        className="max-w-4xl h-[90vh] overflow-hidden border-white/[0.08] p-0 gap-0"
+        style={{ backgroundColor: 'rgba(10, 15, 30, 0.95)', backdropFilter: 'blur(20px)' }}
       >
         {/* ── Top bar with action buttons ── */}
         <div className="flex items-center justify-between border-b border-white/[0.06] px-6 py-3">
@@ -307,10 +304,9 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                 <SectionBlock key={group.category} title={group.category}>
                   <div className="space-y-2">
                     {group.skills.map((skill) => (
-                      <SkillBar
+                      <SkillItem
                         key={skill.name}
                         name={skill.name}
-                        level={skill.level}
                       />
                     ))}
                   </div>

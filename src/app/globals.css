@@ -357,6 +357,12 @@
   to { transform: rotate(360deg); }
 }
 
+@media (max-width: 600px) {
+  .portrait-border-wrap::before {
+    animation: none;
+  }
+}
+
 .portrait-border-inner {
   position: relative;
   z-index: 1;

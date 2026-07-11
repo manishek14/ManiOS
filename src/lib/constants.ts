@@ -15,7 +15,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
   { id: 'email', platform: 'email', url: 'mailto:manishekofteh@gmail.com', label: 'manishekofteh@gmail.com' },
   { id: 'github', platform: 'github', url: 'https://github.com/manishek14', label: 'manishek14' },
   { id: 'linkedin', platform: 'linkedin', url: 'https://linkedin.com/in/mani-shekofteh', label: 'Mani Shekofteh' },
-  { id: 'telegram', platform: 'telegram', url: 'https://t.me/manishekofteh', label: '@manishekofteh' },
+  { id: 'telegram', platform: 'telegram', url: 'https://t.me/dufdoat', label: '@dufdoat' },
 ];
 
 export const SKILL_CATEGORIES: SkillCategory[] = [
@@ -140,11 +140,11 @@ export const PROJECTS: Project[] = [
     coverGradient: 'from-indigo-600 via-purple-600 to-blue-600',
   },
   {
-    id: 'onlineShop',
-    name: 'OnlineShop',
+    id: 'vendora',
+    name: 'Vendora',
     description: {
-      en: 'A production-ready multi-vendor e-commerce backend built with NestJS. Designed for platforms requiring vendor support, complex product attributes, and flexible payment flows.',
-      fa: 'بک‌اند چند فروشگاهی آماده تولید با NestJS.',
+      en: 'A production-ready multi-vendor e-commerce backend built with NestJS. Designed for platforms requiring vendor support, complex product attributes, and flexible payment flows — inspired by systems like Digikala.',
+      fa: 'بک‌اند چند فروشگاهی آماده تولید با NestJS. طراحی شده برای پلتفرم‌هایی با پشتیبانی فروشنده، ویژگی‌های پیچیده محصول و جریان‌های انعطاف‌پذیر پرداخت.',
       ar: 'خلفية متعددة البائعين جاهزة للإنتاج مع NestJS.',
     },
     architecture: {
@@ -155,26 +155,8 @@ export const PROJECTS: Project[] = [
     techStack: ['NestJS', 'TypeORM', 'PostgreSQL', 'Redis', 'JWT', 'TypeScript', 'Swagger', 'Docker'],
     features: ['Multi-vendor management', 'Complex product attributes', 'Flexible payments', 'RBAC', 'Redis caching', 'Modular structure'],
     category: 'backend',
-    github: 'https://github.com/manishek14/onlineShop',
-    coverGradient: 'from-blue-600 via-cyan-600 to-teal-600',
-  },
-  {
-    id: 'vendora',
-    name: 'Vendora',
-    description: {
-      en: 'A marketplace platform built to explore modern e-commerce patterns with Node.js and MongoDB, focusing on scalable vendor management and product catalog systems.',
-      fa: 'پلتفرم مارکت‌پلیس با Node.js و MongoDB.',
-      ar: 'منصة سوق إلكتروني مع Node.js و MongoDB.',
-    },
-    architecture: {
-      en: 'Node.js with Express, MongoDB for flexible schema design, RESTful API with validation and error handling.',
-      fa: 'Node.js با Express، MongoDB، API RESTful.',
-      ar: 'Node.js مع Express، MongoDB، API RESTful.',
-    },
-    techStack: ['Node.js', 'Express', 'MongoDB', 'JWT', 'TypeScript'],
-    features: ['Vendor management', 'Product catalog', 'API validation', 'Schema design'],
-    category: 'backend',
     github: 'https://github.com/manishek14/Vendora',
+    image: '/vendora.webp',
     coverGradient: 'from-purple-600 via-pink-600 to-rose-600',
   },
   {
@@ -195,6 +177,25 @@ export const PROJECTS: Project[] = [
     category: 'backend',
     github: 'https://github.com/manishek14/marketPlaceShop',
     coverGradient: 'from-emerald-600 via-green-600 to-teal-600',
+  },
+  {
+    id: 'axishr',
+    name: 'AxisHR',
+    description: {
+      en: 'A comprehensive Human Resources management system built as a backend-only service. Handles employee lifecycle management, leave requests, attendance tracking, payroll calculations, and organizational structure — designed for enterprise-scale deployment.',
+      fa: 'سیستم جامع مدیریت منابع انسانی. مدیریت چرخه حیات کارمندان، درخواست مرخصی، ثبت حضور و غیاب، محاسبه حقوق و ساختار سازمانی — طراحی شده برای مقیاس سازمانی.',
+      ar: 'نظام شامل لإدارة الموارد البشرية. إدارة دورة حياة الموظفين، طلبات الإجازات، تتبع الحضور، حساب الرواتب.',
+    },
+    architecture: {
+      en: 'Node.js with Express and TypeScript, MongoDB for flexible document-based data models, JWT authentication with role-based permissions, RESTful API following clean architecture principles with service/repository layers.',
+      fa: 'Node.js با Express و TypeScript، MongoDB برای مدل‌های داده انعطاف‌پذیر، احراز هویت JWT با دسترسی مبتنی بر نقش، API RESTful با معماری تمیز.',
+      ar: 'Node.js مع Express و TypeScript، MongoDB، مصادقة JWT، RESTful API.',
+    },
+    techStack: ['Node.js', 'Express', 'TypeScript', 'MongoDB', 'JWT', 'Swagger'],
+    features: ['Employee lifecycle management', 'Leave request workflow', 'Attendance tracking system', 'Payroll calculation engine', 'Organizational structure management', 'Role-based access control'],
+    category: 'experimental',
+    github: 'https://github.com/manishek14/AxisHR',
+    coverGradient: 'from-amber-600 via-orange-600 to-red-600',
   },
 ];
 
@@ -258,21 +259,21 @@ export const EXPERIENCES: Experience[] = [
   },
   {
     id: 'razavi',
-    company: 'Razavi Architectural Arrays',
-    companyLocal: 'آرایه‌های معماری رضوی',
-    role: { en: 'Frontend Developer & IT Expert', fa: 'توسعه‌دهنده فرانت‌اند و کارشناس IT', ar: 'مطور واجهة وخبير تقنية' },
+    company: 'Sanat Chob Astan Ghods Razavi',
+    companyLocal: 'صنایع چوب‌های آستان قدس رضوی',
+    role: { en: 'IT Skills & DevOps', fa: 'مهارت‌های IT و دواپس', ar: 'مهارات تقنية المعلومات والعمليات' },
     period: 'Jun 2022 — Oct 2022',
     location: 'Mashhad, Iran',
     description: {
-      en: 'Supported internal systems using HTML, CSS, and vanilla JavaScript. First professional development role.',
-      fa: 'پشتیبانی و توسعه سیستم‌های داخلی با HTML، CSS و جاوااسکریپت.',
-      ar: 'دعم الأنظمة الداخلية.',
+      en: 'Developed and maintained internal web systems using HTML, CSS, and JavaScript for a large wood manufacturing company. Managed IT infrastructure, handled data entry system optimization, and provided technical support across hardware and software departments. First professional development role.',
+      fa: 'توسعه و نگهداری سیستم‌های وب داخلی با HTML، CSS و جاوااسکریپت برای یک شرکت بزرگ تولید چوب. مدیریت زیرساخت IT، بهینه‌سازی سیستم ورود اطلاعات و پشتیبانی فنی.',
+      ar: 'تطوير وصيانة أنظمة الويب الداخلية. إدارة البنية التحتية لتقنية المعلومات.',
     },
     achievements: {
-      en: ['Designed 3 data entry forms, reducing employee registration time by 40%', 'Fixed 20+ system bugs across hardware and software sections'],
-      fa: ['طراحی ۳ فرم ورود اطلاعات، کاهش ۴۰٪ زمان ثبت‌نام', 'رفع بیش از ۲۰ باگ سیستمی'],
-      ar: ['تصميم ٣ نماذج، تقليل وقت التسجيل بنسبة ٤٠٪', 'إصلاح أكثر من ٢٠ خطأ'],
+      en: ['Designed 3 data entry forms, reducing employee registration time by 40%', 'Fixed 20+ system bugs across hardware and software sections', 'Managed IT infrastructure and provided cross-department technical support', 'Optimized internal web systems improving data retrieval speed by 40%'],
+      fa: ['طراحی ۳ فرم ورود اطلاعات، کاهش ۴۰٪ زمان ثبت‌نام', 'رفع بیش از ۲۰ باگ سیستمی', 'مدیریت زیرساخت IT و پشتیبانی فنی بین‌بخشی', 'بهینه‌سازی سیستم‌های وب داخلی و افزایش ۴۰٪ سرعت بازیابی داده'],
+      ar: ['تصميم ٣ نماذج، تقليل وقت التسجيل بنسبة ٤٠٪', 'إصلاح أكثر من ٢٠ خطأ', 'إدارة البنية التحتية', 'تحسين سرعة استرجاع البيانات بنسبة ٤٠٪'],
     },
-    techStack: ['HTML', 'CSS', 'JavaScript'],
+    techStack: ['HTML', 'CSS', 'JavaScript', 'IT Support', 'Network Administration'],
   },
 ];
