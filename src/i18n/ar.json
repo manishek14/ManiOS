@@ -9,7 +9,7 @@
   },
   "hero": {
     "greeting": "مرحبًا،",
-    "name": "أنا ماني شكوفته",
+    "name": "أنا ماني شكفته",
     "tagline": "مهندس خلفية يحول المشكلات المعقدة إلى أنظمة أنيقة وقابلة للتوسع — API واحد في كل مرة.",
     "cta_activity": "عرض النشاط",
     "cta_resume": "السيرة الذاتية"
@@ -148,7 +148,25 @@
     "title": "السيرة الذاتية",
     "view_resume": "عرض السيرة",
     "download_resume": "تحميل السيرة",
-    "close": "إغلاق"
+    "close": "إغلاق",
+    "name": "ماني شكفته",
+    "role": "مهندس خلفية",
+    "phone": "09154944256",
+    "location": "مشهد، إيران",
+    "summary": "مهندس خلفية نتيجي مع أكثر من عامين من الخبرة المهنية في بناء أنظمة قابلة للتوسع وجاهزة للإنتاج باستخدام Node.js و NestJS. شغوف بالتصميم النظيف وتصميم API وتحسين الأداء.",
+    "section_skills": "المهارات",
+    "section_languages": "اللغات",
+    "section_education": "التعليم",
+    "section_summary": "ملخص",
+    "section_experience": "الخبرات",
+    "section_projects": "مشاريع رئيسية",
+    "education_degree": "بكالوريوس هندسة البرمجيات",
+    "education_university": "جامعة آزاد الإسلامية، مشهد",
+    "education_period": "٢٠٢٥ — الحاضر",
+    "lang_en": "الإنجليزية",
+    "lang_en_level": "متقدم",
+    "lang_fa": "الفارسية",
+    "lang_fa_level": "اللغة الأم"
   },
   "ai_assistant": {
     "title": "اسأل الذكاء الاصطناعي عني",

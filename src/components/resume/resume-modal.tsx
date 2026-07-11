@@ -22,6 +22,8 @@ import { Button } from '@/components/ui/button';
 import { useApp } from '@/components/providers/app-provider';
 import { cn } from '@/lib/utils';
 import { getTechIcon, TECH_COLORS } from '@/lib/tech-icons';
+import { EXPERIENCES, PROJECTS } from '@/lib/constants';
+import type { Locale } from '@/types';
 
 interface ResumeModalProps {
   isOpen: boolean;
@@ -86,20 +88,22 @@ function TimelineDot({ active }: { active: boolean }) {
 /* ── Main component ──────────────────────────────────────────── */
 
 export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
-  const { t, rtl } = useApp();
+  const { t, locale, rtl } = useApp();
   const [showResume, setShowResume] = useState(true);
+
+  const resumeT = t.resume as Record<string, string>;
 
   const contactItems = [
     { icon: Mail, text: 'manishekofteh@gmail.com', href: 'mailto:manishekofteh@gmail.com' },
     { icon: Github, text: 'manishek14', href: 'https://github.com/manishek14' },
     { icon: Linkedin, text: 'Mani Shekofteh', href: 'https://linkedin.com/in/mani-shekofteh' },
-    { icon: Phone, text: '+98 936 XXX XXXX', href: undefined },
-    { icon: MapPin, text: 'Mashhad, Iran', href: undefined },
+    { icon: Phone, text: resumeT.phone || '09154944256', href: undefined },
+    { icon: MapPin, text: resumeT.location || 'Mashhad, Iran', href: undefined },
   ];
 
   const skillGroups = [
     {
-      category: 'Backend',
+      category: locale === 'fa' ? 'بک‌اند' : 'Backend',
       skills: [
         { name: 'Node.js' },
         { name: 'NestJS' },
@@ -112,7 +116,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
       ],
     },
     {
-      category: 'Frontend',
+      category: locale === 'fa' ? 'فرانت‌اند' : 'Frontend',
       skills: [
         { name: 'React' },
         { name: 'Next.js' },
@@ -122,7 +126,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
       ],
     },
     {
-      category: 'Databases',
+      category: locale === 'fa' ? 'پایگاه داده' : 'Databases',
       skills: [
         { name: 'PostgreSQL' },
         { name: 'MongoDB' },
@@ -131,7 +135,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
       ],
     },
     {
-      category: 'Tools',
+      category: locale === 'fa' ? 'ابزارها' : 'Tools',
       skills: [
         { name: 'Docker' },
         { name: 'Git' },
@@ -142,73 +146,23 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
     },
   ];
 
-  const experiences = [
-    {
-      role: 'Full Stack Developer',
-      company: 'MoaserHome',
-      period: 'Aug 2025 — Mar 2026',
-      achievements: [
-        'Reduced product page load time by 35% through query optimization and lazy loading',
-        'Implemented Redis caching, reducing API response from 600ms to 120ms',
-        'Built user & product management APIs with NestJS, TypeORM, and PostgreSQL',
-      ],
-      tech: ['NestJS', 'TypeORM', 'PostgreSQL', 'Redis', 'React'],
-    },
-    {
-      role: 'Backend Developer',
-      company: 'RojanSoft',
-      period: 'Jun 2024 — Feb 2025',
-      achievements: [
-        'Built JWT auth API handling 500 concurrent requests/sec',
-        'Documented entire API with Swagger, cutting cross-team coordination time',
-        'Designed scalable RESTful API architecture from scratch',
-      ],
-      tech: ['Node.js', 'Express', 'MongoDB', 'JWT / Auth', 'Swagger'],
-    },
-    {
-      role: 'Frontend Developer',
-      company: 'CarnCar',
-      period: 'Jun 2023 — Sep 2023',
-      achievements: [
-        'Built reusable React components without additional state libraries',
-        'Created admin panel enabling support team to work independently',
-      ],
-      tech: ['React', 'JavaScript', 'HTML & CSS'],
-    },
-    {
-      role: 'IT Skills & DevOps',
-      company: 'Sanat Chob Astan Ghods Razavi',
-      period: 'Jun 2022 — Oct 2022',
-      achievements: [
-        'Designed 3 data entry forms, reducing registration time by 40%',
-        'Fixed 20+ system bugs across hardware and software sections',
-        'Managed IT infrastructure and provided cross-department support',
-      ],
-      tech: ['HTML & CSS', 'JavaScript', 'Docker', 'Linux', 'Git'],
-    },
-  ];
+  // Use locale-aware experience data
+  const experiences = EXPERIENCES.map((exp) => ({
+    role: typeof exp.role === 'string' ? exp.role : (exp.role as Record<Locale, string>)[locale] ?? exp.role.en,
+    company: locale === 'fa' ? exp.companyLocal : exp.company,
+    period: exp.period,
+    achievements: typeof exp.achievements === 'string' ? [exp.achievements] : (exp.achievements as Record<Locale, string[]>)[locale] ?? exp.achievements.en,
+    tech: exp.techStack,
+  }));
 
-  const projects = [
-    {
-      name: 'RideX',
-      description: 'Full-stack ride-hailing platform with AI-powered route optimization, dynamic pricing, and real-time tracking across passenger, driver, and admin panels.',
-      tech: ['Next.js', 'Node.js', 'MongoDB', 'Redis', 'TypeScript'],
-      github: 'https://github.com/manishek14/ridex',
-      liveUrl: 'https://ridex-n09e74hz8-ridex1.vercel.app',
-    },
-    {
-      name: 'Vendora',
-      description: 'Production-ready multi-vendor e-commerce backend with NestJS, featuring complex product attributes, RBAC, and flexible payment flows.',
-      tech: ['NestJS', 'TypeORM', 'PostgreSQL', 'Redis', 'JWT / Auth', 'Docker'],
-      github: 'https://github.com/manishek14/Vendora',
-    },
-    {
-      name: 'AxisHR',
-      description: 'Comprehensive HR management system handling employee lifecycle, leave requests, attendance tracking, payroll calculations, and organizational structure.',
-      tech: ['Node.js', 'Express', 'TypeScript', 'MongoDB', 'JWT / Auth', 'Swagger'],
-      github: 'https://github.com/manishek14/AxisHR',
-    },
-  ];
+  // Use locale-aware project data
+  const projects = PROJECTS.map((project) => ({
+    name: project.name,
+    description: typeof project.description === 'string' ? project.description : (project.description as Record<Locale, string>)[locale] ?? project.description.en,
+    tech: project.techStack,
+    github: project.github,
+    liveUrl: project.liveUrl,
+  }));
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
@@ -221,7 +175,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
         <div className="flex items-center justify-between border-b border-white/[0.06] px-6 py-3">
           <DialogHeader className="p-0">
             <DialogTitle className="text-sm font-medium text-foreground/80">
-              {t.resume.title}
+              {resumeT.title}
             </DialogTitle>
           </DialogHeader>
 
@@ -238,7 +192,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
               onClick={() => setShowResume(true)}
             >
               <Eye size={13} />
-              {t.resume.view_resume}
+              {resumeT.view_resume}
             </Button>
 
             <a href="/resume.pdf" download>
@@ -254,7 +208,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                 onClick={() => setShowResume(false)}
               >
                 <Download size={13} />
-                {t.resume.download_resume}
+                {resumeT.download_resume}
               </Button>
             </a>
           </div>
@@ -265,10 +219,10 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
           {/* ── Header ── */}
           <div className="border-b border-white/[0.06] px-6 py-6">
             <h1 className="font-display text-3xl sm:text-4xl gradient-text">
-              Mani Shekofteh
+              {resumeT.name}
             </h1>
             <p className="mt-1 text-xs font-medium uppercase tracking-[0.2em] text-foreground/50">
-              Backend Engineer
+              {resumeT.role}
             </p>
 
             {/* Contact row */}
@@ -322,34 +276,34 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
               ))}
 
               {/* Languages */}
-              <SectionBlock title="Languages">
+              <SectionBlock title={resumeT.section_languages}>
                 <div className="space-y-2.5">
                   <div className="flex items-center justify-between">
-                    <span className="text-[11px] text-foreground/70">English</span>
+                    <span className="text-[11px] text-foreground/70">{resumeT.lang_en}</span>
                     <span className="text-[10px] text-muted-foreground">
-                      Upper Intermediate
+                      {resumeT.lang_en_level}
                     </span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-[11px] text-foreground/70">Persian</span>
+                    <span className="text-[11px] text-foreground/70">{resumeT.lang_fa}</span>
                     <span className="text-[10px] text-muted-foreground">
-                      Native
+                      {resumeT.lang_fa_level}
                     </span>
                   </div>
                 </div>
               </SectionBlock>
 
               {/* Education */}
-              <SectionBlock title="Education">
+              <SectionBlock title={resumeT.section_education}>
                 <div>
                   <p className="text-[12px] font-medium text-foreground/90">
-                    Bachelor of Software Engineering
+                    {resumeT.education_degree}
                   </p>
                   <p className="mt-0.5 text-[11px] text-muted-foreground">
-                    Islamic Azad University, Mashhad
+                    {resumeT.education_university}
                   </p>
                   <p className="mt-0.5 text-[10px] text-muted-foreground/60">
-                    2025 — Present
+                    {resumeT.education_period}
                   </p>
                 </div>
               </SectionBlock>
@@ -358,21 +312,14 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
             {/* ── Right column (wider) ── */}
             <div className="lg:col-span-8 p-6 space-y-4">
               {/* Summary */}
-              <SectionBlock title="Summary">
+              <SectionBlock title={resumeT.section_summary}>
                 <p className="text-[12px] leading-relaxed text-foreground/75">
-                  Results-driven backend engineer with 2+ years of professional
-                  experience building scalable, production-grade systems in
-                  Node.js and NestJS. Passionate about clean architecture,
-                  API design, and performance optimization — from reducing
-                  response times with Redis caching to designing modular
-                  micro-service patterns. Combines deep technical expertise
-                  with strong communication skills and a relentless drive to
-                  ship code that is maintainable, testable, and built to last.
+                  {resumeT.summary}
                 </p>
               </SectionBlock>
 
               {/* Experience */}
-              <SectionBlock title="Experience">
+              <SectionBlock title={resumeT.section_experience}>
                 <div className="space-y-0">
                   {experiences.map((exp, i) => (
                     <div key={exp.company} className="relative flex gap-3">
@@ -429,7 +376,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
               </SectionBlock>
 
               {/* Projects */}
-              <SectionBlock title="Key Projects">
+              <SectionBlock title={resumeT.section_projects}>
                 <div className="space-y-3">
                   {projects.map((project) => (
                     <div

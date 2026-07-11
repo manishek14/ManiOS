@@ -140,13 +140,11 @@ function TiltProjectCard({
       onMouseLeave={handleMouseLeave}
       style={{
         perspective: '1200px',
-        transformStyle: 'preserve-3d',
       }}
       className="group"
     >
       <div
         style={{
-          transformStyle: 'preserve-3d',
           transform: `rotateX(${tilt.rotateX}deg) rotateY(${tilt.rotateY}deg) translateY(${isHovered ? -8 : 0}px)`,
           transition: 'transform 0.15s ease-out',
         }}
@@ -263,7 +261,7 @@ function TiltProjectCard({
           )}
 
           {/* Action buttons */}
-          <div className="flex items-center gap-3 pt-2 border-t border-white/[0.06]">
+          <div className="relative z-30 flex items-center gap-3 pt-2 border-t border-white/[0.06]">
             {project.liveUrl && viewDemoLabel && (
               <a
                 href={project.liveUrl}

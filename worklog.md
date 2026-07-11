@@ -569,3 +569,24 @@ Stage Summary:
 - **Tech icons ADDED**: 44 real SVG icons rendered in skills section
 - **Resume modal UPDATED**: Tech-colored icons and pills throughout
 - Verified all fixes via agent-browser: scrolled through all sections, clicked buttons, checked console errors — all clean
+---
+Task ID: 1
+Agent: Main Agent
+Task: Fix resume Farsi content, name spelling, phone number, skills icons, project buttons
+
+Work Log:
+- Fixed family name spelling: شکوفته → شکفته in fa.json (line 12), ar.json hero section, and en.json
+- Added full resume i18n keys to en.json, fa.json, and ar.json (name, role, phone, location, summary, section titles, education, languages)
+- Rewrote resume-modal.tsx to be fully locale-aware: uses `locale` from useApp() to switch name, title, contact info, experience roles/achievements, project descriptions, section titles, education, and languages
+- Updated phone number from `+98 936 XXX XXXX` to `09154944256`
+- Fixed project buttons not clickable: added `relative z-30` to action buttons container, removed `transformStyle: preserve-3d` from outer motion.div and inner div to fix 3D stacking context issue
+- Improved skills icons: Linux (replaced massive path with penguin silhouette), PostgreSQL (replaced heart shape with elephant silhouette, updated color to #336791), NestJS (cat face), MySQL (leaf pattern), Swagger (3D cube)
+- Fixed corrupted tech-icons.tsx file after Linux icon replacement
+
+Stage Summary:
+- Resume modal now fully supports Farsi, English, and Arabic with locale-aware content
+- Name spelling corrected from شکوفته to شکفته everywhere
+- Phone number 09154944256 added to resume in all languages
+- Project "Live Demo" and "View Code" buttons now clickable (verified in browser - RideX demo opened in new tab)
+- Skills icons improved for Linux, PostgreSQL, NestJS, MySQL, Swagger
+- All changes pass ESLint and compile successfully
