@@ -50,7 +50,7 @@ export function CinematicLoader() {
           }}
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.5, ease: 'easeInOut', delay: (HOLD_MS - 1200) / 1000 }}
+          transition={{ duration: 0.5, ease: 'easeInOut', delay: 0 }}
           aria-live="polite"
           role="alert"
           aria-label="Loading"

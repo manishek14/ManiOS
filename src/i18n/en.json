@@ -57,7 +57,8 @@
       "all": "All",
       "backend": "Backend",
       "frontend": "Frontend",
-      "experimental": "Experimental"
+      "experimental": "Experimental",
+      "no_results": "No projects in this category"
     },
     "items": {
       "ridex": {
@@ -186,6 +187,11 @@
     ],
     "thinking": "Thinking...",
     "error": "Something went wrong. Please try again."
+  },
+  "shared": {
+    "built_with": "Built with Next.js, Framer Motion & attention to detail",
+    "architecture": "Architecture",
+    "soft_skills_title": "Soft Skills"
   },
   "back_to_top": "Back to top",
   "loading": {

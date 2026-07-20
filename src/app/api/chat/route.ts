@@ -84,7 +84,7 @@ export async function POST(request: NextRequest) {
 
     // Build messages array for LLM
     const messages = [
-      { role: 'assistant', content: SYSTEM_PROMPT },
+      { role: 'system', content: SYSTEM_PROMPT },
       ...history.slice(-10), // Keep last 10 messages for context
       { role: 'user', content: message },
     ];

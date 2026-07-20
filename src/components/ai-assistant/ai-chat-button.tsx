@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Brain } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { tokens } from '@/config/design-tokens';
+import { useApp } from '@/components/providers/app-provider';
 
 interface AiChatButtonProps {
   onClick: () => void;
@@ -20,13 +21,14 @@ interface AiChatButtonProps {
  * hover/tap interactions.
  */
 export function AiChatButton({ onClick }: AiChatButtonProps) {
+  const { rtl } = useApp();
 
   return (
     <motion.button
       type="button"
       className={cn(
         'ai-chat-pulse fixed bottom-6 z-40 flex h-14 w-14 items-center justify-center rounded-full glass-strong text-white/80 transition-colors hover:text-white',
-        'right-6',
+        rtl ? 'left-6' : 'right-6',
       )}
       style={{ zIndex: tokens.zIndex.dotNav }}
       whileHover={{ scale: 1.1 }}

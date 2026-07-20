@@ -3,6 +3,7 @@ import { Inter, Grand_Hotel } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from 'next-themes';
 import { AppProvider } from '@/components/providers/app-provider';
+import { Toaster } from '@/components/ui/toaster';
 
 const inter = Inter({
   variable: '--font-geist-sans',
@@ -59,6 +60,7 @@ export default function RootLayout({
         >
           <AppProvider>
             {children}
+            <Toaster />
           </AppProvider>
         </ThemeProvider>
       </body>

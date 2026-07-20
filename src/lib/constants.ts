@@ -45,7 +45,6 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
       { name: 'Tailwind CSS', level: 72 },
       { name: 'Redux', level: 78 },
       { name: 'Bootstrap', level: 80 },
-      { name: 'TypeScript', level: 85 },
       { name: 'Three.js', level: 65 },
     ],
   },
@@ -60,7 +59,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
       { name: 'Redis', level: 78 },
       { name: 'SQL Server', level: 75 },
       { name: 'SQL', level: 82 },
-      { name: 'LiteSQL', level: 70 },
+      { name: 'SQLite', level: 70 },
     ],
   },
   {

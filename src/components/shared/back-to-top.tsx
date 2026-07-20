@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUp } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { tokens } from '@/config/design-tokens';
+import { useApp } from '@/components/providers/app-provider';
 
 /**
  * BackToTop
@@ -15,6 +16,7 @@ import { tokens } from '@/config/design-tokens';
  */
 
 export function BackToTop() {
+  const { rtl } = useApp();
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -46,6 +48,7 @@ export function BackToTop() {
           className={cn(
             'glass-strong fixed bottom-6 z-40 flex h-11 w-11 items-center justify-center rounded-full text-white/80 transition-colors hover:text-white',
             'left-6',
+            rtl && 'left-auto right-6',
           )}
           style={{ zIndex: tokens.zIndex.dotNav }}
           initial={{ opacity: 0, scale: 0.6, y: 16 }}

@@ -25,7 +25,7 @@ export const TECH_COLORS: Record<string, string> = {
   'MySQL': '#4479A1',
   'SQL Server': '#CC2927',
   'SQL': '#336791',
-  'LiteSQL': '#0078D4',
+  'SQLite': '#0078D4',
   'Clean Architecture': '#a78bfa',
   'REST API Design': '#6366f1',
   'System Design': '#a78bfa',
@@ -215,10 +215,10 @@ function SqlIcon({ size = 16 }: { size?: number }) {
   );
 }
 
-function LiteSqlIcon({ size = 16 }: { size?: number }) {
-  // SQLite / LiteSQL - feather/database hybrid
+function SqliteIcon({ size = 16 }: { size?: number }) {
+  // SQLite - feather/database hybrid
   return (
-    <svg viewBox="0 0 24 24" width={size} height={size} fill="#0078D4" aria-label="LiteSQL">
+    <svg viewBox="0 0 24 24" width={size} height={size} fill="#0078D4" aria-label="SQLite">
       <path d="M12 2C7 2 3 3.5 3 5.5v13c0 2 4 3.5 9 3.5s9-1.5 9-3.5v-13C21 3.5 17 2 12 2zm0 2c4 0 7 1 7 2s-3 2-7 2-7-1-7-2 3-2 7-2zM5 8.5c1.5.9 4 1.5 7 1.5s5.5-.6 7-1.5v3c0 1-3 2-7 2s-7-1-7-2v-3zm0 6c1.5.9 4 1.5 7 1.5s5.5-.6 7-1.5v4c0 1-3 2-7 2s-7-1-7-2v-4z" />
       <path fill="#fff" d="M8 11h1v3H8zm3.5 0c.7 0 1.3.3 1.7.7l-.6.5c-.3-.3-.6-.4-1-.4-.4 0-.6.1-.6.4 0 .2.1.3.5.4l.5.1c.7.1 1 .5 1 1.1 0 .7-.6 1.1-1.5 1.1-.7 0-1.3-.3-1.7-.7l.6-.5c.3.3.6.5 1 .5.4 0 .7-.2.7-.5 0-.2-.2-.3-.5-.4l-.5-.1c-.7-.1-1-.5-1-1 0-.7.5-1.1 1.4-1.1zm3.5 0h1v3h-1z" />
     </svg>
@@ -487,7 +487,7 @@ const ICON_MAP: Record<string, IconComponent> = {
   'MySQL': MysqlIcon,
   'SQL Server': SqlServerIcon,
   'SQL': SqlIcon,
-  'LiteSQL': LiteSqlIcon,
+  'SQLite': SqliteIcon,
   'Clean Architecture': CleanArchIcon,
   'REST API Design': RestApiDesignIcon,
   'System Design': SystemDesignIcon,

@@ -147,7 +147,7 @@ export function GlassNavbar() {
       <nav
         className={cn(
           'mx-auto flex items-center justify-between h-16 px-4 md:px-8',
-          'max-w-[var(--layout-max-w)]'
+          'max-w-[1280px]'
         )}
         style={{ maxWidth: tokens.layout.maxWidth }}
         role="navigation"

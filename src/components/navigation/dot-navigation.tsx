@@ -56,7 +56,7 @@ export function DotNavigation() {
     <nav
       className={cn(
         'fixed top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col items-center gap-0',
-        'right-5'
+        rtl ? 'left-5' : 'right-5'
       )}
       role="navigation"
       aria-label="Section navigation"
@@ -85,9 +85,9 @@ export function DotNavigation() {
             <AnimatePresence>
               {(isActive || isHovered) && (
                 <motion.span
-                  initial={{ opacity: 0, x: -6, scale: 0.9 }}
+                  initial={{ opacity: 0, x: rtl ? 6 : -6, scale: 0.9 }}
                   animate={{ opacity: 1, x: 0, scale: 1 }}
-                  exit={{ opacity: 0, x: -6, scale: 0.9 }}
+                  exit={{ opacity: 0, x: rtl ? 6 : -6, scale: 0.9 }}
                   transition={{
                     duration: tokens.motion.duration.fast,
                     ease: tokens.motion.ease.out,
@@ -96,6 +96,7 @@ export function DotNavigation() {
                     'absolute whitespace-nowrap text-xs font-medium pointer-events-none',
                     'px-2.5 py-1 rounded-md glass-strong',
                     'right-6',
+                    rtl && 'right-auto left-6',
                     isActive ? 'text-foreground' : 'text-muted-foreground'
                   )}
                 >

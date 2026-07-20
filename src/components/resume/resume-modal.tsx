@@ -103,7 +103,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
 
   const skillGroups = [
     {
-      category: locale === 'fa' ? 'بک‌اند' : 'Backend',
+      category: locale === 'fa' ? 'بک‌اند' : locale === 'ar' ? 'الخلفية' : 'Backend',
       skills: [
         { name: 'Node.js' },
         { name: 'NestJS' },
@@ -116,7 +116,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
       ],
     },
     {
-      category: locale === 'fa' ? 'فرانت‌اند' : 'Frontend',
+      category: locale === 'fa' ? 'فرانت‌اند' : locale === 'ar' ? 'الواجهة' : 'Frontend',
       skills: [
         { name: 'React' },
         { name: 'Next.js' },
@@ -126,7 +126,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
       ],
     },
     {
-      category: locale === 'fa' ? 'پایگاه داده' : 'Databases',
+      category: locale === 'fa' ? 'پایگاه داده' : locale === 'ar' ? 'قواعد البيانات' : 'Databases',
       skills: [
         { name: 'PostgreSQL' },
         { name: 'MongoDB' },
@@ -135,7 +135,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
       ],
     },
     {
-      category: locale === 'fa' ? 'ابزارها' : 'Tools',
+      category: locale === 'fa' ? 'ابزارها' : locale === 'ar' ? 'الأدوات' : 'Tools',
       skills: [
         { name: 'Docker' },
         { name: 'Git' },

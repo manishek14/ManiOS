@@ -235,7 +235,7 @@ export function ContactSection() {
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.5 }}
         >
-          Built with Next.js, Framer Motion &amp; attention to detail
+          {t.shared.built_with}
         </motion.p>
       </div>
     </SectionWrapper>

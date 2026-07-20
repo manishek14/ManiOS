@@ -214,8 +214,8 @@ function TiltProjectCard({
 
           {/* Category badge */}
           <div className="absolute top-3 end-3 sm:top-4 sm:end-4 z-10">
-            <span className="glass-strong text-[10px] sm:text-xs font-medium text-white/80 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full capitalize">
-              {project.category}
+            <span className="glass-strong text-[10px] sm:text-xs font-medium text-white/80 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full">
+              {t.projects.filters[project.category as keyof typeof t.projects.filters] ?? project.category}
             </span>
           </div>
         </div>
@@ -230,7 +230,7 @@ function TiltProjectCard({
           {/* Architecture */}
           <div>
             <span className="text-[10px] font-semibold uppercase tracking-widest text-primary/70 mb-1.5 block">
-              Architecture
+              {t.shared.architecture}
             </span>
             <p className="text-xs text-muted-foreground/80 leading-relaxed line-clamp-2">
               {projectArchitecture}

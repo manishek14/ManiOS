@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useCallback, useRef, type ComponentType, type SVGProps } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
 import {
   MessageSquare,
@@ -92,7 +92,7 @@ function SkillRow({
 
 // ── Main floating panel ──
 export function SoftSkillsPanel() {
-  const { locale, rtl } = useApp();
+  const { locale, rtl, t } = useApp();
   const [aboutVisible, setAboutVisible] = useState(false);
   const observerRef = useRef<IntersectionObserver | null>(null);
 
@@ -143,7 +143,7 @@ export function SoftSkillsPanel() {
           >
             {/* Title */}
             <h3 className="mb-4 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-              Soft Skills
+              {t.shared.soft_skills_title}
             </h3>
 
             {/* Skills list */}
