@@ -7,7 +7,6 @@ import { useApp } from '@/components/providers/app-provider';
 import { SectionWrapper } from '@/components/shared/section-wrapper';
 import { GlassPanel } from '@/components/shared/glass-panel';
 import { tokens } from '@/config/design-tokens';
-import { SoftSkillsPanel } from './soft-skills-panel';
 
 const paragraphItems = [
   { key: 'p1' as const, icon: User, color: 'text-blue-400' },
@@ -130,9 +129,6 @@ export function AboutSection() {
           </div>
         </div>
       </div>
-
-      {/* Floating Soft Skills Panel (desktop only) */}
-      <SoftSkillsPanel />
     </SectionWrapper>
   );
 }

@@ -8,7 +8,6 @@ import { GlassNavbar } from '@/components/navigation/glass-navbar';
 import { DotNavigation } from '@/components/navigation/dot-navigation';
 import { HeroSection } from '@/components/home/hero-section';
 import { AboutSection } from '@/components/about/about-section';
-import { SoftSkillsPanel } from '@/components/about/soft-skills-panel';
 import { SkillsSection } from '@/components/skills/skills-section';
 import { ProjectsSection } from '@/components/projects/projects-section';
 import { ExperienceSection } from '@/components/experience/experience-section';
@@ -33,7 +32,6 @@ export default function Home() {
 
       <HeroSection onOpenResume={() => setResumeOpen(true)} />
       <AboutSection />
-      <SoftSkillsPanel />
       <SkillsSection />
       <ProjectsSection />
       <ExperienceSection />
