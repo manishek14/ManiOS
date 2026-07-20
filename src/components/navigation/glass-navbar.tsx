@@ -137,7 +137,7 @@ export function GlassNavbar() {
       className={cn(
         'fixed top-0 inset-x-0 z-50 transition-colors duration-500',
         scrolled
-          ? 'glass-strong border-b border-white/[0.08]'
+          ? 'glass-strong border-b border-white/[0.08] glass-navbar-mobile'
           : 'bg-transparent border-b border-transparent'
       )}
       animate={{ y: hidden ? -100 : 0 }}

@@ -243,6 +243,24 @@
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
+/* ─── Mobile Navbar: Lower Transparency (more opaque) ─── */
+@media (max-width: 767px) {
+  .glass.glass-navbar-mobile,
+  .glass-strong.glass-navbar-mobile {
+    background: rgba(3, 7, 18, 0.92);
+    backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .light .glass.glass-navbar-mobile,
+  .light .glass-strong.glass-navbar-mobile {
+    background: rgba(255, 255, 255, 0.96);
+    border-bottom: 1px solid rgba(99, 102, 241, 0.18);
+    box-shadow: 0 4px 24px rgba(99, 102, 241, 0.12);
+  }
+}
+
 .light .glass {
   background: rgba(255, 255, 255, 0.6);
   border: 1px solid rgba(99, 102, 241, 0.1);

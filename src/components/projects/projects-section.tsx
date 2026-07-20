@@ -54,7 +54,7 @@ function FilterBar({
   const { t } = useApp();
 
   return (
-    <div className="relative flex items-center gap-1.5 p-1 rounded-full glass-strong w-fit mx-auto mb-12">
+    <div className="relative flex flex-wrap items-center justify-center gap-1.5 p-1.5 rounded-2xl glass-strong w-full max-w-full mx-auto mb-10 sm:mb-12 overflow-hidden">
       {FILTER_KEYS.map((key) => {
         const isActive = active === key;
         const label = t.projects.filters[key as keyof typeof t.projects.filters];
@@ -64,7 +64,10 @@ function FilterBar({
             key={key}
             onClick={() => onFilter(key)}
             className={cn(
-              'relative z-10 px-4 py-2 text-sm font-medium rounded-full transition-colors duration-300 cursor-pointer',
+              'relative z-10 flex-1 sm:flex-initial min-w-[70px] sm:min-w-0',
+              'px-2.5 sm:px-4 py-1.5 sm:py-2',
+              'text-[11px] sm:text-sm font-medium rounded-full transition-colors duration-300 cursor-pointer',
+              'whitespace-nowrap text-center',
               isActive
                 ? 'text-primary glass-strong border border-primary/30'
                 : 'text-muted-foreground hover:text-foreground'
@@ -203,22 +206,22 @@ function TiltProjectCard({
           <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/70 to-transparent z-[1]" />
 
           {/* Project name on cover */}
-          <div className="relative z-10 p-5 pb-4">
-            <h3 className="text-2xl font-bold text-white leading-tight">
+          <div className="relative z-10 p-4 sm:p-5 pb-3 sm:pb-4">
+            <h3 className="text-xl sm:text-2xl font-bold text-white leading-tight">
               {projectName}
             </h3>
           </div>
 
           {/* Category badge */}
-          <div className="absolute top-4 end-4 z-10">
-            <span className="glass-strong text-xs font-medium text-white/80 px-3 py-1 rounded-full capitalize">
+          <div className="absolute top-3 end-3 sm:top-4 sm:end-4 z-10">
+            <span className="glass-strong text-[10px] sm:text-xs font-medium text-white/80 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full capitalize">
               {project.category}
             </span>
           </div>
         </div>
 
         {/* Content area */}
-        <div className="p-5 flex flex-col gap-4">
+        <div className="p-4 sm:p-5 flex flex-col gap-3 sm:gap-4">
           {/* Description */}
           <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
             {projectDescription}
