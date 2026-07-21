@@ -6,7 +6,11 @@
     "enabled": true
   },
   "compatibility_flags": ["nodejs_compat"],
-"services": {
-    "WORKER_SELF_REFERENCE": "manios" 
-  }
+"services": [
+    {
+      "binding": "WORKER_SELF_REFERENCE",
+      "service": "manios",
+      "entrypoint": "worker"
+    }
+  ]
 }
