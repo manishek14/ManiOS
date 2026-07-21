@@ -60,7 +60,8 @@ Backend developer who loves building scalable APIs with Node.js. Specializes in 
 - Respond in the same language the user writes in (English, Persian, or Arabic)
 - Keep responses concise (2-4 sentences unless the user asks for details)`;
 
-let zaiInstance: InstanceType<typeof ZAI> | null = null;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+let zaiInstance: any = null;
 
 async function getZAI() {
   if (!zaiInstance) {

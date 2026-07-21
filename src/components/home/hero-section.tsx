@@ -27,10 +27,10 @@ const fadeUp = {
     transition: {
       duration: tokens.motion.duration.normal,
       delay,
-      ease: tokens.motion.ease.out as unknown as number[],
+      ease: tokens.motion.ease.out as [number, number, number, number],
     },
   }),
-};
+} as const;
 
 /* ── Props ── */
 interface HeroSectionProps {
@@ -95,7 +95,7 @@ export function HeroSection({ onOpenResume }: HeroSectionProps) {
               animate={{ opacity: 1, scale: 1 }}
               transition={{
                 duration: tokens.motion.duration.cinematic,
-                ease: tokens.motion.ease.out as unknown as number[],
+                ease: tokens.motion.ease.out as [number, number, number, number],
               }}
               style={{ y: isPortraitHovered ? 0 : smoothY }}
               onMouseEnter={() => setIsPortraitHovered(true)}
@@ -164,7 +164,7 @@ export function HeroSection({ onOpenResume }: HeroSectionProps) {
                     transition={{
                       duration: 0.6,
                       delay: 0.5 + i * 0.1,
-                      ease: tokens.motion.ease.out as unknown as number[],
+                      ease: tokens.motion.ease.out as [number, number, number, number],
                     }}
                   >
                     {word}

@@ -31,7 +31,7 @@ const achievementSlide = {
   visible: (j: number) => ({
     opacity: 1,
     x: 0,
-    transition: { duration: 0.35, delay: j * 0.06, ease: 'easeOut' },
+    transition: { duration: 0.35, delay: j * 0.06, ease: 'easeOut' as const },
   }),
 };
 
@@ -40,7 +40,7 @@ const techFade = {
   visible: (j: number) => ({
     opacity: 1,
     scale: 1,
-    transition: { duration: 0.25, delay: j * 0.03 + 0.15, ease: 'easeOut' },
+    transition: { duration: 0.25, delay: j * 0.03 + 0.15, ease: 'easeOut' as const },
   }),
 };
 

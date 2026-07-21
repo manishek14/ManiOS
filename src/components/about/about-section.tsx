@@ -90,8 +90,8 @@ export function AboutSection() {
           {/* Right Column — Insight cards (2/5 width) */}
           <div className="flex flex-col gap-4 lg:col-span-2 lg:gap-5">
             {insightCards.map((card, i) => {
-              const titleKey = `${card.key}_title` as const;
-              const textKey = card.key as const;
+              const titleKey = `${card.key}_title`;
+              const textKey = card.key;
               const Icon = card.icon;
 
               return (
