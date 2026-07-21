@@ -1,12 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "standalone",  
   typescript: {
-    ignoreBuildErrors: false,  
+    ignoreBuildErrors: false,
   },
-  reactStrictMode: true,  
-  
+  reactStrictMode: true,
 };
 
 export default nextConfig;
