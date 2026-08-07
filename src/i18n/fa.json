@@ -151,7 +151,22 @@
     "telegram": "@dufdoat",
     "copy_email": "کپی ایمیل",
     "open_link": "باز کردن لینک",
-    "copied": "کپی شد!"
+    "copied": "کپی شد!",
+    "form_title": "اطلاعاتت رو بگذار",
+    "form_subtitle": "می‌خوای با هم کار کنیم؟ این فرم رو پر کن تا باهات تماس بگیرم.",
+    "fullname": "نام و نام خانوادگی",
+    "fullname_placeholder": "نام کامل شما",
+    "phone": "شماره همراه",
+    "phone_placeholder": "شماره موبایل شما",
+    "description": "توضیحات (اختیاری)",
+    "description_placeholder": "کوتاه درباره پروژه یا ایده‌ات بگو...",
+    "submit": "ارسال",
+    "submitting": "در حال ارسال...",
+    "success_title": "مرسی!",
+    "success_message": "ممنون که فرم رو پر کردی! به‌زودی باهات تماس می‌گیرم.",
+    "close": "بستن",
+    "required": "الزامی",
+    "invalid_phone": "لطفاً یک شماره معتبر وارد کنید"
   },
   "resume": {
     "title": "رزومه",

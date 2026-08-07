@@ -150,7 +150,22 @@
     "telegram": "@dufdoat",
     "copy_email": "نسخ البريد",
     "open_link": "فتح الرابط",
-    "copied": "تم النسخ!"
+    "copied": "تم النسخ!",
+    "form_title": "اترك معلوماتك",
+    "form_subtitle": "تريد العمل معًا؟ املأ هذا النموذج وسأتواصل معك قريبًا.",
+    "fullname": "الاسم الكامل",
+    "fullname_placeholder": "اسمك الكامل",
+    "phone": "رقم الهاتف",
+    "phone_placeholder": "رقم هاتفك",
+    "description": "وصف (اختياري)",
+    "description_placeholder": "أخبرني باختصار عن مشروعك أو فكرتك...",
+    "submit": "إرسال",
+    "submitting": "جارٍ الإرسال...",
+    "success_title": "شكرًا!",
+    "success_message": "شكرًا لملء النموذج! سأتواصل معك قريبًا.",
+    "close": "إغلاق",
+    "required": "مطلوب",
+    "invalid_phone": "يرجى إدخال رقم هاتف صالح"
   },
   "resume": {
     "title": "السيرة الذاتية",

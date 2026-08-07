@@ -151,7 +151,22 @@
     "telegram": "@dufdoat",
     "copy_email": "Copy email",
     "open_link": "Open link",
-    "copied": "Copied!"
+    "copied": "Copied!",
+    "form_title": "Leave Your Info",
+    "form_subtitle": "Want to work together? Fill this out and I'll get back to you.",
+    "fullname": "Full Name",
+    "fullname_placeholder": "Your full name",
+    "phone": "Phone Number",
+    "phone_placeholder": "Your phone number",
+    "description": "Description (optional)",
+    "description_placeholder": "Tell me briefly about your project or idea...",
+    "submit": "Send",
+    "submitting": "Sending...",
+    "success_title": "Thank you!",
+    "success_message": "Thanks for filling out the form! I'll get in touch with you soon.",
+    "close": "Close",
+    "required": "Required",
+    "invalid_phone": "Please enter a valid phone number"
   },
   "resume": {
     "title": "Resume",

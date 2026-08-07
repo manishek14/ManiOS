@@ -40,4 +40,12 @@ export const api = {
       });
     },
   },
+  contact: {
+    async submit(data: { fullname: string; phone: string; description?: string }) {
+      return apiRequest<{ success: boolean }>('/api/contact', {
+        method: 'POST',
+        body: JSON.stringify(data),
+      });
+    },
+  },
 };

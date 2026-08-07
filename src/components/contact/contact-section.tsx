@@ -2,6 +2,7 @@
 
 import { motion, useInView } from 'framer-motion';
 import { Mail, Github, Linkedin, Send, Copy, ExternalLink } from 'lucide-react';
+import { ContactForm } from '@/components/contact/contact-form';
 import { useApp } from '@/components/providers/app-provider';
 import { SectionWrapper } from '@/components/shared/section-wrapper';
 import { GlassPanel } from '@/components/shared/glass-panel';
@@ -190,7 +191,7 @@ export function ContactSection() {
 
   return (
     <SectionWrapper id="contact">
-      <div className="mx-auto max-w-3xl">
+      <div className="mx-auto max-w-5xl">
         {/* ── Section header ── */}
         <motion.div
           className="mb-14 text-center md:mb-16"
@@ -210,8 +211,10 @@ export function ContactSection() {
           </p>
         </motion.div>
 
-        {/* ── Contact cards grid ── */}
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+        {/* ── Two-column layout: cards + form ── */}
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12">
+          {/* Left: Social cards */}
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-1">
           {SOCIAL_LINKS.map((link, i) => {
             const config = CARD_CONFIG[link.id];
             if (!config) return null;
@@ -225,6 +228,10 @@ export function ContactSection() {
               />
             );
           })}
+          </div>
+
+          {/* Right: Contact form */}
+          <ContactForm />
         </div>
 
         {/* ── Closing message ── */}
