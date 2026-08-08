@@ -80,9 +80,15 @@ Backend developer who loves building scalable APIs with Node.js. Specializes in 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 let zaiInstance: any = null;
 
-async function getZAI() {
+function getZAI() {
   if (!zaiInstance) {
-    zaiInstance = await ZAI.create();
+    zaiInstance = new ZAI({
+      baseUrl: process.env.ZAI_BASE_URL || 'https://internal-api.z.ai/v1',
+      apiKey: process.env.ZAI_API_KEY || 'Z.ai',
+      chatId: process.env.ZAI_CHAT_ID || '',
+      token: process.env.ZAI_TOKEN || '',
+      userId: process.env.ZAI_USER_ID || '',
+    });
   }
   return zaiInstance;
 }
@@ -98,7 +104,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const zai = await getZAI();
+    const zai = getZAI();
 
     // Build messages array for LLM
     const messages = [
