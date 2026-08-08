@@ -82,7 +82,10 @@ let zaiInstance: any = null;
 
 function getZAI() {
   if (!zaiInstance) {
-    zaiInstance = new ZAI({
+    // ZAI.create() reads from filesystem which doesn't work on Cloudflare Workers,
+    // so we bypass the private constructor via type assertion
+    const ZAIClass = ZAI as unknown as new (config: Record<string, string>) => any;
+    zaiInstance = new ZAIClass({
       baseUrl: process.env.ZAI_BASE_URL || 'https://internal-api.z.ai/v1',
       apiKey: process.env.ZAI_API_KEY || 'Z.ai',
       chatId: process.env.ZAI_CHAT_ID || '',
