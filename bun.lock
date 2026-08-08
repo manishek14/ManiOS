@@ -33,7 +33,6 @@
         "react-dom": "^19.0.0",
         "tailwind-merge": "^3.3.1",
         "tailwindcss-animate": "^1.0.7",
-        "z-ai-web-dev-sdk": "^0.0.18",
       },
       "devDependencies": {
         "@opennextjs/cloudflare": "^1.20.1",
@@ -1562,8 +1561,6 @@
     "youch": ["youch@4.1.0-beta.10", "", { "dependencies": { "@poppinss/colors": "^4.1.5", "@poppinss/dumper": "^0.6.4", "@speed-highlight/core": "^1.2.7", "cookie": "^1.0.2", "youch-core": "^0.3.3" } }, "sha512-rLfVLB4FgQneDr0dv1oddCVZmKjcJ6yX6mS4pU82Mq/Dt9a3cLZQ62pDBL4AUO+uVrCvtWz3ZFUL2HFAFJ/BXQ=="],
 
     "youch-core": ["youch-core@0.3.3", "", { "dependencies": { "@poppinss/exception": "^1.2.2", "error-stack-parser-es": "^1.0.5" } }, "sha512-ho7XuGjLaJ2hWHoK8yFnsUGy2Y5uDpqSTq1FkHLK4/oqKtyUU1AFbOOxY4IpC9f0fTLjwYbslUz0Po5BpD1wrA=="],
-
-    "z-ai-web-dev-sdk": ["z-ai-web-dev-sdk@0.0.18", "", { "bin": { "z-ai": "dist/cli.js", "z-ai-generate": "dist/cli.js" } }, "sha512-xVoZIEME2F+/Z06orHCgUKzOMuFPhoHuzN4ZFZqcD71g11nzbzq2jKSP53igi3lJFE8ZbMB4WKb4gp6lCGrMXQ=="],
 
     "zod": ["zod@4.4.3", "", {}, "sha512-ytENFjIJFl2UwYglde2jchW2Hwm4GJFLDiSXWdTrJQBIN9Fcyp7n4DhxJEiWNAJMV1/BqWfW/kkg71UDcHJyTQ=="],
 

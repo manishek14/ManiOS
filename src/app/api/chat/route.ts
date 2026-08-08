@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import ZAI from 'z-ai-web-dev-sdk';
 
 const SYSTEM_PROMPT = `You are an AI assistant for Mani Shekofteh's portfolio website. You help visitors learn about Mani's background, skills, projects, and experience.
 
@@ -77,51 +76,52 @@ Backend developer who loves building scalable APIs with Node.js. Specializes in 
   User: "09121234567"
   Bot: "Thanks! I've received your info. Mani will get in touch with you soon. 🙏"`;
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-let zaiInstance: any = null;
-
-function getZAI() {
-  if (!zaiInstance) {
-    // ZAI.create() reads from filesystem which doesn't work on Cloudflare Workers,
-    // so we bypass the private constructor via type assertion
-    const ZAIClass = ZAI as unknown as new (config: Record<string, string>) => any;
-    zaiInstance = new ZAIClass({
-      baseUrl: process.env.ZAI_BASE_URL || 'https://internal-api.z.ai/v1',
-      apiKey: process.env.ZAI_API_KEY || 'Z.ai',
-      chatId: process.env.ZAI_CHAT_ID || '',
-      token: process.env.ZAI_TOKEN || '',
-      userId: process.env.ZAI_USER_ID || '',
-    });
-  }
-  return zaiInstance;
-}
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY || '';
+const GEMINI_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';
 
 export async function POST(request: NextRequest) {
   try {
     const { message, history = [] } = await request.json();
 
     if (!message || typeof message !== 'string') {
+      return NextResponse.json({ error: 'Message is required' }, { status: 400 });
+    }
+
+    if (!GEMINI_API_KEY) {
       return NextResponse.json(
-        { error: 'Message is required' },
-        { status: 400 }
+        { reply: "I'm currently experiencing some issues. Please try again in a moment or reach out directly via email at manishekofteh@gmail.com." },
+        { status: 200 }
       );
     }
 
-    const zai = getZAI();
-
-    // Build messages array for LLM
-    const messages = [
-      { role: 'system', content: SYSTEM_PROMPT },
-      ...history.slice(-10), // Keep last 10 messages for context
-      { role: 'user', content: message },
+    // Convert chat history to Gemini format
+    const contents = [
+      { role: 'user', parts: [{ text: SYSTEM_PROMPT }] },
+      { role: 'model', parts: [{ text: 'Understood, I will act as described.' }] },
+      ...history.slice(-10).flatMap((msg: { role: string; content: string }) => [
+        { role: 'user' as const, parts: [{ text: msg.content }] },
+        { role: 'model' as const, parts: [{ text: 'OK' }] },
+      ]),
+      { role: 'user', parts: [{ text: message }] },
     ];
 
-    const completion = await zai.chat.completions.create({
-      messages,
-      thinking: { type: 'disabled' },
+    const res = await fetch(`${GEMINI_URL}?key=${GEMINI_API_KEY}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ contents, generationConfig: { temperature: 0.7, maxOutputTokens: 500 } }),
     });
 
-    const reply = completion.choices[0]?.message?.content || 'Sorry, I could not generate a response. Please try again.';
+    if (!res.ok) {
+      const err = await res.text();
+      console.error('Gemini API error:', res.status, err);
+      return NextResponse.json(
+        { reply: "I'm currently experiencing some issues. Please try again in a moment or reach out directly via email at manishekofteh@gmail.com." },
+        { status: 200 }
+      );
+    }
+
+    const data = await res.json();
+    const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || 'Sorry, I could not generate a response. Please try again.';
 
     return NextResponse.json({ reply });
   } catch (error) {
