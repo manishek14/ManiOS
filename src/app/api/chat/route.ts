@@ -76,9 +76,11 @@ Backend developer who loves building scalable APIs with Node.js. Specializes in 
   User: "09121234567"
   Bot: "Thanks! I've received your info. Mani will get in touch with you soon."`;
 
-const GROQ_API_KEY = process.env.GROQ_API_KEY || '';
-const GROQ_URL = 'https://api.groq.com/openai/v1/chat/completions';
-const GROQ_MODEL = 'llama-3.3-70b-versatile';
+// SiliconFlow — Free Chinese AI platform, no Iran restrictions, no credit card
+// Free models: Qwen3-8B, DeepSeek-R1-Distill-Qwen-7B
+const SILICONFLOW_API_KEY = process.env.SILICONFLOW_API_KEY || '';
+const SILICONFLOW_URL = 'https://api.siliconflow.cn/v1/chat/completions';
+const SILICONFLOW_MODEL = 'Qwen/Qwen3-8B';
 
 export async function POST(request: NextRequest) {
   try {
@@ -88,14 +90,14 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Message is required' }, { status: 400 });
     }
 
-    if (!GROQ_API_KEY) {
+    if (!SILICONFLOW_API_KEY) {
       return NextResponse.json(
         { reply: "I'm currently experiencing some issues. Please try again in a moment or reach out directly via email at manishekofteh@gmail.com." },
         { status: 200 }
       );
     }
 
-    // Build messages array for Groq (OpenAI-compatible format)
+    // Build messages array (OpenAI-compatible format)
     const messages: Array<{ role: string; content: string }> = [
       { role: 'system', content: SYSTEM_PROMPT },
     ];
@@ -111,14 +113,14 @@ export async function POST(request: NextRequest) {
     // Add current user message
     messages.push({ role: 'user', content: message });
 
-    const res = await fetch(GROQ_URL, {
+    const res = await fetch(SILICONFLOW_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${GROQ_API_KEY}`,
+        'Authorization': `Bearer ${SILICONFLOW_API_KEY}`,
       },
       body: JSON.stringify({
-        model: GROQ_MODEL,
+        model: SILICONFLOW_MODEL,
         messages,
         temperature: 0.7,
         max_tokens: 500,
@@ -127,7 +129,7 @@ export async function POST(request: NextRequest) {
 
     if (!res.ok) {
       const err = await res.text();
-      console.error('Groq API error:', res.status, err);
+      console.error('SiliconFlow API error:', res.status, err);
       return NextResponse.json(
         { reply: "I'm currently experiencing some issues. Please try again in a moment or reach out directly via email at manishekofteh@gmail.com." },
         { status: 200 }
