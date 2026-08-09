@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+const BACKEND_URL = 'https://api.manishek.ir/employers';
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
@@ -17,16 +19,31 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Invalid phone number' }, { status: 400 });
     }
 
-    // Log the submission (in production, send email, save to DB, etc.)
-    console.log('📋 New contact submission:', {
-      fullname: fullname.trim(),
+    // Forward to the real backend (NestJS)
+    const backendBody: Record<string, string> = {
+      fullName: fullname.trim(),
       phone: phone.trim(),
-      description: description?.trim() || '(none)',
-      timestamp: new Date().toISOString(),
+    };
+
+    if (description && typeof description === 'string' && description.trim().length >= 10) {
+      backendBody.description = description.trim();
+    }
+
+    const res = await fetch(BACKEND_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(backendBody),
     });
 
-    return NextResponse.json({ success: true });
-  } catch {
-    return NextResponse.json({ error: 'Invalid request' }, { status: 400 });
+    if (!res.ok) {
+      console.error('Backend API error:', res.status, await res.text());
+      return NextResponse.json({ error: 'Failed to submit. Please try again.' }, { status: 502 });
+    }
+
+    const data = await res.json();
+    return NextResponse.json({ success: true, id: data.id });
+  } catch (error) {
+    console.error('Contact API error:', error);
+    return NextResponse.json({ error: 'Failed to submit. Please try again.' }, { status: 500 });
   }
 }
