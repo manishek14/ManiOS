@@ -211,10 +211,8 @@ export function ContactSection() {
           </p>
         </motion.div>
 
-        {/* ── Two-column layout: cards + form ── */}
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12">
-          {/* Left: Social cards */}
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-1">
+        {/* ── Social cards — horizontal row ── */}
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-4">
           {SOCIAL_LINKS.map((link, i) => {
             const config = CARD_CONFIG[link.id];
             if (!config) return null;
@@ -228,9 +226,10 @@ export function ContactSection() {
               />
             );
           })}
-          </div>
+        </div>
 
-          {/* Right: Contact form */}
+        {/* ── Contact form — full width below social cards ── */}
+        <div className="mt-8 max-w-2xl mx-auto w-full">
           <ContactForm />
         </div>
 

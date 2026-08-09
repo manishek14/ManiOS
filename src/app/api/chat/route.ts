@@ -48,9 +48,9 @@ Backend developer who loves building scalable APIs with Node.js. Specializes in 
 
 ## Projects
 1. **RideX** — Full-stack ride-hailing platform with AI, multi-panel architecture, real-time tracking, dynamic pricing. Tech: Next.js, Node.js, Express, MongoDB, Redis, TypeScript, WebSocket, AI/ML
-2. **OnlineShop** — Multi-vendor e-commerce backend with NestJS. Tech: NestJS, TypeORM, PostgreSQL, Redis, JWT, TypeScript, Swagger, Docker
-3. **Vendora** — Marketplace platform with Node.js and MongoDB. Tech: Node.js, Express, MongoDB, JWT, TypeScript
-4. **MarketPlace Shop** — Online marketplace backend. Tech: Node.js, Express, MongoDB, JWT, JavaScript
+2. **Vendora** — Multi-vendor e-commerce backend with NestJS. Tech: NestJS, TypeORM, PostgreSQL, Redis, JWT, TypeScript, Swagger, Docker
+3. **MarketPlace Shop** — Online marketplace backend. Tech: Node.js, Express, MongoDB, JWT, JavaScript
+4. **AxisHR** — Comprehensive HR management system. Tech: Node.js, Express, TypeScript, MongoDB, JWT, Swagger
 
 ## Guidelines
 - Answer questions about Mani's experience, skills, and projects
@@ -65,7 +65,7 @@ Backend developer who loves building scalable APIs with Node.js. Specializes in 
   2. Phone number
   3. Brief description of what they need (optional)
 - Ask ONE question at a time in a friendly, conversational way
-- Once you have their name and phone, respond with: "Thanks! I've received your info. Mani will get in touch with you soon. 🙏" (or equivalent in their language)
+- Once you have their name and phone, respond with: "Thanks! I've received your info. Mani will get in touch with you soon." (or equivalent in their language)
 - After collecting info, do NOT keep asking more questions — just confirm and end warmly
 - If the user only provides partial info (e.g., just a name), gently ask for the missing piece
 - Example flow:
@@ -74,10 +74,11 @@ Backend developer who loves building scalable APIs with Node.js. Specializes in 
   User: "Ali Rezaei"
   Bot: "Nice to meet you, Ali! What's the best phone number to contact you?"
   User: "09121234567"
-  Bot: "Thanks! I've received your info. Mani will get in touch with you soon. 🙏"`;
+  Bot: "Thanks! I've received your info. Mani will get in touch with you soon."`;
 
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY || '';
-const GEMINI_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';
+const GROQ_API_KEY = process.env.GROQ_API_KEY || '';
+const GROQ_URL = 'https://api.groq.com/openai/v1/chat/completions';
+const GROQ_MODEL = 'llama-3.3-70b-versatile';
 
 export async function POST(request: NextRequest) {
   try {
@@ -87,33 +88,46 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Message is required' }, { status: 400 });
     }
 
-    if (!GEMINI_API_KEY) {
+    if (!GROQ_API_KEY) {
       return NextResponse.json(
         { reply: "I'm currently experiencing some issues. Please try again in a moment or reach out directly via email at manishekofteh@gmail.com." },
         { status: 200 }
       );
     }
 
-    // Convert chat history to Gemini format
-    const contents = [
-      { role: 'user', parts: [{ text: SYSTEM_PROMPT }] },
-      { role: 'model', parts: [{ text: 'Understood, I will act as described.' }] },
-      ...history.slice(-10).flatMap((msg: { role: string; content: string }) => [
-        { role: 'user' as const, parts: [{ text: msg.content }] },
-        { role: 'model' as const, parts: [{ text: 'OK' }] },
-      ]),
-      { role: 'user', parts: [{ text: message }] },
+    // Build messages array for Groq (OpenAI-compatible format)
+    const messages: Array<{ role: string; content: string }> = [
+      { role: 'system', content: SYSTEM_PROMPT },
     ];
 
-    const res = await fetch(`${GEMINI_URL}?key=${GEMINI_API_KEY}`, {
+    // Add conversation history (last 10 messages)
+    for (const msg of history.slice(-10)) {
+      messages.push({
+        role: msg.role === 'assistant' ? 'assistant' : 'user',
+        content: msg.content,
+      });
+    }
+
+    // Add current user message
+    messages.push({ role: 'user', content: message });
+
+    const res = await fetch(GROQ_URL, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ contents, generationConfig: { temperature: 0.7, maxOutputTokens: 500 } }),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${GROQ_API_KEY}`,
+      },
+      body: JSON.stringify({
+        model: GROQ_MODEL,
+        messages,
+        temperature: 0.7,
+        max_tokens: 500,
+      }),
     });
 
     if (!res.ok) {
       const err = await res.text();
-      console.error('Gemini API error:', res.status, err);
+      console.error('Groq API error:', res.status, err);
       return NextResponse.json(
         { reply: "I'm currently experiencing some issues. Please try again in a moment or reach out directly via email at manishekofteh@gmail.com." },
         { status: 200 }
@@ -121,7 +135,7 @@ export async function POST(request: NextRequest) {
     }
 
     const data = await res.json();
-    const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || 'Sorry, I could not generate a response. Please try again.';
+    const reply = data.choices?.[0]?.message?.content || 'Sorry, I could not generate a response. Please try again.';
 
     return NextResponse.json({ reply });
   } catch (error) {
