@@ -76,11 +76,11 @@ Backend developer who loves building scalable APIs with Node.js. Specializes in 
   User: "09121234567"
   Bot: "Thanks! I've received your info. Mani will get in touch with you soon."`;
 
-// SiliconFlow — Free Chinese AI platform, no Iran restrictions, no credit card
-// Free models: Qwen3-8B, DeepSeek-R1-Distill-Qwen-7B
-const SILICONFLOW_API_KEY = process.env.SILICONFLOW_API_KEY || '';
-const SILICONFLOW_URL = 'https://api.siliconflow.cn/v1/chat/completions';
-const SILICONFLOW_MODEL = 'Qwen/Qwen3-8B';
+// OpenRouter — Free models, no credit card, no Iran restrictions
+// Free models: google/gemma-4-26b-a4b-it:free, nvidia/nemotron-3-super-120b-a12b:free, etc.
+const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY || '';
+const OPENROUTER_URL = 'https://openrouter.ai/api/v1/chat/completions';
+const OPENROUTER_MODEL = 'google/gemma-4-26b-a4b-it:free';
 
 export async function POST(request: NextRequest) {
   try {
@@ -90,7 +90,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Message is required' }, { status: 400 });
     }
 
-    if (!SILICONFLOW_API_KEY) {
+    if (!OPENROUTER_API_KEY) {
       return NextResponse.json(
         { reply: "I'm currently experiencing some issues. Please try again in a moment or reach out directly via email at manishekofteh@gmail.com." },
         { status: 200 }
@@ -113,14 +113,16 @@ export async function POST(request: NextRequest) {
     // Add current user message
     messages.push({ role: 'user', content: message });
 
-    const res = await fetch(SILICONFLOW_URL, {
+    const res = await fetch(OPENROUTER_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${SILICONFLOW_API_KEY}`,
+        'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
+        'HTTP-Referer': 'https://manishek.ir',
+        'X-Title': 'ManiOS Chat',
       },
       body: JSON.stringify({
-        model: SILICONFLOW_MODEL,
+        model: OPENROUTER_MODEL,
         messages,
         temperature: 0.7,
         max_tokens: 500,
@@ -129,7 +131,7 @@ export async function POST(request: NextRequest) {
 
     if (!res.ok) {
       const err = await res.text();
-      console.error('SiliconFlow API error:', res.status, err);
+      console.error('OpenRouter API error:', res.status, err);
       return NextResponse.json(
         { reply: "I'm currently experiencing some issues. Please try again in a moment or reach out directly via email at manishekofteh@gmail.com." },
         { status: 200 }
