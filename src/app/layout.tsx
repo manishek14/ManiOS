@@ -4,6 +4,7 @@ import './globals.css';
 import { ThemeProvider } from 'next-themes';
 import { AppProvider } from '@/components/providers/app-provider';
 import { Toaster } from '@/components/ui/toaster';
+import { JsonLd } from '@/components/seo/json-ld';
 
 const inter = Inter({
   variable: '--font-geist-sans',
@@ -19,28 +20,46 @@ const grandHotel = Grand_Hotel({
 });
 
 export const metadata: Metadata = {
-  title: 'Mani Shekofteh — Backend Engineer',
-  description: 'Backend engineer specializing in Node.js, NestJS, and scalable API design. Building production systems with TypeScript, PostgreSQL, and modern architecture patterns.',
-  keywords: ['Mani Shekofteh', 'Backend Developer', 'Node.js', 'NestJS', 'TypeScript', 'PostgreSQL', 'API Design', 'Software Engineer'],
-  authors: [{ name: 'Mani Shekofteh', url: 'https://github.com/manishek14' }],
+  metadataBase: new URL('https://manishek.ir'),
+  title: {
+    default: 'مانی شکفته (Mani Shekofteh) — توسعه‌دهنده بک‌اند',
+    template: '%s | مانی شکفته',
+  },
+  description: 'وبسایت شخصی مانی شکفته — توسعه‌دهنده بک‌اند تخصصی در Node.js، NestJS و TypeScript. طراحی API مقیاس‌پذیر با PostgreSQL، MongoDB و الگوهای معماری مدرن.',
+  keywords: ['مانی شکفته', 'Mani Shekofteh', 'توسعه‌دهنده بک‌اند', 'Backend Developer', 'Node.js', 'NestJS', 'TypeScript', 'PostgreSQL', 'MongoDB', 'API Design', 'منی شکفته برنامه نویس'],
+  authors: [{ name: 'Mani Shekofteh', url: 'https://manishek.ir' }],
+  creator: 'Mani Shekofteh',
+  publisher: 'Mani Shekofteh',
   icons: {
     icon: '/favicon.svg',
   },
   openGraph: {
-    title: 'Mani Shekofteh — Backend Engineer',
-    description: 'Backend engineer specializing in Node.js, NestJS, and scalable API design.',
+    title: 'مانی شکفته (Mani Shekofteh) — توسعه‌دهنده بک‌اند',
+    description: 'وبسایت شخصی مانی شکفته — توسعه‌دهنده بک‌اند تخصصی در Node.js، NestJS و TypeScript.',
+    url: 'https://manishek.ir',
+    siteName: 'مانی شکفته | Mani Shekofteh',
+    locale: 'fa_IR',
+    alternateLocale: ['en_US'],
     type: 'website',
-    locale: 'en_US',
-    alternateLocale: ['fa_IR', 'ar_SA'],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Mani Shekofteh — Backend Engineer',
-    description: 'Backend engineer specializing in Node.js, NestJS, and scalable API design.',
+    title: 'مانی شکفته (Mani Shekofteh) — توسعه‌دهنده بک‌اند',
+    description: 'وبسایت شخصی مانی شکفته — توسعه‌دهنده بک‌اند تخصصی در Node.js، NestJS و TypeScript.',
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  alternates: {
+    canonical: 'https://manishek.ir',
   },
 };
 
@@ -50,8 +69,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className="dark">
+    <html lang="en" dir="ltr" suppressHydrationWarning className="dark">
       <body className={`${inter.variable} ${grandHotel.variable} antialiased`}>
+        <JsonLd />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
