@@ -69,7 +69,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" dir="ltr" suppressHydrationWarning className="dark">
+    <html lang="fa" dir="rtl" suppressHydrationWarning className="dark">
       <body className={`${inter.variable} ${grandHotel.variable} antialiased`}>
         <JsonLd />
         <ThemeProvider
