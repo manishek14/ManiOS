@@ -59,8 +59,8 @@ function SkillBadge({ skill, index }: { skill: { name: string; level: number }; 
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: '-20px' });
 
-  const color = TECH_COLORS[skill.name] || '#6366f1';
-  const icon = getTechIcon(skill.name, 14);
+  const color = TECH_COLORS[skill.name] || '#818cf8';
+  const icon = getTechIcon(skill.name, 18);
 
   return (
     <motion.div
@@ -74,9 +74,7 @@ function SkillBadge({ skill, index }: { skill: { name: string; level: number }; 
         ease: [0.16, 1, 0.3, 1],
       }}
     >
-      <span className="shrink-0" style={{ filter: `drop-shadow(0 0 4px ${color}66)` }}>
-        {icon}
-      </span>
+      {icon}
       <span className="text-sm text-foreground/80">{skill.name}</span>
     </motion.div>
   );
@@ -134,7 +132,7 @@ export function SkillsSection() {
         {/* Header */}
         <div className="text-center mb-14">
           <motion.h2
-            className="text-3xl md:text-4xl font-bold gradient-text mb-4"
+            className="gradient-text text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl mb-4"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-60px' }}
@@ -143,7 +141,7 @@ export function SkillsSection() {
             {t.skills.title}
           </motion.h2>
           <motion.p
-            className="text-muted-foreground text-sm md:text-base max-w-lg mx-auto"
+            className="text-muted-foreground text-sm md:text-base max-w-xl mx-auto"
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-60px' }}

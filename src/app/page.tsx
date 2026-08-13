@@ -24,7 +24,6 @@ export default function Home() {
   return (
     <main className="relative min-h-screen">
       <AuroraBackground />
-      <div className="noise-overlay" />
       <CinematicLoader />
       <ScrollProgress />
       <GlassNavbar />

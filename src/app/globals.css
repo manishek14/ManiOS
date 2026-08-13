@@ -1,6 +1,32 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+/* ─── Dana — Persian Font ─── */
+@font-face {
+  font-family: 'Dana';
+  src: url('/fonts/dana-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF, U+200C-200D, U+20AA, U+064B-065F, U+0670;
+}
+@font-face {
+  font-family: 'Dana';
+  src: url('/fonts/dana-medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF, U+200C-200D, U+20AA, U+064B-065F, U+0670;
+}
+@font-face {
+  font-family: 'Dana';
+  src: url('/fonts/dana-bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF, U+200C-200D, U+20AA, U+064B-065F, U+0670;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 /* ─── Theme Inline ─── */
@@ -99,7 +125,7 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-family: 'Dana', 'Inter', system-ui, -apple-system, sans-serif;
     overflow-x: hidden;
   }
 
@@ -297,7 +323,7 @@
 }
 
 .font-body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: 'Dana', 'Inter', system-ui, -apple-system, sans-serif;
 }
 
 /* ─── Glow Effects ─── */

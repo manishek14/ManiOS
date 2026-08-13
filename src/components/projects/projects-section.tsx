@@ -324,7 +324,7 @@ export function ProjectsSection() {
         {/* Header */}
         <div className="text-center mb-14">
           <motion.h2
-            className="text-3xl md:text-4xl font-bold gradient-text mb-4"
+            className="gradient-text text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl mb-4"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-60px' }}
@@ -333,7 +333,7 @@ export function ProjectsSection() {
             {t.projects.title}
           </motion.h2>
           <motion.p
-            className="text-muted-foreground text-sm md:text-base max-w-lg mx-auto"
+            className="text-muted-foreground text-sm md:text-base max-w-xl mx-auto"
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-60px' }}
