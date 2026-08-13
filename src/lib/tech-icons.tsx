@@ -66,7 +66,6 @@ const SIMPLE_ICONS: Record<string, { slug: string; color: string }> = {
   'PostgreSQL': { slug: 'postgresql', color: '4169E1' },
   'MongoDB': { slug: 'mongodb', color: '47A248' },
   'MySQL': { slug: 'mysql', color: '4479A1' },
-  'SQL Server': { slug: 'microsoftsqlserver', color: 'CC2927' },
   'SQLite': { slug: 'sqlite', color: '0078D4' },
   'Docker': { slug: 'docker', color: '2496ED' },
   'Linux': { slug: 'linux', color: 'FCC624' },
@@ -76,7 +75,6 @@ const SIMPLE_ICONS: Record<string, { slug: string; color: string }> = {
   'Claude': { slug: 'anthropic', color: 'D97757' },
   'Cursor': { slug: 'cursor', color: 'E5E7EB' },
   'GitHub Copilot': { slug: 'githubcopilot', color: '818CF8' },
-  'VS Code': { slug: 'visualstudiocode', color: '007ACC' },
   'Postman': { slug: 'postman', color: 'FF6C37' },
   'Swagger': { slug: 'swagger', color: '85EA2D' },
 };
@@ -168,10 +166,22 @@ function ConceptIcon({
           <circle cx="18" cy="16" r="1.5" fill={color} stroke="none" />
         </svg>
       );
+    case 'SQL Server':
+      return (
+        <svg viewBox="0 0 24 24" width={size} height={size} fill={color}>
+          <path d="M17.47 2.21a8.26 8.26 0 0 0-5.47-1.71 8.26 8.26 0 0 0-5.47 1.71c-1.36 1.18-2 2.7-2 4.29v11c0 1.59.64 3.11 2 4.29a8.26 8.26 0 0 0 5.47 1.71 8.26 8.26 0 0 0 5.47-1.71c1.36-1.18 2-2.7 2-4.29v-11c0-1.59-.64-3.11-2-4.29zM12 20.71c-3.31 0-6-1.57-6-3.5v-2.71c1.36 1.18 3.5 1.93 6 1.93s4.64-.75 6-1.93v2.71c0 1.93-2.69 3.5-6 3.5zm0-7.64c-3.31 0-6-1.57-6-3.5s2.69-3.5 6-3.5 6 1.57 6 3.5-2.69 3.5-6 3.5z" />
+        </svg>
+      );
     case 'SQL':
       return (
         <svg viewBox="0 0 24 24" width={size} height={size} fill={color}>
           <path d="M12 2C7 2 3 3.5 3 5.5v13c0 2 4 3.5 9 3.5s9-1.5 9-3.5v-13C21 3.5 17 2 12 2zm0 2c4 0 7 1 7 2s-3 2-7 2-7-1-7-2 3-2 7-2zM5 8.5c1.5.9 4 1.5 7 1.5s5.5-.6 7-1.5v3c0 1-3 2-7 2s-7-1-7-2v-3zm0 6c1.5.9 4 1.5 7 1.5s5.5-.6 7-1.5v4c0 1-3 2-7 2s-7-1-7-2v-4z" />
+        </svg>
+      );
+    case 'VS Code':
+      return (
+        <svg viewBox="0 0 24 24" width={size} height={size} fill={color}>
+          <path d="M17.583 2.217l-5.56 5.56L6.263 3.38l-1.414 1.414 4.44 4.44L4.85 14.675l1.414 1.414 5.76-4.397 5.56 5.56 2.827-.707V2.924l-2.827-.707zM17.583 15.4L13.82 12l3.763-3.4v6.8z" />
         </svg>
       );
     case 'Clean Architecture':

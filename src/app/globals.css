@@ -27,6 +27,15 @@
   unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF, U+200C-200D, U+20AA, U+064B-065F, U+0670;
 }
 
+/* ─── Lalezar — Bold Persian Display Font (name heading) ─── */
+@font-face {
+  font-family: 'Lalezar';
+  src: url('/fonts/lalezar-regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 /* ─── Theme Inline ─── */
@@ -319,7 +328,7 @@
 
 /* ─── Typography ─── */
 .font-display {
-  font-family: var(--font-grand-hotel), cursive;
+  font-family: 'Lalezar', var(--font-grand-hotel), cursive;
 }
 
 .font-body {
@@ -421,23 +430,4 @@
 .social-glow:hover {
   box-shadow: 0 0 20px rgba(99, 102, 241, 0.3), 0 0 60px rgba(99, 102, 241, 0.1);
   color: var(--foreground);
-}
-
-/* ─── AI Chat Button Pulse Glow ─── */
-@keyframes ai-chat-pulse {
-  0%, 100% {
-    box-shadow: 0 0 12px rgba(99, 102, 241, 0.15), 0 0 32px rgba(99, 102, 241, 0.05);
-  }
-  50% {
-    box-shadow: 0 0 20px rgba(99, 102, 241, 0.3), 0 0 48px rgba(99, 102, 241, 0.1);
-  }
-}
-
-.ai-chat-pulse {
-  animation: ai-chat-pulse 3s ease-in-out infinite;
-}
-
-.ai-chat-pulse:hover {
-  animation: none;
-  box-shadow: 0 0 24px rgba(99, 102, 241, 0.4), 0 0 56px rgba(99, 102, 241, 0.15);
 }
