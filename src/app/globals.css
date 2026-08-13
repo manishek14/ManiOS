@@ -350,12 +350,8 @@
 
 /* ─── Gradient Text ─── */
 .gradient-text {
-  background: linear-gradient(135deg, #818cf8 0%, #67e8f9 50%, #a78bfa 100%);
-  background-size: 100% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
+  color: #67e8f9;
+  text-shadow: 0 0 30px rgba(103, 232, 249, 0.25), 0 0 60px rgba(99, 102, 241, 0.15);
 }
 
 .gradient-text-warm {
