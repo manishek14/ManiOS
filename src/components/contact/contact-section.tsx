@@ -203,7 +203,7 @@ export function ContactSection() {
             ease: tokens.motion.ease.out,
           }}
         >
-          <h2 className="gradient-text text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl mb-4 -mt-2.5">
+          <h2 className="gradient-text text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl mb-4">
             {t.contact.title}
           </h2>
           <p className="mx-auto max-w-xl text-sm text-muted-foreground md:text-base">

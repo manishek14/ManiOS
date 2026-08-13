@@ -328,7 +328,7 @@
 
 /* ─── Typography ─── */
 .font-display {
-  font-family: 'Lalezar', var(--font-grand-hotel), cursive;
+  font-family: 'Lalezar', cursive;
 }
 
 .font-body {
@@ -351,21 +351,25 @@
 /* ─── Gradient Text ─── */
 .gradient-text {
   background: linear-gradient(135deg, #818cf8 0%, #67e8f9 50%, #a78bfa 100%);
+  background-size: 100% 100%;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
 .gradient-text-warm {
   background: linear-gradient(135deg, #f472b6 0%, #818cf8 50%, #67e8f9 100%);
+  background-size: 100% 100%;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
 /* ─── Section Spacing ─── */
 .section-padding {
-  padding-top: clamp(3rem, 6vh, 6rem);
+  padding-top: clamp(4rem, 8vh, 7rem);
   padding-bottom: clamp(3rem, 6vh, 6rem);
   padding-left: clamp(1.25rem, 5vw, 5rem);
   padding-right: clamp(1.25rem, 5vw, 5rem);

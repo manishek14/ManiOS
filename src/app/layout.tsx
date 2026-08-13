@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter, Grand_Hotel } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from 'next-themes';
 import { AppProvider } from '@/components/providers/app-provider';
@@ -8,13 +8,6 @@ import { JsonLd } from '@/components/seo/json-ld';
 
 const inter = Inter({
   variable: '--font-geist-sans',
-  subsets: ['latin'],
-  display: 'swap',
-});
-
-const grandHotel = Grand_Hotel({
-  weight: '400',
-  variable: '--font-grand-hotel',
   subsets: ['latin'],
   display: 'swap',
 });
@@ -70,7 +63,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fa" dir="rtl" suppressHydrationWarning className="dark">
-      <body className={`${inter.variable} ${grandHotel.variable} antialiased`}>
+      <body className={`${inter.variable} antialiased`}>
         <JsonLd />
         <ThemeProvider
           attribute="class"
