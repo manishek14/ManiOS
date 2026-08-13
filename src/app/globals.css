@@ -330,8 +330,8 @@
 
 /* ─── Section Spacing ─── */
 .section-padding {
-  padding-top: clamp(5rem, 10vh, 10rem);
-  padding-bottom: clamp(5rem, 10vh, 10rem);
+  padding-top: clamp(3rem, 6vh, 6rem);
+  padding-bottom: clamp(3rem, 6vh, 6rem);
   padding-left: clamp(1.25rem, 5vw, 5rem);
   padding-right: clamp(1.25rem, 5vw, 5rem);
 }
