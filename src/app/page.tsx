@@ -13,9 +13,12 @@ import { ProjectsSection } from '@/components/projects/projects-section';
 import { ExperienceSection } from '@/components/experience/experience-section';
 import { ContactSection } from '@/components/contact/contact-section';
 import { BackToTop } from '@/components/shared/back-to-top';
+import { AiChatButton } from '@/components/ai-assistant/ai-chat-button';
+import { AiChatWindow } from '@/components/ai-assistant/ai-chat-window';
 import { ResumeModal } from '@/components/resume/resume-modal';
 
 export default function Home() {
+  const [chatOpen, setChatOpen] = useState(false);
   const [resumeOpen, setResumeOpen] = useState(false);
 
   return (
@@ -34,6 +37,8 @@ export default function Home() {
       <ContactSection />
 
       <BackToTop />
+      <AiChatButton onClick={() => setChatOpen((v) => !v)} />
+      <AiChatWindow isOpen={chatOpen} onClose={() => setChatOpen(false)} />
       <ResumeModal isOpen={resumeOpen} onClose={() => setResumeOpen(false)} />
     </main>
   );

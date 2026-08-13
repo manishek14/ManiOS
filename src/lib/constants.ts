@@ -90,17 +90,6 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
     ],
   },
   {
-    id: 'ai_tools',
-    name: { en: 'AI & Tools', fa: 'هوش مصنوعی', ar: 'الذكاء الاصطناعي' },
-    icon: 'Brain',
-    skills: [
-      { name: 'ChatGPT', level: 85 },
-      { name: 'Claude', level: 82 },
-      { name: 'Cursor', level: 88 },
-      { name: 'GitHub Copilot', level: 80 },
-    ],
-  },
-  {
     id: 'developer_tools',
     name: { en: 'Developer Tools', fa: 'ابزار توسعه', ar: 'أدوات التطوير' },
     icon: 'Wrench',
