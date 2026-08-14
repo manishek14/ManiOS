@@ -6,7 +6,7 @@ import { Sun, Moon, Globe, Menu, X } from 'lucide-react';
 import { useTheme } from 'next-themes';
 
 import { cn } from '@/lib/utils';
-import { useApp, LOCALES, LOCALE_LABELS } from '@/components/providers/app-provider';
+import { useApp, LOCALES } from '@/components/providers/app-provider';
 import { SECTIONS } from '@/lib/constants';
 import { tokens } from '@/config/design-tokens';
 import { Button } from '@/components/ui/button';
@@ -260,7 +260,7 @@ export function GlassNavbar() {
                   )}
                 >
                   <span className="text-base leading-none">{LOCALE_FLAGS[loc]}</span>
-                  <span className="text-sm font-medium">{LOCALE_LABELS[loc]}</span>
+                  <span className="text-sm font-medium uppercase">{loc}</span>
                   {locale === loc && (
                     <motion.span
                       layoutId="locale-check"
