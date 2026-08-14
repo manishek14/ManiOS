@@ -76,18 +76,32 @@
         "features": ["Multi-vendor product management", "Complex product attribute system", "Flexible payment flow architecture", "Role-based access control (RBAC)", "Redis caching layer for performance", "Clean, modular NestJS structure"],
         "view_code": "View Code"
       },
-      "marketplace": {
-        "name": "MarketPlace Shop",
-        "description": "An online marketplace backend implementing core e-commerce functionality including product listings, user management, and order processing with a focus on clean API design.",
-        "architecture": "Node.js with Express, MongoDB for data persistence, JWT authentication, RESTful API design patterns.",
-        "features": ["Product listing and management", "User authentication system", "Order processing pipeline", "Clean API documentation"],
+      "shopynest": {
+        "name": "ShopyNest",
+        "description": "A full-featured e-commerce backend built with NestJS 11, featuring JWT authentication with complete RBAC (60+ permissions), tree-structured categories, shopping cart, orders with Zibal payment gateway, support tickets, and SMS queue.",
+        "architecture": "NestJS 11 modular architecture, TypeORM 0.3, PostgreSQL, Bull queue (Redis-backed) for SMS, Argon2 hashing, class-validator, Swagger.",
+        "features": ["JWT auth with full RBAC (60+ permissions)", "Tree-structured product categories (3 levels)", "Shopping cart with auto price calculation", "Order processing with Zibal payment gateway", "Support ticket system with threaded replies", "SMS queue with Bull and retry/backoff", "IP-based rate limiting and cron tasks", "Unified response envelope pattern"],
         "view_code": "View Code"
       },
       "axishr": {
         "name": "AxisHR",
-        "description": "A comprehensive Human Resources management system built as a backend-only service. Handles employee lifecycle management, leave requests, attendance tracking, payroll calculations, and organizational structure.",
-        "architecture": "Node.js with Express and TypeScript, MongoDB for flexible document-based data models, JWT authentication with role-based permissions, RESTful API following clean architecture principles.",
+        "description": "A comprehensive Human Resources management system. Handles employee lifecycle, leave requests, attendance tracking, payroll calculations, and organizational structure.",
+        "architecture": "Node.js with Express and TypeScript, MongoDB, JWT authentication, RESTful API with clean architecture.",
         "features": ["Employee lifecycle management", "Leave request workflow", "Attendance tracking system", "Payroll calculation engine", "Organizational structure management", "Role-based access control"],
+        "view_code": "View Code"
+      },
+      "pixora": {
+        "name": "Pixora",
+        "description": "A bilingual Instagram-like social platform backend with NestJS, GraphQL (Apollo), and TypeORM. Six development phases covering posts, stories, reels, direct messaging, safety tools, and realtime capabilities.",
+        "architecture": "NestJS 11, Apollo Server 5, GraphQL 16, TypeORM 0.3 (PostgreSQL/SQLite), Socket.IO for realtime, Web Push (VAPID), Multer for uploads.",
+        "features": ["Posts with multi-image/video, hashtags, mentions", "Threaded comments with edit/delete", "Stories with 24h auto-expire and highlights", "Reels with dedicated tab and algorithm", "Direct messages with Socket.IO realtime", "Web Push notifications (VAPID)", "Block, mute, and follow suggestions", "Collections for organizing bookmarks", "Unified search across all content types", "Online presence tracking"],
+        "view_code": "View Code"
+      },
+      "nexra": {
+        "name": "Nexra",
+        "description": "A multi-service super-app backend built as NestJS microservices. Single HTTP/WebSocket API gateway fanning out to five services: ride-hailing, food delivery, payments, wallet, and BNPL installments.",
+        "architecture": "Six NestJS microservices over TCP: api-gateway, core-services, taxi-services, food-services, payment-services, installment-services. Each with own PostgreSQL. Redis for Pub/Sub and geo queries.",
+        "features": ["Ride-hailing with real fare estimation (Neshan API)", "Driver allocation via Redis Geo + First-Accept", "Food delivery with restaurant management", "Dual payment gateway (Zibal REST + Mellat SOAP)", "Wallet with pessimistic locking", "BNPL installments with approval workflow", "OTP login via SMS (sms.ir)", "WebSocket realtime driver push", "Microservices with independent databases", "Hexagonal architecture"],
         "view_code": "View Code"
       }
     }
