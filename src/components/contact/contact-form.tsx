@@ -163,6 +163,7 @@ export function ContactForm() {
               </div>
               <input
                 type="tel"
+                dir="rtl"
                 value={phone}
                 onChange={(e) => { setPhone(e.target.value); clearFieldError('phone'); }}
                 placeholder={t.contact.phone_placeholder}

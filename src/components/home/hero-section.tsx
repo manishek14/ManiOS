@@ -158,7 +158,7 @@ export function HeroSection({ onOpenResume }: HeroSectionProps) {
                 {nameWords.map((word, i) => (
                   <motion.span
                     key={`${word}-${i}`}
-                    className="gradient-text-warm inline-block me-2"
+                    className="inline-block me-2 text-[#f472b6]"
                     initial={{ opacity: 0, y: 20, filter: 'blur(4px)' }}
                     animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
                     transition={{
