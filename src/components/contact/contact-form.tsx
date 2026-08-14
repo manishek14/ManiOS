@@ -16,7 +16,7 @@ interface FormErrors {
 }
 
 export function ContactForm() {
-  const { t } = useApp();
+  const { t, rtl } = useApp();
   const [fullname, setFullname] = useState('');
   const [phone, setPhone] = useState('');
   const [description, setDescription] = useState('');
@@ -166,7 +166,7 @@ export function ContactForm() {
                 value={phone}
                 onChange={(e) => { setPhone(e.target.value); clearFieldError('phone'); }}
                 placeholder={t.contact.phone_placeholder}
-                style={{ direction: 'rtl', textAlign: 'right' }}
+                style={rtl ? { direction: 'rtl', textAlign: 'right' } : undefined}
                 className={cn(fieldBase, 'ps-10', errors.phone && 'border-red-500/50 focus:border-red-500/50 focus:ring-red-500/20')}
                 disabled={isSubmitting}
               />
