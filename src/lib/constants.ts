@@ -132,6 +132,7 @@ export const PROJECTS: Project[] = [
     category: 'frontend',
     liveUrl: 'https://ridex-n09e74hz8-ridex1.vercel.app',
     github: 'https://github.com/manishek14/ridex',
+    image: '/ridex.webp',
     coverGradient: 'from-indigo-600 via-purple-600 to-blue-600',
   },
   {
@@ -171,6 +172,7 @@ export const PROJECTS: Project[] = [
     features: ['JWT auth with full RBAC (60+ permissions)', 'Tree-structured product categories (3 levels)', 'Shopping cart with auto price calculation', 'Order processing with Zibal payment gateway', 'Support ticket system with threaded replies', 'SMS queue with Bull and retry/backoff', 'IP-based rate limiting and request tracking', 'Scheduled tasks with cron', 'Unified response envelope pattern'],
     category: 'backend',
     github: 'https://github.com/manishek14/shopynest',
+    image: '/shopynest.webp',
     coverGradient: 'from-emerald-600 via-green-600 to-teal-600',
   },
   {
@@ -209,6 +211,7 @@ export const PROJECTS: Project[] = [
     features: ['Posts with multi-image/video, hashtags, and mentions', 'Threaded comments with edit/delete', 'Stories with 24h auto-expire and highlights', 'Reels with dedicated tab and algorithm', 'Direct messages with realtime Socket.IO', 'Web Push notifications (VAPID)', 'Block, mute, and follow suggestions', 'Collections for organizing bookmarks', 'Unified search across all content types', 'Online presence tracking with grace period'],
     category: 'backend',
     github: 'https://github.com/manishek14/pixora',
+    image: '/pixora.webp',
     coverGradient: 'from-fuchsia-600 via-purple-600 to-indigo-600',
   },
   {
@@ -228,6 +231,7 @@ export const PROJECTS: Project[] = [
     features: ['Ride-hailing with real fare estimation (Neshan API)', 'Driver allocation via Redis Geo + First-Accept pattern', 'Food delivery with restaurant and order management', 'Dual payment gateway (Zibal REST + Mellat SOAP)', 'Wallet with pessimistic locking and charge via gateway', 'BNPL installments with approval workflow', 'OTP login via SMS (sms.ir)', 'WebSocket realtime driver ride-offer push', 'Microservices with independent databases', 'Hexagonal architecture for newer modules'],
     category: 'backend',
     github: 'https://github.com/manishek14/Nexra',
+    image: '/nexra.webp',
     coverGradient: 'from-cyan-600 via-blue-600 to-indigo-600',
   },
 ];
