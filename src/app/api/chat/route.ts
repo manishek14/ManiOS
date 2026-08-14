@@ -76,11 +76,21 @@ Backend developer who loves building scalable APIs with Node.js. Specializes in 
   User: "09121234567"
   Bot: "Thanks! I've received your info. Mani will get in touch with you soon."`;
 
-// OpenRouter — Free models, no credit card, no Iran restrictions
-// Free models: google/gemma-4-26b-a4b-it:free, nvidia/nemotron-3-super-120b-a12b:free, etc.
 const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY || '';
 const OPENROUTER_URL = 'https://openrouter.ai/api/v1/chat/completions';
-const OPENROUTER_MODEL = 'google/gemma-4-26b-a4b-it:free';
+
+// Fallback model list — tried in order until one succeeds
+const MODELS = [
+  'google/gemma-4-26b-a4b-it:free',
+  'nvidia/nemotron-3.5-lightning:free',
+  'poolside/laguna-s-2.1:free',
+];
+
+const FALLBACK_REPLY = "I'm currently experiencing some issues. Please try again in a moment or reach out directly via email at manishekofteh@gmail.com.";
+
+function sleep(ms: number) {
+  return new Promise((r) => setTimeout(r, ms));
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -91,10 +101,7 @@ export async function POST(request: NextRequest) {
     }
 
     if (!OPENROUTER_API_KEY) {
-      return NextResponse.json(
-        { reply: "I'm currently experiencing some issues. Please try again in a moment or reach out directly via email at manishekofteh@gmail.com." },
-        { status: 200 }
-      );
+      return NextResponse.json({ reply: FALLBACK_REPLY }, { status: 200 });
     }
 
     // Build messages array (OpenAI-compatible format)
@@ -113,40 +120,57 @@ export async function POST(request: NextRequest) {
     // Add current user message
     messages.push({ role: 'user', content: message });
 
-    const res = await fetch(OPENROUTER_URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
-        'HTTP-Referer': 'https://manishek.ir',
-        'X-Title': 'ManiOS Chat',
-      },
-      body: JSON.stringify({
-        model: OPENROUTER_MODEL,
-        messages,
-        temperature: 0.7,
-        max_tokens: 500,
-      }),
-    });
+    // Try each model with retry on rate-limit (429)
+    for (const model of MODELS) {
+      for (let attempt = 0; attempt < 2; attempt++) {
+        try {
+          const res = await fetch(OPENROUTER_URL, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
+              'HTTP-Referer': 'https://manishek.ir',
+              'X-Title': 'ManiOS Chat',
+            },
+            body: JSON.stringify({
+              model,
+              messages,
+              temperature: 0.7,
+              max_tokens: 500,
+            }),
+          });
 
-    if (!res.ok) {
-      const err = await res.text();
-      console.error('OpenRouter API error:', res.status, err);
-      return NextResponse.json(
-        { reply: "I'm currently experiencing some issues. Please try again in a moment or reach out directly via email at manishekofteh@gmail.com." },
-        { status: 200 }
-      );
+          if (res.status === 429) {
+            // Rate limited — wait and retry once, then try next model
+            if (attempt === 0) {
+              await sleep(2000);
+              continue;
+            }
+            break; // Move to next model
+          }
+
+          if (!res.ok) {
+            console.error(`OpenRouter ${model} error:`, res.status);
+            break; // Move to next model
+          }
+
+          const data = await res.json();
+          const reply = data.choices?.[0]?.message?.content;
+          if (reply) {
+            return NextResponse.json({ reply });
+          }
+          break;
+        } catch (err) {
+          console.error(`OpenRouter ${model} exception:`, err);
+          break;
+        }
+      }
     }
 
-    const data = await res.json();
-    const reply = data.choices?.[0]?.message?.content || 'Sorry, I could not generate a response. Please try again.';
-
-    return NextResponse.json({ reply });
+    // All models failed
+    return NextResponse.json({ reply: FALLBACK_REPLY }, { status: 200 });
   } catch (error) {
     console.error('Chat API error:', error);
-    return NextResponse.json(
-      { reply: "I'm currently experiencing some issues. Please try again in a moment or reach out directly via email at manishekofteh@gmail.com." },
-      { status: 200 }
-    );
+    return NextResponse.json({ reply: FALLBACK_REPLY }, { status: 200 });
   }
 }
