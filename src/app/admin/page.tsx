@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 
 const ADMIN_USER = process.env.NEXT_PUBLIC_ADMIN_USER || 'admin';
-const ADMIN_PASS = process.env.NEXT_PUBLIC_ADMIN_PASS || 'mani1234';
+const ADMIN_PASS = process.env.NEXT_PUBLIC_ADMIN_PASS || 'GHkR0lzRusIj4YdUUR1R';
 
 interface Employer {
   id: number;
