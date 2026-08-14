@@ -80,7 +80,6 @@ function useActiveSection() {
       setActiveId(SECTIONS[0].id);
     };
 
-    handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);

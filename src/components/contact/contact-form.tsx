@@ -163,10 +163,10 @@ export function ContactForm() {
               </div>
               <input
                 type="tel"
-                dir="rtl"
                 value={phone}
                 onChange={(e) => { setPhone(e.target.value); clearFieldError('phone'); }}
                 placeholder={t.contact.phone_placeholder}
+                style={{ direction: 'rtl', textAlign: 'right' }}
                 className={cn(fieldBase, 'ps-10', errors.phone && 'border-red-500/50 focus:border-red-500/50 focus:ring-red-500/20')}
                 disabled={isSubmitting}
               />
