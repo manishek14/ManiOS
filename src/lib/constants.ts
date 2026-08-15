@@ -140,7 +140,7 @@ export const PROJECTS: Project[] = [
     name: 'Nexra',
     description: {
       en: 'A multi-service super-app backend platform built as NestJS microservices. Exposes a single HTTP/WebSocket API gateway that fans out to five specialized services: ride-hailing with real fare estimation via Neshan Maps, food delivery, payment orchestration (Zibal + Mellat gateways), wallet with pessimistic locking, and BNPL installments.',
-      fa: 'بک‌اند پلتفرم اپراسوپ با معماری میکروسرویس NestJS. یک API Gateway واحد HTTP/WebSocket که به ۵ سرویس تخصصی متصل می‌شود: حمل‌ونقل با تخمین قیمت واقعی از طریق نقشه نشان، غذا، پرداخت (زیبال + ملت)، کیف پول با قفل‌گذاری ناامیدانه و اقساط BNPL.',
+      fa: 'بک‌اند اپلیکیشن سوپر‌اپ با معماری میکروسرویس NestJS 11 که شش سرویس مستقل را پوشش می‌دهد: درخواست تاکسی با تخمین قیمت واقعی از نقشه نشان، سفارش غذا، پرداخت آنلاین (زیبال و ملت)، کیف پول با قفل‌گذاری ناامیدانه و سیستم اقساط BNPL، همه از طریق یک API Gateway واحد HTTP/WebSocket.',
       ar: 'خلفية منصة سوبر آب كخدمات مصغرة NestJS. بوابة HTTP/WebSocket موحدة تتصل بخمسة خدمات متخصصة: النقل، توصيل الطعام، المدفوعات، المحفظة، والأقساط.',
     },
     architecture: {
@@ -200,7 +200,7 @@ export const PROJECTS: Project[] = [
     name: 'Pixora',
     description: {
       en: 'A bilingual (Persian/English) Instagram-like social platform backend built with NestJS, GraphQL (Apollo Server), and TypeORM. Covers six development phases: core social features, stories with 24h auto-expire, discovery with reels, direct messaging, safety tools (block/mute), and realtime capabilities with Socket.IO and Web Push.',
-      fa: 'بک‌اند پلتفرم اجتماعی شبیه اینستاگرام دوزبانه (فارسی/انگلیسی) با NestJS، GraphQL و TypeORM. شامل شش فاز توسعه: ویژگی‌های اصلی اجتماعی، استوری با حذف خودکار ۲۴ ساعته، اکسپلور با ریلز، پیام مستقیم، ابزارهای ایمنی (بلاک/میوت) و قابلیت‌های بلادرنگ با Socket.IO و Web Push.',
+      fa: 'پلتفرم اجتماعی دوزبانه (فارسی/انگلیسی) با NestJS، GraphQL و TypeORM که در شش فاز توسعه یافته: پست و فید شخصی، استوری ۲۴ ساعته، ریلز و اکسپلور، پیام‌رسانی مستقیم، ابزارهای ایمنی (بلاک/میوت) و قابلیت‌های بلادرنگ شامل Socket.IO و Web Push.',
       ar: 'خلفية منصة اجتماعية ثنائية اللغة شبيهة بـ Instagram مع NestJS و GraphQL و TypeORM. تغطي ست مراحل تطوير: الميزات الاجتماعية الأساسية، القصص، الاكتشاف، الرسائل المباشرة، أدوات السلامة، والاتصال الفوري.',
     },
     architecture: {
