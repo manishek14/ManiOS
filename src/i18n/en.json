@@ -1,5 +1,8 @@
 {
   "nav": {
+    "lang_en": "English",
+    "lang_fa": "Persian",
+    "lang_ar": "Arabic",
     "home": "Home",
     "about": "About",
     "skills": "Skills",

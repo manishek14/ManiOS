@@ -16,7 +16,6 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import type { Locale } from '@/types';
 
 /* ─── MS Logo ──────────────────────────────────────────────── */
 function MSLogo({ className }: { className?: string }) {
@@ -55,13 +54,6 @@ function MSLogo({ className }: { className?: string }) {
   );
 }
 
-/* ─── Locale Flag Helpers ──────────────────────────────────── */
-const LOCALE_FLAGS: Record<Locale, string> = {
-  en: '🇬🇧',
-  fa: '🇮🇷',
-  ar: '🇸🇦',
-};
-
 /* ─── Hook: Active Section Tracker ─────────────────────────── */
 function useActiveSection() {
   const [activeId, setActiveId] = useState(SECTIONS[0].id);
@@ -89,7 +81,7 @@ function useActiveSection() {
 
 /* ─── Glass Navbar ─────────────────────────────────────────── */
 export function GlassNavbar() {
-  const { locale, setLocale, rtl, loadingComplete } = useApp();
+  const { locale, setLocale, rtl, loadingComplete, t } = useApp();
   const { theme, setTheme } = useTheme();
   const activeSection = useActiveSection();
 
@@ -241,8 +233,7 @@ export function GlassNavbar() {
                   aria-label="Select language"
                 >
                   <Globe className="h-3.5 w-3.5" />
-                  <span className="hidden sm:inline">{LOCALE_FLAGS[locale]}</span>
-                  <span className="sm:hidden">{locale.toUpperCase()}</span>
+                  <span>{locale.toUpperCase()}</span>
                 </Button>
               </DropdownMenuTrigger>
             </motion.div>
@@ -259,8 +250,7 @@ export function GlassNavbar() {
                     locale === loc && 'bg-accent text-accent-foreground'
                   )}
                 >
-                  <span className="text-base leading-none">{LOCALE_FLAGS[loc]}</span>
-                  <span className="text-sm font-medium uppercase">{loc}</span>
+                  <span className="text-sm font-medium">{t.nav[`lang_${loc}` as keyof typeof t.nav]}</span>
                   {locale === loc && (
                     <motion.span
                       layoutId="locale-check"
