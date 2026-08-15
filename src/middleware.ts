@@ -1,11 +1,9 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
-const MAX_REQUESTS = 10;
-const WINDOW_MS = 60_000;
+const BACKEND_RL = 'https://api.manishek.ir/rl';
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // Block /api root
@@ -18,31 +16,29 @@ export function middleware(request: NextRequest) {
     request.headers.get('X-Forwarded-For')?.split(',')[0]?.trim() ||
     'unknown';
 
-  // Rate limiting
-  const now = Date.now();
-  let entry = rateLimitMap.get(ip);
+  // Check rate limit via backend (database-backed, works across all isolates)
+  try {
+    const ac = new AbortController();
+    const tid = setTimeout(() => ac.abort(), 800);
 
-  if (!entry || now > entry.resetTime) {
-    rateLimitMap.set(ip, { count: 1, resetTime: now + WINDOW_MS });
-  } else {
-    entry.count++;
-    if (entry.count > MAX_REQUESTS) {
+    const res = await fetch(BACKEND_RL, {
+      headers: { 'CF-Connecting-IP': ip },
+      signal: ac.signal,
+    });
+
+    clearTimeout(tid);
+
+    if (res.status === 429) {
       return new NextResponse('Too Many Requests', {
         status: 429,
-        headers: {
-          'Retry-After': '60',
-          'Content-Type': 'text/plain',
-        },
+        headers: { 'Retry-After': '60', 'Content-Type': 'text/plain' },
       });
     }
+  } catch {
+    // Backend unreachable → fail open
   }
 
-  const response = NextResponse.next();
-
-  // Prevent Cloudflare from caching → middleware runs on every request
-  response.headers.set('Cache-Control', 'no-store');
-
-  return response;
+  return NextResponse.next();
 }
 
 export const config = {
