@@ -4,10 +4,14 @@ import type { NextRequest } from 'next/server';
 // Rate limiting store (in-memory Map per worker)
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
 
+// API route-specific limits
 const RATE_LIMITS: Record<string, { maxRequests: number; windowMs: number }> = {
   '/api/chat': { maxRequests: 20, windowMs: 60_000 },
   '/api/contact': { maxRequests: 5, windowMs: 60_000 },
 };
+
+// Global rate limit for all routes (anti-abuse / DDoS basic protection)
+const GLOBAL_LIMIT = { maxRequests: 120, windowMs: 60_000 };
 
 function cleanupRateLimits() {
   const now = Date.now();
@@ -20,7 +24,7 @@ function cleanupRateLimits() {
 
 function checkRateLimit(
   ip: string,
-  path: string
+  path: string,
 ): { allowed: boolean; limit: number; remaining: number } {
   const config = RATE_LIMITS[path];
   if (!config) {
@@ -47,6 +51,27 @@ function checkRateLimit(
   return { allowed: true, limit: config.maxRequests, remaining: config.maxRequests - entry.count };
 }
 
+function checkGlobalRateLimit(ip: string): boolean {
+  const key = `${ip}:global`;
+  const now = Date.now();
+  const entry = rateLimitMap.get(key);
+
+  if (!entry || now > entry.resetTime) {
+    rateLimitMap.set(key, {
+      count: 1,
+      resetTime: now + GLOBAL_LIMIT.windowMs,
+    });
+    return true;
+  }
+
+  if (entry.count >= GLOBAL_LIMIT.maxRequests) {
+    return false;
+  }
+
+  entry.count += 1;
+  return true;
+}
+
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
@@ -57,27 +82,39 @@ export function middleware(request: NextRequest) {
 
   const response = NextResponse.next();
 
-  // Add security headers to ALL responses
+  // Security headers
+  response.headers.delete('Server');
+  response.headers.delete('X-Powered-By');
   response.headers.set('X-Frame-Options', 'DENY');
   response.headers.set('X-Content-Type-Options', 'nosniff');
   response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
   response.headers.set(
     'Permissions-Policy',
-    'camera=(), microphone=(), geolocation=()'
+    'camera=(), microphone=(), geolocation=()',
   );
   response.headers.set('X-DNS-Prefetch-Control', 'on');
 
-  // Rate limiting for specific API routes
+  // Get client IP (Cloudflare Workers uses CF-Connecting-IP)
+  const ip =
+    request.headers.get('CF-Connecting-IP') ||
+    request.headers.get('X-Forwarded-For')?.split(',')[0]?.trim() ||
+    'unknown';
+
+  // Global rate limiting for ALL routes
+  cleanupRateLimits();
+  if (!checkGlobalRateLimit(ip)) {
+    return new NextResponse('Too Many Requests', {
+      status: 429,
+      headers: {
+        'Retry-After': '60',
+        'Content-Type': 'text/plain',
+      },
+    });
+  }
+
+  // Stricter rate limiting for specific API routes
   const rateLimitPath = Object.keys(RATE_LIMITS).find((p) => pathname.startsWith(p));
   if (rateLimitPath) {
-    cleanupRateLimits();
-
-    // Get client IP (Cloudflare Workers uses CF-Connecting-IP, fallback to X-Forwarded-For)
-    const ip =
-      request.headers.get('CF-Connecting-IP') ||
-      request.headers.get('X-Forwarded-For')?.split(',')[0]?.trim() ||
-      'unknown';
-
     const { allowed, limit, remaining } = checkRateLimit(ip, rateLimitPath);
 
     response.headers.set('X-RateLimit-Limit', String(limit));
@@ -100,5 +137,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/', '/api/:path*', '/admin/:path*'],
+  matcher: ['/:path*', '/api/:path*'],
 };
