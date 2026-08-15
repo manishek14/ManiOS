@@ -18,6 +18,7 @@ export function middleware(request: NextRequest) {
     request.headers.get('X-Forwarded-For')?.split(',')[0]?.trim() ||
     'unknown';
 
+  // Rate limiting
   const now = Date.now();
   let entry = rateLimitMap.get(ip);
 
@@ -36,7 +37,12 @@ export function middleware(request: NextRequest) {
     }
   }
 
-  return NextResponse.next();
+  const response = NextResponse.next();
+
+  // Prevent Cloudflare from caching → middleware runs on every request
+  response.headers.set('Cache-Control', 'no-store');
+
+  return response;
 }
 
 export const config = {
