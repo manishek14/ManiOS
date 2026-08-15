@@ -223,7 +223,7 @@ export function GlassNavbar() {
           </motion.div>
 
           {/* Language Selector */}
-          <DropdownMenu>
+          <DropdownMenu modal={false}>
             <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
               <DropdownMenuTrigger asChild>
                 <Button
@@ -251,12 +251,14 @@ export function GlassNavbar() {
                   )}
                 >
                   <span className="text-sm font-medium">{t.nav[`lang_${loc}` as keyof typeof t.nav]}</span>
-                  {locale === loc && (
-                    <motion.span
-                      layoutId="locale-check"
-                      className="ml-auto h-1.5 w-1.5 rounded-full bg-primary"
-                    />
-                  )}
+                  <span className="ms-auto h-1.5 w-1.5 rounded-full">
+                    {locale === loc && (
+                      <motion.span
+                        layoutId="locale-check"
+                        className="block h-full w-full rounded-full bg-primary"
+                      />
+                    )}
+                  </span>
                 </DropdownMenuItem>
               ))}
             </DropdownMenuContent>
