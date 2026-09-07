@@ -6,6 +6,15 @@ const nextConfig: NextConfig = {
   },
   reactStrictMode: true,
   poweredByHeader: false,
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 's6.uupload.ir',
+        pathname: '/files/**',
+      },
+    ],
+  },
   async headers() {
     return [
       {

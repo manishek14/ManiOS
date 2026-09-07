@@ -267,7 +267,7 @@ export const PROJECTS: Project[] = [
     category: 'frontend',
     liveUrl: 'https://nex-us-website.vercel.app/',
     github: 'https://github.com/manishek14/Nexus',
-    image: '/nexus.webp',
+    image: 'https://s6.uupload.ir/files/manishek.ir_demo_showcase_g2z.png',
     coverGradient: 'from-violet-600 via-purple-600 to-fuchsia-600',
   },
   {
@@ -288,7 +288,7 @@ export const PROJECTS: Project[] = [
     category: 'frontend',
     liveUrl: 'https://manishek14.github.io/Anahita/',
     github: 'https://github.com/manishek14/Anahita',
-    image: '/anahita.webp',
+    image: 'https://s6.uupload.ir/files/chatgpt_image_sep_7,_2026,_11_48_22_pm_knsj.png',
     coverGradient: 'from-teal-600 via-emerald-600 to-green-600',
   },
 ];

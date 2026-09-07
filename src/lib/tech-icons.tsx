@@ -47,6 +47,19 @@ export const TECH_COLORS: Record<string, string> = {
   'Postman': '#FF6C37',
   'Swagger': '#85EA2D',
   'Unit Testing': '#22d3ee',
+  'gRPC': '#244C5A',
+  'C#': '#68217A',
+  'ASP.NET Core': '#512BD4',
+  'RabbitMQ': '#FF6600',
+  'Kubernetes': '#326CE5',
+  'LINQ': '#68217A',
+  'CQRS': '#818cf8',
+  'DDD': '#a78bfa',
+  'OOP': '#e879f9',
+  'DI / IoC': '#22d3ee',
+  'xUnit': '#1B73B3',
+  'Entity Framework': '#5828A5',
+  'Dapper': '#2E7D32',
 };
 
 // ─── Simple Icons CDN Mapping (official brand logos) ─────────
@@ -77,6 +90,13 @@ const SIMPLE_ICONS: Record<string, { slug: string; color: string }> = {
   'GitHub Copilot': { slug: 'githubcopilot', color: '818CF8' },
   'Postman': { slug: 'postman', color: 'FF6C37' },
   'Swagger': { slug: 'swagger', color: '85EA2D' },
+  'gRPC': { slug: 'grpc', color: '244C5A' },
+  'C#': { slug: 'csharp', color: '68217A' },
+  'ASP.NET Core': { slug: 'dotnet', color: '512BD4' },
+  'RabbitMQ': { slug: 'rabbitmq', color: 'FF6600' },
+  'Kubernetes': { slug: 'kubernetes', color: '326CE5' },
+  'xUnit': { slug: 'xunit', color: '1B73B3' },
+  'SQL Server': { slug: 'microsoftsqlserver', color: 'CC2927' },
 };
 
 const CDN_BASE = 'https://cdn.simpleicons.org';
@@ -173,12 +193,6 @@ function ConceptIcon({
           <path d="M6.5 13c-1.2.3-2 .9-2 1.6 0 1 1.8 1.7 4 1.7h.5l-.1-1.5c-1.2-.1-2.1-.4-2.4-.8v-1zm11 0v1c-.3.4-1.2.7-2.4.8l-.1 1.5h.5c2.2 0 4-.7 4-1.7 0-.7-.8-1.3-2-1.6z" opacity="0.7" />
         </svg>
       );
-    case 'SQL Server':
-      return (
-        <svg viewBox="0 0 24 24" width={size} height={size} fill={color}>
-          <path d="M17.47 2.21a8.26 8.26 0 0 0-5.47-1.71 8.26 8.26 0 0 0-5.47 1.71c-1.36 1.18-2 2.7-2 4.29v11c0 1.59.64 3.11 2 4.29a8.26 8.26 0 0 0 5.47 1.71 8.26 8.26 0 0 0 5.47-1.71c1.36-1.18 2-2.7 2-4.29v-11c0-1.59-.64-3.11-2-4.29zM12 20.71c-3.31 0-6-1.57-6-3.5v-2.71c1.36 1.18 3.5 1.93 6 1.93s4.64-.75 6-1.93v2.71c0 1.93-2.69 3.5-6 3.5zm0-7.64c-3.31 0-6-1.57-6-3.5s2.69-3.5 6-3.5 6 1.57 6 3.5-2.69 3.5-6 3.5z" />
-        </svg>
-      );
     case 'SQL':
       return (
         <svg viewBox="0 0 24 24" width={size} height={size} fill={color}>
@@ -260,6 +274,70 @@ function ConceptIcon({
         <svg viewBox="0 0 24 24" width={size} height={size} fill="none" stroke={color} strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round">
           <path d="M9 11l3 3L22 4" />
           <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" />
+        </svg>
+      );
+    case 'LINQ':
+      return (
+        <svg viewBox="0 0 24 24" width={size} height={size} fill="none" stroke={color} strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round">
+          <path d="M4 7h4l3 5-3 5H4" />
+          <path d="M14 7c2.67 0 4 2 4 5s-1.33 5-4 5" />
+          <circle cx="4" cy="7" r="1.5" fill={color} stroke="none" />
+          <circle cx="4" cy="17" r="1.5" fill={color} stroke="none" />
+        </svg>
+      );
+    case 'CQRS':
+      return (
+        <svg viewBox="0 0 24 24" width={size} height={size} fill="none" stroke={color} strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round">
+          <rect x="2" y="3" width="9" height="8" rx="1" />
+          <rect x="13" y="13" width="9" height="8" rx="1" />
+          <path d="M7 11v2M17 13v-2" />
+          <path d="M5 13h4M15 11h4" opacity="0.6" />
+        </svg>
+      );
+    case 'DDD':
+      return (
+        <svg viewBox="0 0 24 24" width={size} height={size} fill="none" stroke={color} strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round">
+          <polygon points="12,2 21,7 21,17 12,22 3,17 3,7" />
+          <circle cx="12" cy="12" r="3" fill={color} stroke="none" opacity="0.3" />
+          <path d="M12 2v7M21 7l-6 5M21 17l-6-5M12 22v-7M3 17l6-5M3 7l6 5" opacity="0.4" />
+        </svg>
+      );
+    case 'OOP':
+      return (
+        <svg viewBox="0 0 24 24" width={size} height={size} fill="none" stroke={color} strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round">
+          <rect x="2" y="5" width="8" height="6" rx="1" />
+          <rect x="14" y="5" width="8" height="6" rx="1" />
+          <rect x="8" y="13" width="8" height="6" rx="1" />
+          <path d="M6 11v2h6M18 11v2h-6" />
+        </svg>
+      );
+    case 'DI / IoC':
+      return (
+        <svg viewBox="0 0 24 24" width={size} height={size} fill="none" stroke={color} strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round">
+          <rect x="8" y="2" width="8" height="6" rx="1" />
+          <rect x="2" y="16" width="8" height="6" rx="1" />
+          <rect x="14" y="16" width="8" height="6" rx="1" />
+          <path d="M12 8v4M7 12h10" />
+          <path d="M7 12l-1 4M17 12l1 4" />
+        </svg>
+      );
+    case 'Entity Framework':
+      return (
+        <svg viewBox="0 0 24 24" width={size} height={size} fill="none" stroke={color} strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round">
+          <path d="M4 4h16v16H4z" rx="2" />
+          <path d="M9 8v8M12 8v8M15 8v8" />
+          <path d="M7 12h10" opacity="0.5" />
+          <path d="M4 8h16M4 16h16" opacity="0.3" />
+        </svg>
+      );
+    case 'Dapper':
+      return (
+        <svg viewBox="0 0 24 24" width={size} height={size} fill="none" stroke={color} strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round">
+          <path d="M4 6h6M14 6h6" />
+          <path d="M10 6c0 2-2 3-2 6s2 4 2 6" />
+          <path d="M14 6c0 2 2 3 2 6s-2 4-2 6" />
+          <path d="M7 12h10" opacity="0.4" />
+          <circle cx="12" cy="12" r="2" fill={color} stroke="none" opacity="0.3" />
         </svg>
       );
     default:
