@@ -106,6 +106,22 @@
         "architecture": "Six NestJS microservices over TCP: api-gateway, core-services, taxi-services, food-services, payment-services, installment-services. Each with own PostgreSQL. Redis for Pub/Sub and geo queries.",
         "features": ["Ride-hailing with real fare estimation (Neshan API)", "Driver allocation via Redis Geo + First-Accept", "Food delivery with restaurant management", "Dual payment gateway (Zibal REST + Mellat SOAP)", "Wallet with pessimistic locking", "BNPL installments with approval workflow", "OTP login via SMS (sms.ir)", "WebSocket realtime driver push", "Microservices with independent databases", "Hexagonal architecture"],
         "view_code": "View Code"
+      },
+      "nexus": {
+        "name": "Nexus",
+        "description": "NΞXUS is a Persian-language gaming social network connecting gamers through a social feed, real-time messaging with groups and channels, gamified profiles with levels and XP, a virtual NEX Coin economy, and a gaming catalog with category filters — built with full RTL support.",
+        "architecture": "Next.js App Router with Turbopack on Vercel. Component-based with sidebar (desktop) and tab bar (mobile). Dark/light theme, full RTL, Tailwind CSS with Geist font. Messaging in three modes. Gamification with level/XP, NEX Coin, collectible cards. Google OAuth and multi-step registration.",
+        "features": ["Social feed with likes, comments, and shares", "Real-time messaging (chats, groups, channels)", "Gamified profile with levels and XP", "NEX Coin virtual economy", "Gaming catalog with category filters", "Friend management and teammate discovery", "Dark/light theme with RTL support", "Multi-step registration with Google OAuth"],
+        "view_demo": "Live Demo",
+        "view_code": "View Code"
+      },
+      "anahita": {
+        "name": "Anahita",
+        "description": "A bilingual Persian-English single-page website for a contemporary movement and breath studio inspired by ancient Iranian water mythology. Features four yoga practices, documented cultural narratives, weekly schedule, and registration form — wrapped in a handcrafted, paper-textured aesthetic with ambient audio and a breathing guide animation.",
+        "architecture": "Zero-dependency static site on GitHub Pages. Vanilla HTML/CSS/JS with no build step. Bilingual via paired lang-attribute spans. BEM CSS with earthy custom properties. Google Fonts (Fraunces, Inter, Estedad). IntersectionObserver animations, typewriter effect, SVG grain overlay, and 8-second breathing guide orb.",
+        "features": ["Bilingual Persian-English with RTL/LTR switching", "Four movement practices with Iranian symbolism", "Typewriter quote reveal on cultural guide cards", "Interactive weekly class schedule", "Registration form with bilingual validation", "Animated breathing guide orb", "Ambient audio with opt-in consent", "Scroll-triggered animations with paper grain texture"],
+        "view_demo": "Live Demo",
+        "view_code": "View Code"
       }
     }
   },
