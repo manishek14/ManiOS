@@ -63,6 +63,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
       { name: 'SQL Server', level: 78 },
       { name: 'SQL', level: 82 },
       { name: 'SQLite', level: 70 },
+      { name: 'Replication & Sharding', level: 70 },
     ],
   },
   {
@@ -193,26 +194,6 @@ export const PROJECTS: Project[] = [
     coverGradient: 'from-cyan-600 via-blue-600 to-indigo-600',
   },
   {
-    id: 'shopynest',
-    name: 'ShopyNest',
-    description: {
-      en: 'A full-featured e-commerce backend built with NestJS 11 and TypeORM, featuring JWT authentication with complete RBAC (60+ permissions), tree-structured product categories, shopping cart, order processing with Zibal payment gateway, support tickets, SMS queue with Bull, and IP-based rate limiting.',
-      fa: 'بک‌اند فروشگاه اینترنتی کامل با NestJS 11 و TypeORM، شامل احراز هویت JWT با RBAC کامل (۶۰+ دسترسی)، دسته‌بندی درختی محصولات، سبد خرید، پردازش سفارش با درگاه پرداخت زیبال، تیکت پشتیبانی، صف پیامک با Bull و محدودیت نرخ درخواست مبتنی بر IP.',
-      ar: 'خلفية متكاملة للتجارة الإلكترونية مع NestJS 11 و TypeORM، تتضمن مصادقة JWT مع RBAC كامل، تصنيفات شجرية، سلة تسوق، طلبات مع بوابة دفع Zibal، تذاكر دعم، وقيود معدل الطلب.',
-    },
-    architecture: {
-      en: 'NestJS 11 with modular architecture, TypeORM 0.3, PostgreSQL for relational data, Bull queue (Redis-backed) for SMS processing, Argon2 password hashing, class-validator for DTO validation, and Swagger for API documentation.',
-      fa: 'NestJS 11 با معماری ماژولار، TypeORM 0.3، PostgreSQL، صف Bull مبتنی بر Redis برای پردازش پیامک، Argon2 برای هش رمز عبور، class-validator برای اعتبارسنجی DTO و Swagger برای مستندات API.',
-      ar: 'NestJS 11، TypeORM 0.3، PostgreSQL، صف Bull مع Redis، Argon2، class-validator، و Swagger.',
-    },
-    techStack: ['NestJS', 'TypeORM', 'PostgreSQL', 'Redis', 'Bull', 'JWT', 'Argon2', 'Swagger', 'TypeScript'],
-    features: ['JWT auth with full RBAC (60+ permissions)', 'Tree-structured product categories (3 levels)', 'Shopping cart with auto price calculation', 'Order processing with Zibal payment gateway', 'Support ticket system with threaded replies', 'SMS queue with Bull and retry/backoff', 'IP-based rate limiting and request tracking', 'Scheduled tasks with cron', 'Unified response envelope pattern'],
-    category: 'backend',
-    github: 'https://github.com/manishek14/shopynest',
-    image: '/shopynest.webp',
-    coverGradient: 'from-emerald-600 via-green-600 to-teal-600',
-  },
-  {
     id: 'axishr',
     name: 'AxisHR',
     description: {
@@ -292,6 +273,47 @@ export const PROJECTS: Project[] = [
     github: 'https://github.com/manishek14/Anahita',
     image: 'https://s6.uupload.ir/files/chatgpt_image_sep_7,_2026,_11_48_22_pm_knsj.png',
     coverGradient: 'from-teal-600 via-emerald-600 to-green-600',
+  },
+  {
+    id: 'shopynest',
+    name: 'ShopyNest',
+    description: {
+      en: 'A full-featured e-commerce backend built with NestJS 11 and TypeORM, featuring JWT authentication with complete RBAC (60+ permissions), tree-structured product categories, shopping cart, order processing with Zibal payment gateway, support tickets, SMS queue with Bull, and IP-based rate limiting.',
+      fa: 'بک‌اند فروشگاه اینترنتی کامل با NestJS 11 و TypeORM، شامل احراز هویت JWT با RBAC کامل (۶۰+ دسترسی)، دسته‌بندی درختی محصولات، سبد خرید، پردازش سفارش با درگاه پرداخت زیبال، تیکت پشتیبانی، صف پیامک با Bull و محدودیت نرخ درخواست مبتنی بر IP.',
+      ar: 'خلفية متكاملة للتجارة الإلكترونية مع NestJS 11 و TypeORM، تتضمن مصادقة JWT مع RBAC كامل، تصنيفات شجرية، سلة تسوق، طلبات مع بوابة دفع Zibal، تذاكر دعم، وقيود معدل الطلب.',
+    },
+    architecture: {
+      en: 'NestJS 11 with modular architecture, TypeORM 0.3, PostgreSQL for relational data, Bull queue (Redis-backed) for SMS processing, Argon2 password hashing, class-validator for DTO validation, and Swagger for API documentation.',
+      fa: 'NestJS 11 با معماری ماژولار، TypeORM 0.3، PostgreSQL، صف Bull مبتنی بر Redis برای پردازش پیامک، Argon2 برای هش رمز عبور، class-validator برای اعتبارسنجی DTO و Swagger برای مستندات API.',
+      ar: 'NestJS 11، TypeORM 0.3، PostgreSQL، صف Bull مع Redis، Argon2، class-validator، و Swagger.',
+    },
+    techStack: ['NestJS', 'TypeORM', 'PostgreSQL', 'Redis', 'Bull', 'JWT', 'Argon2', 'Swagger', 'TypeScript'],
+    features: ['JWT auth with full RBAC (60+ permissions)', 'Tree-structured product categories (3 levels)', 'Shopping cart with auto price calculation', 'Order processing with Zibal payment gateway', 'Support ticket system with threaded replies', 'SMS queue with Bull and retry/backoff', 'IP-based rate limiting and request tracking', 'Scheduled tasks with cron', 'Unified response envelope pattern'],
+    category: 'backend',
+    github: 'https://github.com/manishek14/shopynest',
+    image: '/shopynest.webp',
+    coverGradient: 'from-emerald-600 via-green-600 to-teal-600',
+  },
+  {
+    id: 'pardis-thamen',
+    name: 'Pardis Thamen',
+    description: {
+      en: 'A complete multi-page website for "Thamen Health & Technology Campus" — a health-science campus bridging science, innovation, and industry. Covers the campus overview, ecosystem, innovation, services, news, and events sections with officially-sourced statistics and documented content.',
+      fa: 'وب‌سایت کامل چندصفحه‌ای «پردیس علم و فناوری سلامت ثامن» — پیوند علم، نوآوری و صنعت در حوزه سلامت. شامل بخش‌های پردیس، زیست‌بوم، نوآوری، خدمات، اخبار و رویدادها با آمار و محتوای مستند و رسمی.',
+      ar: 'موقع ويب متعدد الصفحات لـ «پردیس علم و فناوری سلامت ثامن» (حرم الصحة والتقنية) — يربط العلم والابتكار والصناعة في مجال الصحة. يشمل أقسام الحرم والنظام البيئي والابتكار والخدمات والأخبار والفعاليات مع إحصاءات موثقة.',
+    },
+    architecture: {
+      en: 'Next.js 14 App Router with React 18 and TypeScript, styled with Tailwind CSS 3 following the shadcn/ui pattern (Radix primitives + CVA). Static export with client-side trilingual switching (fa/en/ar), RTL-first layout built on CSS logical properties, self-hosted Vazirmatn variable font, typed local data layer, and full accessibility support (skip links, aria-live, reduced-motion).',
+      fa: 'Next.js 14 App Router با React 18 و TypeScript، استایل با Tailwind CSS 3 و الگوی shadcn/ui (کامپوننت‌های Radix + CVA). خروجی استاتیک با تعویض سه‌زبانه سمت کلاینت (fa/en/ar)، لایه‌اوت RTL-first با CSS logical properties، فونت متغیر وزیرمتن سلف‌هاست، لایه داده تایپ‌شده محلی و دسترس‌پذیری کامل (لینک پرش، aria-live و پشتیبانی از reduced-motion).',
+      ar: 'Next.js 14 App Router مع React 18 و TypeScript، تنسيق Tailwind CSS 3 مع نمط shadcn/ui (مكونات Radix + CVA). تصدير ثابت مع تبديل ثلاثي اللغات في المتصفح، تخطيط RTL أولاً بخصائص CSS المنطقية، خط Vazirmatn مستضاف ذاتياً، ووصول كامل.',
+    },
+    techStack: ['Next.js', 'React'],
+    features: ['Trilingual fa/en/ar with RTL-first layout', 'About, campus, ecosystem, innovation, services, news and events pages', '45 tested internal routes and anchors', 'Light/dark theme with manual toggle', 'Content accuracy sourced from official PDFs', 'Accessibility: keyboard navigation, aria-live, reduced-motion'],
+    category: 'frontend',
+    liveUrl: 'https://v0-project-six-eta-21.vercel.app/',
+    github: 'https://github.com/manishek14/pardis-thamen',
+    image: '/pardis-thamen.webp',
+    coverGradient: 'from-sky-600 via-cyan-600 to-teal-600',
   },
 ];
 

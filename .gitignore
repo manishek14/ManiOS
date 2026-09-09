@@ -65,3 +65,6 @@ download/
 examples/
 db/*.db
 Caddyfile
+# wrangler dev secrets
+.dev.vars
+.dev.vars.*

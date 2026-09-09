@@ -40,7 +40,10 @@ export async function POST(request: NextRequest) {
 
   if (!user || !password) {
     return NextResponse.json(
-      { message: 'Admin credentials are not configured on the server' },
+      {
+        message:
+          'ورود ادمین روی سرور تنظیم نشده است — متغیرهای محیطی ADMIN_USER و ADMIN_PASSWORD باید به‌عنوان wrangler secret روی Cloudflare ست شوند.',
+      },
       { status: 503 },
     );
   }
