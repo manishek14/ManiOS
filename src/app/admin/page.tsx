@@ -2,8 +2,12 @@
 
 import { useState, useEffect, useCallback } from 'react';
 
-const ADMIN_USER = process.env.NEXT_PUBLIC_ADMIN_USER || 'admin';
-const ADMIN_PASS = process.env.NEXT_PUBLIC_ADMIN_PASS || 'GHkR0lzRusIj4YdUUR1R';
+/**
+ * Admin panel — authentication is fully server-side now.
+ * The login form posts to /api/admin/login which checks credentials in
+ * server env vars and sets an HttpOnly signed cookie. The employers data
+ * is only served by /api/admin/employers when that cookie is valid.
+ */
 
 interface Employer {
   id: number;
@@ -21,20 +25,29 @@ function LoginForm({ onLogin }: { onLogin: () => void }) {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
     setLoading(true);
 
-    setTimeout(() => {
-      if (username === ADMIN_USER && password === ADMIN_PASS) {
-        sessionStorage.setItem('admin_auth', '1');
+    try {
+      const res = await fetch('/api/admin/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password }),
+      });
+
+      if (res.ok) {
         onLogin();
       } else {
-        setError('نام کاربری یا رمز عبور اشتباه است');
+        const data = await res.json().catch(() => null);
+        setError(data?.message || 'خطا در ورود، دوباره تلاش کنید');
       }
+    } catch {
+      setError('خطا در برقراری ارتباط با سرور');
+    } finally {
       setLoading(false);
-    }, 300);
+    }
   };
 
   return (
@@ -59,6 +72,7 @@ function LoginForm({ onLogin }: { onLogin: () => void }) {
           onChange={(e) => setUsername(e.target.value)}
           className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-slate-500 outline-none focus:border-indigo-500/50"
           autoFocus
+          autoComplete="username"
         />
         <input
           type="password"
@@ -66,6 +80,7 @@ function LoginForm({ onLogin }: { onLogin: () => void }) {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-slate-500 outline-none focus:border-indigo-500/50"
+          autoComplete="current-password"
         />
         <button
           type="submit"
@@ -83,12 +98,17 @@ function EmployersTable() {
   const [employers, setEmployers] = useState<Employer[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [unauthorized, setUnauthorized] = useState(false);
 
   const fetchEmployers = useCallback(async () => {
     try {
       setLoading(true);
       setError('');
-      const res = await fetch('/api/admin/employers');
+      const res = await fetch('/api/admin/employers', { cache: 'no-store' });
+      if (res.status === 401) {
+        setUnauthorized(true);
+        return;
+      }
       if (!res.ok) throw new Error('خطا در دریافت اطلاعات');
       const data: Employer[] = await res.json();
       setEmployers(data);
@@ -100,13 +120,44 @@ function EmployersTable() {
   }, []);
 
   useEffect(() => {
-    fetchEmployers();
-  }, [fetchEmployers]);
+    // Initial load: all state updates happen after the async boundary,
+    // so no cascading render on mount.
+    let cancelled = false;
+    (async () => {
+      try {
+        const res = await fetch('/api/admin/employers', { cache: 'no-store' });
+        if (cancelled) return;
+        if (res.status === 401) {
+          setUnauthorized(true);
+          return;
+        }
+        if (!res.ok) throw new Error('خطا در دریافت اطلاعات');
+        const data: Employer[] = await res.json();
+        setEmployers(data);
+      } catch (err) {
+        if (!cancelled) {
+          setError(err instanceof Error ? err.message : 'خطای ناشناخته');
+        }
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
-  const handleLogout = () => {
-    sessionStorage.removeItem('admin_auth');
-    window.location.reload();
+  const handleLogout = async () => {
+    try {
+      await fetch('/api/admin/logout', { method: 'POST' });
+    } finally {
+      window.location.reload();
+    }
   };
+
+  if (unauthorized) {
+    return <LoginForm onLogin={() => { setUnauthorized(false); fetchEmployers(); }} />;
+  }
 
   return (
     <div className="min-h-screen bg-[#030712] px-4 py-8">
@@ -217,27 +268,7 @@ function EmployersTable() {
 }
 
 export default function AdminPage() {
-  const [isAuth, setIsAuth] = useState(false);
-  const [checking, setChecking] = useState(true);
-
-  useEffect(() => {
-    if (sessionStorage.getItem('admin_auth') === '1') {
-      setIsAuth(true);
-    }
-    setChecking(false);
-  }, []);
-
-  if (checking) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-[#030712]">
-        <p className="text-slate-400">...</p>
-      </div>
-    );
-  }
-
-  if (!isAuth) {
-    return <LoginForm onLogin={() => setIsAuth(true)} />;
-  }
-
+  // The server decides via cookie whether /api/admin/employers returns data.
+  // We optimistically render the table; a 401 swaps in the login form.
   return <EmployersTable />;
 }

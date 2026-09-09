@@ -55,7 +55,7 @@ export async function apiRequest<T>(
 export const api = {
   chat: {
     async sendMessage(message: string, history: { role: string; content: string }[]) {
-      return apiRequest<{ reply: string }>('/api/chat', {
+      return apiRequest<{ reply: string; limited?: boolean; retryAt?: string | null }>('/api/chat', {
         method: 'POST',
         body: JSON.stringify({ message, history }),
       });

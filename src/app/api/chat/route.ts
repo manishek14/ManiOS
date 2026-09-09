@@ -20,6 +20,19 @@ export async function POST(request: NextRequest) {
       body: JSON.stringify({ message, history }),
     });
 
+    // Chat quota exceeded (15 questions / 24h per IP) — pass the limit
+    // info through so the chat UI can show a friendly localized message.
+    if (res.status === 429) {
+      let retryAt: string | null = null;
+      try {
+        const data = await res.json();
+        retryAt = data?.retryAt ?? null;
+      } catch {
+        // ignore body parse issues
+      }
+      return NextResponse.json({ limited: true, retryAt, reply: '' });
+    }
+
     if (res.ok) {
       const data = await res.json();
       return NextResponse.json({ reply: data.reply });
