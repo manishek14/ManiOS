@@ -124,20 +124,6 @@
         "view_demo": "Live Demo",
         "view_code": "View Code"
       },
-      "vendora": {
-        "name": "Vendora",
-        "description": "A production-ready multi-vendor e-commerce backend built with NestJS. Designed for platforms requiring vendor support, complex product attributes, and flexible payment flows — inspired by systems like Digikala.",
-        "architecture": "NestJS with modular architecture, TypeORM for database operations, PostgreSQL for relational data, Redis for caching and session management, JWT-based authentication with RBAC.",
-        "features": [
-          "Multi-vendor product management",
-          "Complex product attribute system",
-          "Flexible payment flow architecture",
-          "Role-based access control (RBAC)",
-          "Redis caching layer for performance",
-          "Clean, modular NestJS structure"
-        ],
-        "view_code": "View Code"
-      },
       "shopynest": {
         "name": "ShopyNest",
         "description": "A full-featured e-commerce backend built with NestJS 11, featuring JWT authentication with complete RBAC (60+ permissions), tree-structured categories, shopping cart, orders with Zibal payment gateway, support tickets, and SMS queue.",
@@ -234,6 +220,21 @@
           "Animated breathing guide orb",
           "Ambient audio with opt-in consent",
           "Scroll-triggered animations with paper grain texture"
+        ],
+        "view_demo": "Live Demo",
+        "view_code": "View Code"
+      },
+      "pardis-thamen": {
+        "name": "Pardis Thamen",
+        "description": "A complete multi-page website for \"Thamen Health & Technology Campus\" — a health-science campus bridging science, innovation, and industry. Covers the campus overview, ecosystem, innovation, services, news, and events sections with officially-sourced statistics and documented content.",
+        "architecture": "Next.js 14 App Router with React 18 and TypeScript, styled with Tailwind CSS 3 following the shadcn/ui pattern (Radix primitives + CVA). Static export with client-side trilingual switching (fa/en/ar), RTL-first layout built on CSS logical properties, self-hosted Vazirmatn variable font, typed local data layer, and full accessibility support (skip links, aria-live, reduced-motion).",
+        "features": [
+          "Trilingual fa/en/ar with RTL-first layout",
+          "About, campus, ecosystem, innovation, services, news and events pages",
+          "45 tested internal routes and anchors",
+          "Light/dark theme with manual toggle",
+          "Content accuracy sourced from official PDFs",
+          "Accessibility: keyboard navigation, aria-live, reduced-motion"
         ],
         "view_demo": "Live Demo",
         "view_code": "View Code"
