@@ -31,26 +31,71 @@
     "aspirations": "System design, distributed architecture, and building platforms that serve millions — that's the trajectory. I'm deepening my knowledge in domain-driven design and microservices, with the long-term goal of becoming a senior backend architect."
   },
   "soft_skills": {
-    "communication": { "name": "Communication", "desc": "Clear documentation, articulate code reviews, and effective cross-team coordination." },
-    "ownership": { "name": "Ownership", "desc": "Taking full responsibility for features from design through deployment and beyond." },
-    "leadership": { "name": "Leadership", "desc": "Guiding team decisions, mentoring peers, and driving projects to completion." },
-    "critical_thinking": { "name": "Critical Thinking", "desc": "Evaluating trade-offs, questioning assumptions, and choosing the right tool for the job." },
-    "problem_solving": { "name": "Problem Solving", "desc": "Breaking down complex systems into manageable, testable components." },
-    "adaptability": { "name": "Adaptability", "desc": "Quickly learning new technologies and adapting to changing project requirements." },
-    "collaboration": { "name": "Collaboration", "desc": "Working effectively with frontend teams, designers, and product managers." },
-    "learning": { "name": "Learning Ability", "desc": "Continuously deepening knowledge through documentation, open source, and hands-on practice." }
+    "communication": {
+      "name": "Communication",
+      "desc": "Clear documentation, articulate code reviews, and effective cross-team coordination."
+    },
+    "ownership": {
+      "name": "Ownership",
+      "desc": "Taking full responsibility for features from design through deployment and beyond."
+    },
+    "leadership": {
+      "name": "Leadership",
+      "desc": "Guiding team decisions, mentoring peers, and driving projects to completion."
+    },
+    "critical_thinking": {
+      "name": "Critical Thinking",
+      "desc": "Evaluating trade-offs, questioning assumptions, and choosing the right tool for the job."
+    },
+    "problem_solving": {
+      "name": "Problem Solving",
+      "desc": "Breaking down complex systems into manageable, testable components."
+    },
+    "adaptability": {
+      "name": "Adaptability",
+      "desc": "Quickly learning new technologies and adapting to changing project requirements."
+    },
+    "collaboration": {
+      "name": "Collaboration",
+      "desc": "Working effectively with frontend teams, designers, and product managers."
+    },
+    "learning": {
+      "name": "Learning Ability",
+      "desc": "Continuously deepening knowledge through documentation, open source, and hands-on practice."
+    }
   },
   "skills": {
     "title": "Technology Ecosystem",
     "subtitle": "The tools and technologies I work with daily",
     "categories": {
-      "backend": { "name": "Backend", "icon": "Server" },
-      "frontend": { "name": "Frontend", "icon": "Monitor" },
-      "databases": { "name": "Databases", "icon": "Database" },
-      "architecture": { "name": "Architecture", "icon": "Layers" },
-      "cloud_devops": { "name": "Cloud & DevOps", "icon": "Cloud" },
-      "ai_tools": { "name": "AI & Tools", "icon": "Brain" },
-      "developer_tools": { "name": "Developer Tools", "icon": "Wrench" }
+      "backend": {
+        "name": "Backend",
+        "icon": "Server"
+      },
+      "frontend": {
+        "name": "Frontend",
+        "icon": "Monitor"
+      },
+      "databases": {
+        "name": "Databases",
+        "icon": "Database"
+      },
+      "architecture": {
+        "name": "Architecture",
+        "icon": "Layers"
+      },
+      "cloud_devops": {
+        "name": "Cloud & DevOps",
+        "icon": "Cloud"
+      },
+      "ai_tools": {
+        "name": "AI & Tools",
+        "icon": "Brain"
+      },
+      "developer_tools": {
+        "name": "Developer Tools",
+        "icon": "Wrench"
+      }
     }
   },
   "projects": {
@@ -68,7 +113,14 @@
         "name": "RideX",
         "description": "A full-stack ride-hailing platform with AI at its core — serving passengers, drivers, businesses, and admins through dedicated panels. Features intelligent route optimization, dynamic pricing, and real-time tracking.",
         "architecture": "Next.js frontend with modular panel architecture, Node.js/Express API layer, MongoDB for data persistence, Redis for caching and real-time state, integrated AI services for route optimization and matching.",
-        "features": ["Multi-panel architecture (Passenger, Driver, Admin, Business)", "AI-powered route optimization and driver matching", "Real-time tracking with WebSocket integration", "Dynamic pricing engine based on demand and traffic", "Integrated wallet and payment system", "Live statistics dashboard"],
+        "features": [
+          "Multi-panel architecture (Passenger, Driver, Admin, Business)",
+          "AI-powered route optimization and driver matching",
+          "Real-time tracking with WebSocket integration",
+          "Dynamic pricing engine based on demand and traffic",
+          "Integrated wallet and payment system",
+          "Live statistics dashboard"
+        ],
         "view_demo": "Live Demo",
         "view_code": "View Code"
       },
@@ -76,42 +128,96 @@
         "name": "Vendora",
         "description": "A production-ready multi-vendor e-commerce backend built with NestJS. Designed for platforms requiring vendor support, complex product attributes, and flexible payment flows — inspired by systems like Digikala.",
         "architecture": "NestJS with modular architecture, TypeORM for database operations, PostgreSQL for relational data, Redis for caching and session management, JWT-based authentication with RBAC.",
-        "features": ["Multi-vendor product management", "Complex product attribute system", "Flexible payment flow architecture", "Role-based access control (RBAC)", "Redis caching layer for performance", "Clean, modular NestJS structure"],
+        "features": [
+          "Multi-vendor product management",
+          "Complex product attribute system",
+          "Flexible payment flow architecture",
+          "Role-based access control (RBAC)",
+          "Redis caching layer for performance",
+          "Clean, modular NestJS structure"
+        ],
         "view_code": "View Code"
       },
       "shopynest": {
         "name": "ShopyNest",
         "description": "A full-featured e-commerce backend built with NestJS 11, featuring JWT authentication with complete RBAC (60+ permissions), tree-structured categories, shopping cart, orders with Zibal payment gateway, support tickets, and SMS queue.",
         "architecture": "NestJS 11 modular architecture, TypeORM 0.3, PostgreSQL, Bull queue (Redis-backed) for SMS, Argon2 hashing, class-validator, Swagger.",
-        "features": ["JWT auth with full RBAC (60+ permissions)", "Tree-structured product categories (3 levels)", "Shopping cart with auto price calculation", "Order processing with Zibal payment gateway", "Support ticket system with threaded replies", "SMS queue with Bull and retry/backoff", "IP-based rate limiting and cron tasks", "Unified response envelope pattern"],
+        "features": [
+          "JWT auth with full RBAC (60+ permissions)",
+          "Tree-structured product categories (3 levels)",
+          "Shopping cart with auto price calculation",
+          "Order processing with Zibal payment gateway",
+          "Support ticket system with threaded replies",
+          "SMS queue with Bull and retry/backoff",
+          "IP-based rate limiting and cron tasks",
+          "Unified response envelope pattern"
+        ],
         "view_code": "View Code"
       },
       "axishr": {
         "name": "AxisHR",
         "description": "A comprehensive Human Resources management system. Handles employee lifecycle, leave requests, attendance tracking, payroll calculations, and organizational structure.",
         "architecture": "Node.js with Express and TypeScript, MongoDB, JWT authentication, RESTful API with clean architecture.",
-        "features": ["Employee lifecycle management", "Leave request workflow", "Attendance tracking system", "Payroll calculation engine", "Organizational structure management", "Role-based access control"],
+        "features": [
+          "Employee lifecycle management",
+          "Leave request workflow",
+          "Attendance tracking system",
+          "Payroll calculation engine",
+          "Organizational structure management",
+          "Role-based access control"
+        ],
         "view_code": "View Code"
       },
       "pixora": {
         "name": "Pixora",
         "description": "A bilingual Instagram-like social platform backend with NestJS, GraphQL (Apollo), and TypeORM. Six development phases covering posts, stories, reels, direct messaging, safety tools, and realtime capabilities.",
         "architecture": "NestJS 11, Apollo Server 5, GraphQL 16, TypeORM 0.3 (PostgreSQL/SQLite), Socket.IO for realtime, Web Push (VAPID), Multer for uploads.",
-        "features": ["Posts with multi-image/video, hashtags, mentions", "Threaded comments with edit/delete", "Stories with 24h auto-expire and highlights", "Reels with dedicated tab and algorithm", "Direct messages with Socket.IO realtime", "Web Push notifications (VAPID)", "Block, mute, and follow suggestions", "Collections for organizing bookmarks", "Unified search across all content types", "Online presence tracking"],
+        "features": [
+          "Posts with multi-image/video, hashtags, mentions",
+          "Threaded comments with edit/delete",
+          "Stories with 24h auto-expire and highlights",
+          "Reels with dedicated tab and algorithm",
+          "Direct messages with Socket.IO realtime",
+          "Web Push notifications (VAPID)",
+          "Block, mute, and follow suggestions",
+          "Collections for organizing bookmarks",
+          "Unified search across all content types",
+          "Online presence tracking"
+        ],
         "view_code": "View Code"
       },
       "nexra": {
         "name": "Nexra",
         "description": "A multi-service super-app backend built as NestJS microservices. Single HTTP/WebSocket API gateway fanning out to five services: ride-hailing, food delivery, payments, wallet, and BNPL installments.",
         "architecture": "Six NestJS microservices over TCP: api-gateway, core-services, taxi-services, food-services, payment-services, installment-services. Each with own PostgreSQL. Redis for Pub/Sub and geo queries.",
-        "features": ["Ride-hailing with real fare estimation (Neshan API)", "Driver allocation via Redis Geo + First-Accept", "Food delivery with restaurant management", "Dual payment gateway (Zibal REST + Mellat SOAP)", "Wallet with pessimistic locking", "BNPL installments with approval workflow", "OTP login via SMS (sms.ir)", "WebSocket realtime driver push", "Microservices with independent databases", "Hexagonal architecture"],
+        "features": [
+          "Ride-hailing with real fare estimation (Neshan API)",
+          "Driver allocation via Redis Geo + First-Accept",
+          "Food delivery with restaurant management",
+          "Dual payment gateway (Zibal REST + Mellat SOAP)",
+          "Wallet with pessimistic locking",
+          "BNPL installments with approval workflow",
+          "OTP login via SMS (sms.ir)",
+          "WebSocket realtime driver push",
+          "Microservices with independent databases",
+          "Hexagonal architecture"
+        ],
         "view_code": "View Code"
       },
       "nexus": {
         "name": "Nexus",
         "description": "NΞXUS is a Persian-language gaming social network connecting gamers through a social feed, real-time messaging with groups and channels, gamified profiles with levels and XP, a virtual NEX Coin economy, and a gaming catalog with category filters — built with full RTL support.",
         "architecture": "Next.js App Router with Turbopack on Vercel. Component-based with sidebar (desktop) and tab bar (mobile). Dark/light theme, full RTL, Tailwind CSS with Geist font. Messaging in three modes. Gamification with level/XP, NEX Coin, collectible cards. Google OAuth and multi-step registration.",
-        "features": ["Social feed with likes, comments, and shares", "Real-time messaging (chats, groups, channels)", "Gamified profile with levels and XP", "NEX Coin virtual economy", "Gaming catalog with category filters", "Friend management and teammate discovery", "Dark/light theme with RTL support", "Multi-step registration with Google OAuth"],
+        "features": [
+          "Social feed with likes, comments, and shares",
+          "Real-time messaging (chats, groups, channels)",
+          "Gamified profile with levels and XP",
+          "NEX Coin virtual economy",
+          "Gaming catalog with category filters",
+          "Friend management and teammate discovery",
+          "Dark/light theme with RTL support",
+          "Multi-step registration with Google OAuth"
+        ],
         "view_demo": "Live Demo",
         "view_code": "View Code"
       },
@@ -119,7 +225,16 @@
         "name": "Anahita",
         "description": "A bilingual Persian-English single-page website for a contemporary movement and breath studio inspired by ancient Iranian water mythology. Features four yoga practices, documented cultural narratives, weekly schedule, and registration form — wrapped in a handcrafted, paper-textured aesthetic with ambient audio and a breathing guide animation.",
         "architecture": "Zero-dependency static site on GitHub Pages. Vanilla HTML/CSS/JS with no build step. Bilingual via paired lang-attribute spans. BEM CSS with earthy custom properties. Google Fonts (Fraunces, Inter, Estedad). IntersectionObserver animations, typewriter effect, SVG grain overlay, and 8-second breathing guide orb.",
-        "features": ["Bilingual Persian-English with RTL/LTR switching", "Four movement practices with Iranian symbolism", "Typewriter quote reveal on cultural guide cards", "Interactive weekly class schedule", "Registration form with bilingual validation", "Animated breathing guide orb", "Ambient audio with opt-in consent", "Scroll-triggered animations with paper grain texture"],
+        "features": [
+          "Bilingual Persian-English with RTL/LTR switching",
+          "Four movement practices with Iranian symbolism",
+          "Typewriter quote reveal on cultural guide cards",
+          "Interactive weekly class schedule",
+          "Registration form with bilingual validation",
+          "Animated breathing guide orb",
+          "Ambient audio with opt-in consent",
+          "Scroll-triggered animations with paper grain texture"
+        ],
         "view_demo": "Live Demo",
         "view_code": "View Code"
       }
@@ -234,6 +349,7 @@
       "What projects has Mani built?"
     ],
     "thinking": "Thinking...",
+    "limit_reached": "You've reached the chat limit of 15 questions. You can chat again in 24 hours — or reach Mani directly through the contact section.",
     "error": "Something went wrong. Please try again."
   },
   "shared": {

@@ -205,10 +205,17 @@ export function AiChatWindow({ isOpen, onClose }: AiChatWindowProps) {
         }));
         const result = await api.chat.sendMessage(trimmed, history);
 
+        let content: string;
+        if (result.limited) {
+          content = t.ai_assistant.limit_reached;
+        } else {
+          content = result.reply;
+        }
+
         const assistantMsg: ChatMessage = {
           id: `assistant-${Date.now()}`,
           role: 'assistant',
-          content: result.reply,
+          content,
           timestamp: Date.now(),
         };
         setMessages((prev) => [...prev, assistantMsg]);

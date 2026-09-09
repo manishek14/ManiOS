@@ -171,6 +171,34 @@ public/
 
 ---
 
+## Environment Variables
+
+The app reads these at runtime (set them as Cloudflare Worker secrets or in
+`.env.local` for development — see `.env.example`):
+
+| Variable | Scope | Description |
+|---|---|---|
+| `BACKEND_URL` | server | Base URL of the NestJS backend (default `https://api.manishek.ir`) |
+| `ADMIN_USER` | server | Admin panel username |
+| `ADMIN_PASSWORD` | server | Admin panel password (never use the `NEXT_PUBLIC_` prefix!) |
+| `ADMIN_SESSION_SECRET` | server | Optional HMAC secret for admin sessions (derived from password if unset) |
+| `ADMIN_API_KEY` | server | Shared secret sent as `x-admin-key` to the backend — must match the backend value |
+
+Set production secrets with:
+
+```bash
+npx wrangler secret put ADMIN_USER
+npx wrangler secret put ADMIN_PASSWORD
+npx wrangler secret put ADMIN_API_KEY
+npx wrangler secret put BACKEND_URL   # optional if default is fine
+```
+
+The admin panel (`/admin`) authenticates fully server-side: the browser only
+ever talks to `/api/admin/login` and `/api/admin/employers`, and the employers
+data requires a signed HttpOnly session cookie.
+
+---
+
 ## Getting Started
 
 ### Prerequisites
