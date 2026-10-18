@@ -105,6 +105,9 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
     {
       category: locale === 'fa' ? 'بک‌اند' : locale === 'ar' ? 'الخلفية' : 'Backend',
       skills: [
+        { name: '.NET' },
+        { name: 'ASP.NET Core' },
+        { name: 'C#' },
         { name: 'Node.js' },
         { name: 'NestJS' },
         { name: 'Express' },
@@ -128,10 +131,13 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
     {
       category: locale === 'fa' ? 'پایگاه داده' : locale === 'ar' ? 'قواعد البيانات' : 'Databases',
       skills: [
+        { name: 'SQL Server' },
         { name: 'PostgreSQL' },
         { name: 'MongoDB' },
         { name: 'MySQL' },
         { name: 'Redis' },
+        { name: 'Entity Framework' },
+        { name: 'Dapper' },
       ],
     },
     {

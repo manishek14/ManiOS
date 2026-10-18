@@ -18,8 +18,8 @@ export const metadata: Metadata = {
     default: 'مانی شکفته (Mani Shekofteh) — توسعه‌دهنده بک‌اند',
     template: '%s | مانی شکفته',
   },
-  description: 'وبسایت شخصی مانی شکفته — توسعه‌دهنده بک‌اند تخصصی در Node.js، NestJS و TypeScript. طراحی API مقیاس‌پذیر با PostgreSQL، MongoDB و الگوهای معماری مدرن.',
-  keywords: ['مانی شکفته', 'Mani Shekofteh', 'توسعه‌دهنده بک‌اند', 'Backend Developer', 'Node.js', 'NestJS', 'TypeScript', 'PostgreSQL', 'MongoDB', 'API Design', 'منی شکفته برنامه نویس'],
+  description: 'وبسایت شخصی مانی شکفته — مهندس بک‌اند با تمرکز بر توسعه با .NET، ASP.NET Core و C# در کنار Node.js و NestJS. طراحی APIهای استاندارد و سیستم‌های مقیاس‌پذیر با PostgreSQL، SQL Server، MongoDB و الگوهای معماری مدرن.',
+  keywords: ['مانی شکفته', 'Mani Shekofteh', 'توسعه‌دهنده بک‌اند', 'Backend Developer', '.NET', 'ASP.NET Core', 'C#', 'Node.js', 'NestJS', 'TypeScript', 'PostgreSQL', 'SQL Server', 'MongoDB', 'API Design', 'منی شکفته برنامه نویس'],
   authors: [{ name: 'Mani Shekofteh', url: 'https://manishek.ir' }],
   creator: 'Mani Shekofteh',
   publisher: 'Mani Shekofteh',
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'مانی شکفته (Mani Shekofteh) — توسعه‌دهنده بک‌اند',
-    description: 'وبسایت شخصی مانی شکفته — توسعه‌دهنده بک‌اند تخصصی در Node.js، NestJS و TypeScript.',
+    description: 'وبسایت شخصی مانی شکفته — مهندس بک‌اند با تمرکز بر توسعه با .NET، ASP.NET Core و C# در کنار Node.js و NestJS.',
     url: 'https://manishek.ir',
     siteName: 'مانی شکفته | Mani Shekofteh',
     locale: 'fa_IR',
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'مانی شکفته (Mani Shekofteh) — توسعه‌دهنده بک‌اند',
-    description: 'وبسایت شخصی مانی شکفته — توسعه‌دهنده بک‌اند تخصصی در Node.js، NestJS و TypeScript.',
+    description: 'وبسایت شخصی مانی شکفته — مهندس بک‌اند با تمرکز بر توسعه با .NET، ASP.NET Core و C# در کنار Node.js و NestJS.',
   },
   robots: {
     index: true,

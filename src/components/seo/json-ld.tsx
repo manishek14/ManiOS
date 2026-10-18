@@ -6,7 +6,7 @@ export function JsonLd() {
     alternateName: 'مانی شکفته',
     url: 'https://manishek.ir',
     jobTitle: 'Backend Developer',
-    knowsAbout: ['Node.js', 'NestJS', 'TypeScript', 'PostgreSQL', 'MongoDB', 'Redis', 'REST API', 'Docker', 'Git'],
+    knowsAbout: ['.NET', 'ASP.NET Core', 'C#', 'Node.js', 'NestJS', 'TypeScript', 'PostgreSQL', 'SQL Server', 'MongoDB', 'Redis', 'REST API', 'Docker', 'Git'],
     sameAs: [
       'https://github.com/manishek14',
       'https://linkedin.com/in/mani-shekofteh',
@@ -19,7 +19,7 @@ export function JsonLd() {
     '@context': 'https://schema.org',
     '@type': 'ProfilePage',
     name: 'مانی شکفته (Mani Shekofteh) — توسعه‌دهنده بک‌اند',
-    description: 'وبسایت شخصی مانی شکفته — توسعه‌دهنده بک‌اند تخصصی در Node.js، NestJS و TypeScript.',
+    description: 'وبسایت شخصی مانی شکفته — مهندس بک‌اند با تمرکز بر توسعه با .NET، ASP.NET Core و C# در کنار Node.js و NestJS.',
     url: 'https://manishek.ir',
     mainEntity: {
       '@type': 'Person',

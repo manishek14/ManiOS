@@ -13,7 +13,7 @@
   "hero": {
     "greeting": "Hello,",
     "name": "I'm Mani Shekofteh",
-    "tagline": "Backend Engineer who turns complex problems into elegant, scalable systems — one API at a time.",
+    "tagline": "Backend Engineer focused on building with .NET and ASP.NET Core alongside Node.js and NestJS — passionate about standard-compliant API design, software architecture, scalable systems, and solving complex backend problems.",
     "cta_activity": "View Activity",
     "cta_resume": "Resume"
   },
@@ -21,7 +21,7 @@
     "title": "Who I Am",
     "subtitle": "A brief story about the person behind the code",
     "p1": "I'm Mani, a 20-year-old backend developer based in Mashhad, Iran. My journey into software started two years ago with frontend development — but I quickly discovered where my real passion lives: behind the scenes, where data flows, requests find their paths, and APIs quietly power everything.",
-    "p2": "Today, I build with Node.js and Express daily. NestJS shaped how I think about architecture — modular, clean, and scalable. PostgreSQL and MongoDB are the tools I reach for instinctively. When I encounter something I don't know, I don't pretend — I sit with the problem until it's solved.",
+    "p2": "These days, my focus is on backend development with .NET, ASP.NET Core, and C#, alongside Node.js, NestJS, and TypeScript. In my projects I work with PostgreSQL, SQL Server, MongoDB, and Redis. Working with NestJS and learning the .NET ecosystem has deepened my view of software architecture and pushed me to focus more on modular design, clean code principles, dependency management, and building scalable, maintainable systems.",
     "p3": "I'm not looking for just a job. I'm looking for a team where I can invest my energy and get energy back. Where code reviews are conversations, not corrections. Where shipping matters, but so does how you ship.",
     "philosophy_title": "Engineering Philosophy",
     "philosophy": "Code should be written for the next person who reads it — and that person might be you, six months from now. I believe in clean architecture not because it's trendy, but because it makes systems survivable. Every abstraction should earn its existence.",
@@ -326,7 +326,7 @@
     "role": "Backend Engineer",
     "phone": "09154944256",
     "location": "Mashhad, Iran",
-    "summary": "Results-driven backend engineer with 2+ years of professional experience building scalable, production-grade systems in Node.js and NestJS. Passionate about clean architecture, API design, and performance optimization — from reducing response times with Redis caching to designing modular micro-service patterns. Combines deep technical expertise with strong communication skills and a relentless drive to ship code that is maintainable, testable, and built to last.",
+    "summary": "Results-driven backend engineer with 2+ years of professional experience building scalable, production-grade systems — focused on .NET and ASP.NET Core alongside Node.js and NestJS. Passionate about clean architecture, standard-compliant API design, and performance optimization — from reducing response times with Redis caching to designing modular micro-service patterns. Combines deep technical expertise with strong communication skills and a relentless drive to ship code that is maintainable, testable, and built to last.",
     "section_skills": "Skills",
     "section_languages": "Languages",
     "section_education": "Education",
