@@ -162,7 +162,7 @@ export const PROJECTS: Project[] = [
     category: 'frontend',
     liveUrl: 'https://nex-us-website.vercel.app/',
     github: 'https://github.com/manishek14/Nexus',
-    image: 'https://s6.uupload.ir/files/manishek.ir_demo_showcase_g2z.png',
+    image: '/nexus.webp',
     coverGradient: 'from-violet-600 via-purple-600 to-fuchsia-600',
   },
   {
@@ -264,7 +264,7 @@ export const PROJECTS: Project[] = [
     category: 'frontend',
     liveUrl: 'https://manishek14.github.io/Anahita/',
     github: 'https://github.com/manishek14/Anahita',
-    image: 'https://s6.uupload.ir/files/chatgpt_image_sep_7,_2026,_11_48_22_pm_knsj.png',
+    image: '/anahita.webp',
     coverGradient: 'from-teal-600 via-emerald-600 to-green-600',
   },
   {
@@ -290,6 +290,37 @@ export const PROJECTS: Project[] = [
 ];
 
 export const EXPERIENCES: Experience[] = [
+  {
+    id: 'peyro-sepehr',
+    company: 'Peyro Sepehr Ravis',
+    companyLocal: 'پیرو سپهر راویس',
+    role: { en: 'Full-Stack Developer', fa: 'برنامه‌نویس فول‌استک', ar: 'مطور Full Stack' },
+    period: 'Mar 2026 — Present',
+    location: 'Mashhad, Iran',
+    description: {
+      en: 'Developed the peyroco.ir website end-to-end and designed the UI of a custom CMS, replacing the previous WordPress-based workflow.',
+      fa: 'توسعه وب‌سایت peyroco.ir و ساخت UI برای CMS اختصاصی (جایگزین CMS قبلی مبتنی بر وردپرس).',
+      ar: 'تطوير موقع peyroco.ir وتصميم واجهة نظام إدارة محتوى مخصص (بديل ووردبريس).',
+    },
+    achievements: {
+      en: [
+        'Developed and launched the peyroco.ir website with a fully responsive, SEO-optimized front-end',
+        'Designed and implemented the UI of a custom CMS — content editor, media management, and role-based dashboard — fully replacing the legacy WordPress workflow',
+        'Built a reusable React component library unifying the design system across the website and the CMS',
+      ],
+      fa: [
+        'توسعه و انتشار وب‌سایت peyroco.ir با فرانت‌اند کاملاً واکنش‌گرا و بهینه برای سئو',
+        'طراحی و پیاده‌سازی UI برای CMS اختصاصی — ویرایشگر محتوا، مدیریت رسانه و داشبورد نقش‌محور — جایگزین کامل وردپرس',
+        'ساخت کتابخانه کامپوننت React قابل استفاده مجدد برای یکپارچگی طراحی سایت و CMS',
+      ],
+      ar: [
+        'تطوير وإطلاق موقع peyroco.ir بواجهة متجاوبة ومحسّنة لمحركات البحث',
+        'تصميم وتنفيذ واجهة نظام إدارة محتوى مخصص — محرر محتوى وإدارة وسائط ولوحة أدوار — بديلاً كاملاً عن ووردبريس',
+        'بناء مكتبة مكونات React قابلة لإعادة الاستخدام لتوحيد التصميم بين الموقع ونظام إدارة المحتوى',
+      ],
+    },
+    techStack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'],
+  },
   {
     id: 'moaserhome',
     company: 'MoaserHome',
