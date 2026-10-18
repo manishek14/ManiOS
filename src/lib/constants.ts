@@ -295,7 +295,7 @@ export const EXPERIENCES: Experience[] = [
     company: 'Peyro Sepehr Ravis',
     companyLocal: 'پیرو سپهر راویس',
     role: { en: 'Full-Stack Developer', fa: 'برنامه‌نویس فول‌استک', ar: 'مطور Full Stack' },
-    period: 'Mar 2026 — Present',
+    period: 'May 2026 — Sep 2026',
     location: 'Mashhad, Iran',
     description: {
       en: 'Developed the peyroco.ir website end-to-end and designed the UI of a custom CMS, replacing the previous WordPress-based workflow.',
@@ -319,7 +319,7 @@ export const EXPERIENCES: Experience[] = [
         'بناء مكتبة مكونات React قابلة لإعادة الاستخدام لتوحيد التصميم بين الموقع ونظام إدارة المحتوى',
       ],
     },
-    techStack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'],
+    techStack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'ASP.NET Core', 'C#'],
   },
   {
     id: 'moaserhome',
